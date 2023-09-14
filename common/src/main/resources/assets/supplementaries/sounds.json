@@ -186,36 +186,6 @@
       "supplementaries:block/faucet"
     ]
   },
-  "item.slingshot.charge_0": {
-    "subtitle": "subtitle.supplementaries.slingshot.charge",
-    "sounds": [
-      "supplementaries:item/slingshot_charge_0"
-    ]
-  },
-  "item.slingshot.charge_1": {
-    "subtitle": "subtitle.supplementaries.slingshot.charge",
-    "sounds": [
-      "supplementaries:item/slingshot_charge_1"
-    ]
-  },
-  "item.slingshot.charge_3": {
-    "subtitle": "subtitle.supplementaries.slingshot.charge",
-    "sounds": [
-      "supplementaries:item/slingshot_charge_3"
-    ]
-  },
-  "item.slingshot.charge_2": {
-    "subtitle": "subtitle.supplementaries.slingshot.charge",
-    "sounds": [
-      "supplementaries:item/slingshot_charge_2"
-    ]
-  },
-  "item.slingshot.release": {
-    "subtitle": "subtitle.supplementaries.slingshot.release",
-    "sounds": [
-      "supplementaries:item/slingshot_release"
-    ]
-  },
   "block.rope.slide": {
     "subtitle": "subtitle.supplementaries.rope.slide",
     "sounds": [

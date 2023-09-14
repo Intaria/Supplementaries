@@ -24,7 +24,6 @@ public class ModParticles {
     public static final Supplier<SimpleParticleType> BOMB_SMOKE_PARTICLE = reg("bomb_smoke");
     public static final Supplier<SimpleParticleType> BOTTLING_XP_PARTICLE = reg("bottling_xp");
     public static final Supplier<SimpleParticleType> FEATHER_PARTICLE = reg("feather");
-    public static final Supplier<SimpleParticleType> SLINGSHOT_PARTICLE = reg("air_burst");
     public static final Supplier<SimpleParticleType> STASIS_PARTICLE = reg("stasis");
     public static final Supplier<SimpleParticleType> CONFETTI_PARTICLE = reg("confetti");
     public static final Supplier<SimpleParticleType> ROTATION_TRAIL = reg("rotation_trail");

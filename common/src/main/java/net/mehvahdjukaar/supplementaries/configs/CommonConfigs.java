@@ -67,7 +67,7 @@ public class CommonConfigs {
             return null;
         });
 
-        stasisEnabled = Tools.STASIS_ENABLED.get() && (Tools.SLINGSHOT_ENABLED.get() || Tools.BUBBLE_BLOWER_ENABLED.get());
+        stasisEnabled = Tools.STASIS_ENABLED.get() && (Tools.BUBBLE_BLOWER_ENABLED.get());
     }
 
     @Nullable
@@ -752,18 +752,6 @@ public class CommonConfigs {
             builder.pop();
             builder.pop();
 
-            builder.push("slingshot");
-            SLINGSHOT_ENABLED = feature(builder);
-            SLINGSHOT_RANGE = builder.comment("Slingshot range multiplier. Affect the initial projectile speed")
-                    .define("range_multiplier", 1f, 0, 5);
-            SLINGSHOT_CHARGE = builder.comment("Time in ticks to fully charge a slingshot")
-                    .define("charge_time", 20, 0, 100);
-            SLINGSHOT_DECELERATION = builder.comment("Deceleration for the stasis projectile")
-                    .define("stasis_deceleration", 0.9625, 0.1, 1);
-            UNRESTRICTED_SLINGSHOT = builder.comment("Allow enderman to intercept any slingshot projectile")
-                    .define("unrestricted_enderman_intercept", true);
-            builder.pop();
-
             ANTIQUE_INK_ENABLED = feature(builder, ModConstants.ANTIQUE_INK_NAME);
             CANDY_ENABLED = feature(builder, ModConstants.CANDY_NAME);
             STASIS_ENABLED = feature(builder, ModConstants.STASIS_NAME);
@@ -787,12 +775,6 @@ public class CommonConfigs {
 
         public static final Supplier<Boolean> WRENCH_ENABLED;
         public static final Supplier<CommonConfigs.Hands> WRENCH_BYPASS;
-
-        public static final Supplier<Boolean> SLINGSHOT_ENABLED;
-        public static final Supplier<Double> SLINGSHOT_RANGE;
-        public static final Supplier<Integer> SLINGSHOT_CHARGE;
-        public static final Supplier<Double> SLINGSHOT_DECELERATION;
-        public static final Supplier<Boolean> UNRESTRICTED_SLINGSHOT;
 
         public static final Supplier<Boolean> BOMB_ENABLED;
         public static final Supplier<Double> BOMB_RADIUS;

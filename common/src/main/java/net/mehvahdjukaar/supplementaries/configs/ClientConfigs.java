@@ -58,10 +58,6 @@ public class ClientConfigs {
         public static final Supplier<Boolean> QUIVER_OVERLAY;
         public static final Supplier<Integer> QUIVER_GUI_X;
         public static final Supplier<Integer> QUIVER_GUI_Y;
-        public static final Supplier<Boolean> SLINGSHOT_OVERLAY;
-        public static final Supplier<Boolean> SLINGSHOT_OUTLINE;
-        public static final Supplier<Integer> SLINGSHOT_OUTLINE_COLOR;
-        public static final Supplier<Double> SLINGSHOT_PROJECTILE_SCALE;
         public static final Supplier<Boolean> WRENCH_PARTICLES;
         public static final Supplier<Boolean> FLUTE_PARTICLES;
 
@@ -69,17 +65,6 @@ public class ClientConfigs {
             ConfigBuilder builder = builderReference.get();
 
             builder.push("items");
-
-            builder.push("slingshot");
-            SLINGSHOT_OVERLAY = builder.comment("Adds an overlay to slingshots in gui displaying currently selected block")
-                    .define("overlay", true);
-            SLINGSHOT_OUTLINE = builder.comment("Render the block outline for distant blocks that are reachable with a slingshot enchanted with Stasis")
-                    .define("stasis_block_outline", true);
-            SLINGSHOT_OUTLINE_COLOR = builder.comment("An RGBA color for the block outline in hex format, for example 0x00000066 for vanilla outline colors")
-                    .defineColor("block_outline_color", 0xffffff66);
-            SLINGSHOT_PROJECTILE_SCALE = builder.comment("How big should a slingshot projectile look")
-                    .define("projectile_scale", 0.5, 0, 1);
-            builder.pop();
 
             builder.push("quiver");
             QUIVER_ARMOR_OFFSET = builder.comment("Z offset for quiver render when wearing armor. Useful for when you have custom armor bigger than vanilla to void clipping. Leave at -1 for automatic offset")

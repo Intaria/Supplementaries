@@ -14,10 +14,8 @@ public final class ModConstants {
     public static final String BOMB_BLUE_NAME = "bomb_blue";
     public static final String BOMB_SPIKY_NAME = "bomb_spiky";
     public static final String ROPE_ARROW_NAME = "rope_arrow";
-    public static final String SLINGSHOT_PROJECTILE_NAME = "slingshot_projectile";
 
     public static final String BUBBLE_BLOWER_NAME = "bubble_blower";
-    public static final String SLINGSHOT_NAME = "slingshot";
     public static final String FLUTE_NAME = "flute";
     public static final String KEY_NAME = "key";
     public static final String CANDY_NAME = "candy";

@@ -18,12 +18,10 @@ import net.mehvahdjukaar.supplementaries.client.renderers.color.*;
 import net.mehvahdjukaar.supplementaries.client.renderers.entities.PearlMarkerRenderer;
 import net.mehvahdjukaar.supplementaries.client.renderers.entities.RedMerchantRenderer;
 import net.mehvahdjukaar.supplementaries.client.renderers.entities.RopeArrowRenderer;
-import net.mehvahdjukaar.supplementaries.client.renderers.entities.SlingshotProjectileRenderer;
 import net.mehvahdjukaar.supplementaries.client.renderers.entities.funny.JarredModel;
 import net.mehvahdjukaar.supplementaries.client.renderers.entities.funny.PickleModel;
 import net.mehvahdjukaar.supplementaries.client.renderers.entities.models.SkullCandleOverlayModel;
 import net.mehvahdjukaar.supplementaries.client.renderers.items.QuiverItemOverlayRenderer;
-import net.mehvahdjukaar.supplementaries.client.renderers.items.SlingshotItemOverlayRenderer;
 import net.mehvahdjukaar.supplementaries.client.renderers.tiles.*;
 import net.mehvahdjukaar.supplementaries.client.screens.*;
 import net.mehvahdjukaar.supplementaries.client.tooltip.BannerPatternTooltipComponent;
@@ -32,7 +30,6 @@ import net.mehvahdjukaar.supplementaries.client.tooltip.PaintingTooltipComponent
 import net.mehvahdjukaar.supplementaries.client.tooltip.QuiverTooltipComponent;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.GlobeBlockTile;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.TrappedPresentBlockTile;
-import net.mehvahdjukaar.supplementaries.common.items.SlingshotItem;
 import net.mehvahdjukaar.supplementaries.common.items.tooltip_components.BannerPatternTooltip;
 import net.mehvahdjukaar.supplementaries.common.items.tooltip_components.PaintingTooltip;
 import net.mehvahdjukaar.supplementaries.common.items.tooltip_components.QuiverTooltip;
@@ -224,20 +221,6 @@ public class ClientRegistry {
         ClientPlatformHelper.registerItemProperty(Items.WRITTEN_BOOK, Supplementaries.res("antique_ink"), antiqueProp);
         ClientPlatformHelper.registerItemProperty(Items.FILLED_MAP, Supplementaries.res("antique_ink"), antiqueProp);
 
-        ClientPlatformHelper.registerItemProperty(ModRegistry.SLINGSHOT_ITEM.get(), Supplementaries.res("pull"),
-                (stack, world, entity, s) -> {
-                    if (entity == null || entity.getUseItem() != stack) {
-                        return 0.0F;
-                    } else {
-                        return (float) (stack.getUseDuration() - entity.getUseItemRemainingTicks()) / SlingshotItem.getChargeDuration(stack);
-                    }
-                });
-
-
-        ClientPlatformHelper.registerItemProperty(ModRegistry.SLINGSHOT_ITEM.get(), Supplementaries.res("pulling"),
-                (stack, world, entity, s) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
-
-
         ClientPlatformHelper.registerItemProperty(ModRegistry.BUBBLE_BLOWER.get(), Supplementaries.res("using"),
                 (stack, world, entity, s) -> entity != null && entity.isUsingItem() && ForgeHelper.areStacksEqual(stack, entity.getUseItem(), true) ? 1.0F : 0.0F);
 
@@ -328,7 +311,6 @@ public class ClientRegistry {
         event.register(ModParticles.BOMB_SMOKE_PARTICLE.get(), BombSmokeParticle.Factory::new);
         event.register(ModParticles.BOTTLING_XP_PARTICLE.get(), BottlingXpParticle.Factory::new);
         event.register(ModParticles.FEATHER_PARTICLE.get(), FeatherParticle.Factory::new);
-        event.register(ModParticles.SLINGSHOT_PARTICLE.get(), SlingshotParticle.Factory::new);
         event.register(ModParticles.STASIS_PARTICLE.get(), StasisParticle.Factory::new);
         event.register(ModParticles.CONFETTI_PARTICLE.get(), ConfettiParticle.Factory::new);
         event.register(ModParticles.ROTATION_TRAIL.get(), RotationTrailParticle.Factory::new);
@@ -357,7 +339,6 @@ public class ClientRegistry {
         //entities
         event.register(ModEntities.BOMB.get(), context -> new ThrownItemRenderer<>(context, 1, false));
         event.register(ModEntities.THROWABLE_BRICK.get(), context -> new ThrownItemRenderer<>(context, 1, false));
-        event.register(ModEntities.SLINGSHOT_PROJECTILE.get(), SlingshotProjectileRenderer::new);
         event.register(ModEntities.DISPENSER_MINECART.get(), c -> new MinecartRenderer<>(c, ModelLayers.HOPPER_MINECART));
         event.register(ModEntities.RED_MERCHANT.get(), RedMerchantRenderer::new);
         event.register(ModEntities.ROPE_ARROW.get(), RopeArrowRenderer::new);
@@ -437,7 +418,6 @@ public class ClientRegistry {
 
     @EventCalled
     private static void registerItemDecorators(ClientPlatformHelper.ItemDecoratorEvent event) {
-        event.register(ModRegistry.SLINGSHOT_ITEM.get(), new SlingshotItemOverlayRenderer());
         event.register(ModRegistry.QUIVER_ITEM.get(), new QuiverItemOverlayRenderer());
     }
 

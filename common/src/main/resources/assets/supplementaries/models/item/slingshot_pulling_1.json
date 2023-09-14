@@ -1,6 +1,0 @@
-{
-    "parent": "supplementaries:item/slingshot_pulling_0",
-    "textures": {
-        "layer0": "supplementaries:items/slingshot_pulling_1"
-    }
-}

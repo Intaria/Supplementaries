@@ -85,13 +85,6 @@ public class ModEntities {
                     .clientTrackingRange(4)
                     .updateInterval(20));
 
-    //slingshot projectile
-    public static final Supplier<EntityType<SlingshotProjectileEntity>> SLINGSHOT_PROJECTILE = regEntity(SLINGSHOT_PROJECTILE_NAME, () ->
-            EntityType.Builder.<SlingshotProjectileEntity>of(SlingshotProjectileEntity::new, MobCategory.MISC)
-                    .sized(0.5F, 0.5F)
-                    .clientTrackingRange(4)
-                    .updateInterval(20));
-
 
 
     //firefly

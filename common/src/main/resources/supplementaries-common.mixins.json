@@ -13,7 +13,6 @@
     "GameRendererMixin",
     "IronGolemRendererMixin",
     "KeyboardHandlerMixin",
-    "LevelRendererMixin",
     "LocalPlayerMixin",
     "LoomScreenFlagMixin",
     "MouseHandlerMixin",

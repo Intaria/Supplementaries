@@ -56,12 +56,6 @@ public class ModSounds {
     public static final Supplier<SoundEvent> GLOBE_SPIN = regSound("block.globe.spin");
     public static final Supplier<SoundEvent> FAUCET = regSound("block.faucet.turn");
 
-    public static final Supplier<SoundEvent> SLINGSHOT_CHARGE_0 = regSound("item.slingshot.charge_0");
-    public static final Supplier<SoundEvent> SLINGSHOT_CHARGE_1 = regSound("item.slingshot.charge_1");
-    public static final Supplier<SoundEvent> SLINGSHOT_CHARGE_2 = regSound("item.slingshot.charge_2");
-    public static final Supplier<SoundEvent> SLINGSHOT_CHARGE_3 = regSound("item.slingshot.charge_3");
-    public static final Supplier<SoundEvent> SLINGSHOT_SHOOT = regSound("item.slingshot.release");
-
     public static final ModSoundType JAR = new ModSoundType(1.0F, 1.0F,
             JAR_BREAK,
             ()->  SoundEvents.GLASS_STEP,

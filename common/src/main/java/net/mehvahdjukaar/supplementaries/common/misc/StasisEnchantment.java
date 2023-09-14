@@ -2,7 +2,6 @@ package net.mehvahdjukaar.supplementaries.common.misc;
 
 import dev.architectury.injectables.annotations.PlatformOnly;
 import net.mehvahdjukaar.supplementaries.common.items.BubbleBlower;
-import net.mehvahdjukaar.supplementaries.common.items.SlingshotItem;
 import net.mehvahdjukaar.supplementaries.configs.CommonConfigs;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
@@ -62,13 +61,13 @@ public class StasisEnchantment extends Enchantment {
     @Override
     public boolean canEnchant(ItemStack stack) {
         Item i = stack.getItem();
-        return i instanceof SlingshotItem || i instanceof BubbleBlower || super.canEnchant(stack);
+        return i instanceof BubbleBlower || super.canEnchant(stack);
     }
 
     //@Override
     @PlatformOnly(PlatformOnly.FORGE)
     public boolean canApplyAtEnchantingTable(ItemStack stack) {
         Item i = stack.getItem();
-        return i instanceof SlingshotItem || i instanceof BubbleBlower;
+        return i instanceof BubbleBlower;
     }
 }

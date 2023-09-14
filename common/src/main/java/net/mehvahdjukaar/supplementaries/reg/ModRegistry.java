@@ -111,11 +111,6 @@ public class ModRegistry {
             .tab(getTab(CreativeModeTab.TAB_TOOLS, BUBBLE_BLOWER_NAME))
             .stacksTo(1).durability(250)));
 
-    //slingshot
-    public static final Supplier<Item> SLINGSHOT_ITEM = regItem(SLINGSHOT_NAME, () -> new SlingshotItem((new Item.Properties())
-            .tab(getTab(CreativeModeTab.TAB_TOOLS, SLINGSHOT_NAME))
-            .stacksTo(1).durability(192)));
-
     //flute
     public static final Supplier<Item> FLUTE_ITEM = regItem(FLUTE_NAME, () -> new FluteItem((new Item.Properties())
             .tab(getTab(CreativeModeTab.TAB_TOOLS, FLUTE_NAME)).stacksTo(1).durability(64)));
