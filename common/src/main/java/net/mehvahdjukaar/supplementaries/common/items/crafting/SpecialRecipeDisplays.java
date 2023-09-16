@@ -3,7 +3,6 @@ package net.mehvahdjukaar.supplementaries.common.items.crafting;
 import net.mehvahdjukaar.moonlight.api.set.BlocksColorAPI;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.BlackboardBlockTile;
-import net.mehvahdjukaar.supplementaries.common.items.BambooSpikesTippedItem;
 import net.mehvahdjukaar.supplementaries.common.misc.AntiqueInkHelper;
 import net.mehvahdjukaar.supplementaries.configs.CommonConfigs;
 import net.mehvahdjukaar.supplementaries.reg.ModRegistry;
@@ -188,30 +187,6 @@ public class SpecialRecipeDisplays {
     }
 
 
-    private static List<CraftingRecipe> createTippedBambooSpikesRecipes() {
-        List<CraftingRecipe> recipes = new ArrayList<>();
-        String group = "tipped_spikes";
-
-        for (Potion potionType : Registry.POTION) {
-            if (!potionType.getEffects().isEmpty() && BambooSpikesTippedItem.isPotionValid(potionType)) {
-                recipes.add(makeSpikeRecipe(potionType, group));
-            }
-        }
-        return recipes;
-    }
-
-    private static ShapelessRecipe makeSpikeRecipe(Potion potionType, String group) {
-        ItemStack spikes = new ItemStack(ModRegistry.BAMBOO_SPIKES_ITEM.get());
-        ItemStack lingeringPotion = PotionUtils.setPotion(new ItemStack(Items.LINGERING_POTION), potionType);
-        Ingredient spikeIngredient = Ingredient.of(spikes);
-        Ingredient potionIngredient = Ingredient.of(lingeringPotion);
-        NonNullList<Ingredient> inputs = NonNullList.of(Ingredient.EMPTY, spikeIngredient, potionIngredient);
-        ItemStack output = BambooSpikesTippedItem.makeSpikeItem(potionType);
-        ResourceLocation id = new ResourceLocation(Supplementaries.MOD_ID, potionType.getName("tipped_spikes_display."));
-
-        return new ShapelessRecipe(id, group, output, inputs);
-    }
-
     private static List<CraftingRecipe> createFlagFromBanner() {
         List<CraftingRecipe> recipes = new ArrayList<>();
         String group = "flag_from_banner";
@@ -323,9 +298,6 @@ public class SpecialRecipeDisplays {
     public static void registerRecipes(RecipeBookCategories category, Consumer<List<CraftingRecipe>> registry) {
 
         if (category == RecipeBookCategories.CRAFTING_MISC) {
-            if (CommonConfigs.Functional.TIPPED_SPIKES_ENABLED.get()) {
-                registry.accept(createTippedBambooSpikesRecipes());
-            }
             if (CommonConfigs.Building.FLAG_ENABLED.get()) {
                 registry.accept(createFlagFromBanner());
             }

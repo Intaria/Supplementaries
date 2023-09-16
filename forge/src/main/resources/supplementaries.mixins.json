@@ -14,7 +14,6 @@
     "SelfSpeakerBlockTileMixin",
     "SelfOpenableContainerMixin",
     "SelfFrameMixin",
-    "SelfGunpowderMixin",
     "SelfSafeMixin",
     "SelfPlanterMixin",
     "SelfSoapItemMixin",

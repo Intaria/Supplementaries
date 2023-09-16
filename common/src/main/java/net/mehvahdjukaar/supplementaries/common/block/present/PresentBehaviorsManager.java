@@ -2,8 +2,6 @@ package net.mehvahdjukaar.supplementaries.common.block.present;
 
 import net.mehvahdjukaar.supplementaries.Supplementaries;
 import net.mehvahdjukaar.supplementaries.common.block.blocks.TrappedPresentBlock;
-import net.mehvahdjukaar.supplementaries.common.entities.BombEntity;
-import net.mehvahdjukaar.supplementaries.common.items.BombItem;
 import net.mehvahdjukaar.supplementaries.common.network.ClientBoundSendKnockbackPacket;
 import net.mehvahdjukaar.supplementaries.common.network.NetworkHandler;
 import net.mehvahdjukaar.supplementaries.reg.ModRegistry;
@@ -48,14 +46,6 @@ public class PresentBehaviorsManager {
         TrappedPresentBlock.registerBehavior(Items.FIREWORK_ROCKET, FIREWORK_BEHAVIOR);
         TrappedPresentBlock.registerBehavior(Items.SPLASH_POTION, SPLASH_POTION_BEHAVIOR);
         TrappedPresentBlock.registerBehavior(Items.LINGERING_POTION, SPLASH_POTION_BEHAVIOR);
-
-
-        TrappedPresentBlock.registerBehavior(ModRegistry.BOMB_ITEM.get(), BOMB_BEHAVIOR);
-        TrappedPresentBlock.registerBehavior(ModRegistry.BOMB_ITEM_ON.get(), BOMB_BEHAVIOR);
-        TrappedPresentBlock.registerBehavior(ModRegistry.BOMB_BLUE_ITEM.get(), BOMB_BEHAVIOR);
-        TrappedPresentBlock.registerBehavior(ModRegistry.BOMB_BLUE_ITEM_ON.get(), BOMB_BEHAVIOR);
-        TrappedPresentBlock.registerBehavior(ModRegistry.BOMB_SPIKY_ITEM.get(), BOMB_BEHAVIOR);
-        TrappedPresentBlock.registerBehavior(ModRegistry.BOMB_SPIKY_ITEM_ON.get(), BOMB_BEHAVIOR);
     }
 
     //projectiles, fireworks, tnt, spawn eggs
@@ -175,20 +165,6 @@ public class PresentBehaviorsManager {
         @Override
         protected float getPower() {
             return 0.5F;
-        }
-
-        @Override
-        protected float getUncertainty() {
-            return 11.0F;
-        }
-    };
-
-
-    private static final AbstractProjectileBehavior BOMB_BEHAVIOR = new AbstractProjectileBehavior() {
-
-        @Override
-        protected Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
-            return new BombEntity(worldIn, position.x(), position.y(), position.z(), ((BombItem) stackIn.getItem()).getType());
         }
 
         @Override

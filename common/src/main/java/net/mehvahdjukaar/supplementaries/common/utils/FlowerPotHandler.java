@@ -55,10 +55,13 @@ public class FlowerPotHandler {
      * @param item  target item
      * @param model resource location of the block model to be used
      */
+    /*
     public static void registerCustomFlower(Item item, ResourceLocation model) {
         SPECIAL_FLOWER_BOX_FLOWERS.put(item, model);
     }
+    */
 
+    /*
     private static void registerCompatFlower(String itemRes) {
         var id = new ResourceLocation(itemRes);
         var opt = Registry.ITEM.getOptional(id);
@@ -68,6 +71,7 @@ public class FlowerPotHandler {
             registerCustomFlower(opt.get(), res);
         }
     }
+    */
 
     //to manually add
     public static final List<ResourceLocation> CUSTOM_MODELS = new ArrayList<>();
@@ -161,15 +165,17 @@ public class FlowerPotHandler {
 
         //flower box
 
-        toAdd.forEach(FlowerPotHandler::registerCompatFlower);
+        //toAdd.forEach(FlowerPotHandler::registerCompatFlower);
 
     }
 
     @Nullable
     public static ResourceLocation getSpecialFlowerModel(Item i) {
+        /*
         ResourceLocation res = SPECIAL_FLOWER_BOX_FLOWERS.get(i);
 
         if (res != null) return res;
+        */
 
         if (i instanceof IFlowerModelProvider flowerModelProvider) {
             return flowerModelProvider.getModel();

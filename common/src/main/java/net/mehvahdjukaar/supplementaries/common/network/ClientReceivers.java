@@ -4,7 +4,6 @@ import net.mehvahdjukaar.moonlight.api.client.util.ParticleUtil;
 import net.mehvahdjukaar.supplementaries.client.screens.widgets.PlayerSuggestionBoxWidget;
 import net.mehvahdjukaar.supplementaries.common.block.blocks.FlintBlock;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.SpeakerBlockTile;
-import net.mehvahdjukaar.supplementaries.common.inventories.RedMerchantContainerMenu;
 import net.mehvahdjukaar.supplementaries.common.items.InstrumentItem;
 import net.mehvahdjukaar.supplementaries.common.misc.AntiqueInkHelper;
 import net.mehvahdjukaar.supplementaries.configs.ClientConfigs;
@@ -145,13 +144,6 @@ public class ClientReceivers {
     public static void handleSyncTradesPacket(ClientBoundSyncTradesPacket message) {
         withPlayerDo(p -> {
             AbstractContainerMenu container = p.containerMenu;
-            if (message.containerId == container.containerId && container instanceof RedMerchantContainerMenu containerMenu) {
-                containerMenu.setOffers(new MerchantOffers(message.offers.createTag()));
-                containerMenu.setXp(message.villagerXp);
-                containerMenu.setMerchantLevel(message.villagerLevel);
-                containerMenu.setShowProgressBar(message.showProgress);
-                containerMenu.setCanRestock(message.canRestock);
-            }
         });
     }
 

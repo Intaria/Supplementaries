@@ -33,7 +33,5 @@ public class EMICompat implements EmiPlugin {
                         .output(EmiStack.of(ModRegistry.RAKED_GRAVEL.get()))
                         .build()
         );
-
-        registry.setDefaultComparison(EmiStack.of(ModRegistry.BAMBOO_SPIKES_TIPPED_ITEM.get()), c -> c.copy().nbt(true).build());
     }
 }

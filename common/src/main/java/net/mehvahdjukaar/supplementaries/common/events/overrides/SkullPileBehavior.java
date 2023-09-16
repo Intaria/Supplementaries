@@ -1,7 +1,6 @@
 package net.mehvahdjukaar.supplementaries.common.events.overrides;
 
 import net.mehvahdjukaar.moonlight.api.util.Utils;
-import net.mehvahdjukaar.supplementaries.common.block.blocks.EndermanSkullBlock;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.DoubleSkullBlockTile;
 import net.mehvahdjukaar.supplementaries.configs.CommonConfigs;
 import net.mehvahdjukaar.supplementaries.reg.ModRegistry;
@@ -48,7 +47,7 @@ class SkullPileBehavior implements ItemUseOnBlockOverride {
     @Override
     public boolean appliesToItem(Item item) {
         return item instanceof BlockItem bi && bi.getBlock() instanceof SkullBlock skull &&
-                skull.getType() != SkullBlock.Types.DRAGON && skull.getType() != EndermanSkullBlock.TYPE;
+                skull.getType() != SkullBlock.Types.DRAGON;
     }
 
     @Override

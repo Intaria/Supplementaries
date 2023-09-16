@@ -43,8 +43,7 @@ public class ModSetup {
             ModSetup::registerMobFoods,
             ModSetup::registerFabricFlammable,
             ModSetup::registerFramed,
-            CauldronBehaviorsManager::registerBehaviors,
-            () -> FireworkStarRecipe.SHAPE_BY_ITEM.put(ModRegistry.ENDERMAN_SKULL_ITEM.get(), FireworkRocketItem.Shape.CREEPER)
+            CauldronBehaviorsManager::registerBehaviors
     );
 
     public static void asyncSetup() {

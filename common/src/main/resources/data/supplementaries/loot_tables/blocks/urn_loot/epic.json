@@ -96,11 +96,6 @@
         {
           "type": "minecraft:item",
           "weight": 10,
-          "name": "supplementaries:bomb_blue"
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 10,
           "functions": [
             {
               "function": "minecraft:set_count",

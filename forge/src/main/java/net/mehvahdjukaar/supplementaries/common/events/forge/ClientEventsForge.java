@@ -3,7 +3,6 @@ package net.mehvahdjukaar.supplementaries.common.events.forge;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
 import net.mehvahdjukaar.supplementaries.client.renderers.CapturedMobCache;
-import net.mehvahdjukaar.supplementaries.common.block.blocks.EndermanSkullBlock;
 import net.mehvahdjukaar.supplementaries.common.events.ClientEvents;
 import net.mehvahdjukaar.supplementaries.common.utils.ItemsUtil;
 import net.mehvahdjukaar.supplementaries.configs.ClientConfigs;
@@ -31,19 +30,11 @@ public class ClientEventsForge {
 
     public static void init() {
         MinecraftForge.EVENT_BUS.register(ClientEventsForge.class);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEventsForge::onRegisterSkullModels);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEventsForge::loadComplete);
     }
 
     public static void loadComplete(FMLLoadCompleteEvent event){
         ClientRegistry.checkIfFailed();
-    }
-
-    public static void onRegisterSkullModels(EntityRenderersEvent.CreateSkullModels event) {
-        event.registerSkullModel(EndermanSkullBlock.TYPE,
-                new SkullModel(event.getEntityModelSet().bakeLayer(ModelLayers.SKELETON_SKULL)));
-        SkullBlockRenderer.SKIN_BY_TYPE.put(EndermanSkullBlock.TYPE,
-                Supplementaries.res("textures/entity/enderman_head.png"));
     }
 
     @SubscribeEvent

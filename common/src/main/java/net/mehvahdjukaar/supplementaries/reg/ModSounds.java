@@ -14,12 +14,9 @@ public class ModSounds {
     public static void init(){};
     
     //these are the names in sound.json. not actual location. this is so a sound event can play multiple sounds
-    public static final Supplier<SoundEvent> TOM = regSound("block.turntable.cat");
     public static final Supplier<SoundEvent> CLOCK_TICK_1 = regSound("block.clock.tick_1");
     public static final Supplier<SoundEvent> CLOCK_TICK_2 = regSound("block.clock.tick_2");
-    public static final Supplier<SoundEvent> BOMB_EXPLOSION = regSound("item.bomb");
     public static final Supplier<SoundEvent> PANCAKE_MUSIC = regSound("music.pancake");
-    public static final Supplier<SoundEvent> GUNPOWDER_IGNITE = regSound("block.gunpowder.ignite");
     public static final Supplier<SoundEvent> CRANK = regSound("block.crank");
 
     public static final Supplier<SoundEvent> BLOCK_ROTATE = regSound("block.rotate");

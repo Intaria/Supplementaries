@@ -11,30 +11,6 @@
       "supplementaries:block/clock_tick_2"
     ]
   },
-  "block.turntable.cat": {
-    "subtitle": "subtitle.supplementaries.turntable.cat",
-    "sounds": [
-      {
-        "name": "supplementaries:block/tom",
-        "stream": true
-      }
-    ]
-  },
-  "block.gunpowder.ignite": {
-    "subtitle": "subtitle.supplementaries.gunpowder.ignite",
-    "sounds": [
-      "supplementaries:block/fizzle"
-    ]
-  },
-  "item.bomb": {
-    "subtitle": "subtitle.supplementaries.bomb",
-    "sounds": [
-      "supplementaries:item/bomb_explosion_0",
-      "supplementaries:item/bomb_explosion_1",
-      "supplementaries:item/bomb_explosion_2",
-      "supplementaries:item/bomb_explosion_3"
-    ]
-  },
   "music.pancake": {
     "sounds": [
       {

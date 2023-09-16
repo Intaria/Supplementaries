@@ -32,7 +32,6 @@ public class ModConfigScreen extends CustomConfigScreen {
         addIcon("particles", Items.BLAZE_POWDER);
         addIcon("items", Items.AMETHYST_SHARD);
         addIcon("spawns", Items.TURTLE_EGG);
-        addIcon("turn particles", ModRegistry.TURN_TABLE.get());
         addIcon("captured mobs", ModRegistry.CAGE_ITEM.get());
         addIcon("flag", ModRegistry.FLAGS.get(DyeColor.WHITE).get());
         addIcon("way sign", ModRegistry.SIGN_POST_ITEMS.get(WoodTypeRegistry.OAK_TYPE));
@@ -50,9 +49,7 @@ public class ModConfigScreen extends CustomConfigScreen {
         addIcon("bottle xp", Items.EXPERIENCE_BOTTLE);
         addIcon("map tweaks", Items.FILLED_MAP);
         addIcon("ceiling banners", Items.RED_BANNER);
-        addIcon("initialization", ModRegistry.COG_BLOCK.get());
         addIcon("zombie horse", Items.ZOMBIE_HORSE_SPAWN_EGG);
-        addIcon("placeable gunpowder", Items.GUNPOWDER);
         addIcon("mixins", Items.HOPPER);
         addIcon("server protection", Items.COMMAND_BLOCK);
         addIcon("placeable books", Items.ENCHANTED_BOOK);
@@ -62,7 +59,6 @@ public class ModConfigScreen extends CustomConfigScreen {
         addIcon("jar tab", ModRegistry.JAR_ITEM.get());
         addIcon("dispensers", Items.DISPENSER);
         addIcon("hanging sign", ModRegistry.HANGING_SIGNS.get(WoodTypeRegistry.OAK_TYPE));
-        addIcon("blue bomb", ModRegistry.BOMB_BLUE_ITEM_ON.get());
         addIcon("dispensers", Items.DISPENSER);
         addIcon("cave urns", ModRegistry.URN.get());
         addIcon("structures", Items.BRICKS);

@@ -1,7 +1,6 @@
 package net.mehvahdjukaar.supplementaries.common.entities;
 
 import net.mehvahdjukaar.moonlight.api.entity.ImprovedFallingBlockEntity;
-import net.mehvahdjukaar.supplementaries.common.block.blocks.GunpowderBlock;
 import net.mehvahdjukaar.supplementaries.configs.CommonConfigs;
 import net.mehvahdjukaar.supplementaries.reg.ModEntities;
 import net.minecraft.core.BlockPos;
@@ -45,7 +44,7 @@ public class FallingLanternEntity extends ImprovedFallingBlockEntity {
             level.levelEvent(null, 2001, pos, Block.getId(state));
             if (state.getLightEmission() != 0) {
 
-                GunpowderBlock.createMiniExplosion(level, pos, true);
+                //GunpowderBlock.createMiniExplosion(level, pos, true);
             } else {
                 this.spawnAtLocation(state.getBlock());
             }

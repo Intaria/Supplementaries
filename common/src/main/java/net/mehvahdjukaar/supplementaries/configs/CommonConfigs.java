@@ -8,7 +8,6 @@ import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigType;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
 import net.mehvahdjukaar.supplementaries.common.block.blocks.BlackboardBlock;
 import net.mehvahdjukaar.supplementaries.common.block.blocks.LightableLanternBlock;
-import net.mehvahdjukaar.supplementaries.common.entities.BombEntity;
 import net.mehvahdjukaar.supplementaries.integration.CompatHandler;
 import net.mehvahdjukaar.supplementaries.reg.ModConstants;
 import net.mehvahdjukaar.supplementaries.reg.ModRegistry;
@@ -142,20 +141,6 @@ public class CommonConfigs {
                     .define("fall_height_required", 5, 0, 512);
             builder.pop();
 
-            builder.push("enderman_head");
-            ENDERMAN_HEAD_ENABLED = feature(builder);
-            ENDERMAN_HEAD_INCREMENT = builder.comment("Time to increase 1 power level when being looked at")
-                    .define("ticks_to_increase_power", 15, 0, 10000);
-            ENDERMAN_HEAD_WORKS_FROM_ANY_SIDE = builder.comment("do enderman heads work when looked from any side?")
-                    .define("work_from_any_side", false);
-            builder.pop();
-
-            builder.push("turn_table");
-            TURN_TABLE_ENABLED = feature(builder);
-            TURN_TABLE_ROTATE_ENTITIES = builder.comment("can rotate entities standing on it?")
-                    .define("rotate_entities", true);
-            builder.pop();
-
             builder.push("pulley_block");
 
             PULLEY_ENABLED = feature(builder);
@@ -169,13 +154,11 @@ public class CommonConfigs {
             ILLUMINATOR_ENABLED = feature(builder, ModConstants.REDSTONE_ILLUMINATOR_NAME);
             CRANK_ENABLED = feature(builder, ModConstants.CRANK_NAME);
             FAUCET_ENABLED = feature(builder, ModConstants.FAUCET_NAME);
-            COG_BLOCK_ENABLED = feature(builder, ModConstants.COG_BLOCK_NAME);
             GOLD_DOOR_ENABLED = feature(builder, ModConstants.GOLD_DOOR_NAME);
             GOLD_TRAPDOOR_ENABLED = feature(builder, ModConstants.GOLD_TRAPDOOR_NAME);
             LOCK_BLOCK_ENABLED = feature(builder, ModConstants.LOCK_BLOCK_NAME);
             DISPENSER_MINECART_ENABLED = feature(builder, ModConstants.DISPENSER_MINECART_NAME);
             CRYSTAL_DISPLAY_ENABLED = feature(builder, ModConstants.CRYSTAL_DISPLAY_NAME);
-            RELAYER_ENABLED = feature(builder, ModConstants.RELAYER_NAME);
 
             builder.pop();
         }
@@ -196,13 +179,6 @@ public class CommonConfigs {
         public static final Supplier<Double> LAUNCHER_VEL;
         public static final Supplier<Integer> LAUNCHER_HEIGHT;
 
-        public static final Supplier<Boolean> ENDERMAN_HEAD_ENABLED;
-        public static final Supplier<Integer> ENDERMAN_HEAD_INCREMENT;
-        public static final Supplier<Boolean> ENDERMAN_HEAD_WORKS_FROM_ANY_SIDE;
-
-        public static final Supplier<Boolean> TURN_TABLE_ENABLED;
-        public static final Supplier<Boolean> TURN_TABLE_ROTATE_ENTITIES;
-
         public static final Supplier<Boolean> WIND_VANE_ENABLED;
 
         public static final Supplier<Boolean> CLOCK_ENABLED;
@@ -213,8 +189,7 @@ public class CommonConfigs {
 
         public static final Supplier<Boolean> FAUCET_ENABLED;
 
-        public static final Supplier<Boolean> COG_BLOCK_ENABLED;
-
+ 
         public static final Supplier<Boolean> GOLD_TRAPDOOR_ENABLED;
 
         public static final Supplier<Boolean> GOLD_DOOR_ENABLED;
@@ -222,8 +197,6 @@ public class CommonConfigs {
         public static final Supplier<Boolean> LOCK_BLOCK_ENABLED;
 
         public static final Supplier<Boolean> DISPENSER_MINECART_ENABLED;
-
-        public static final Supplier<Boolean> RELAYER_ENABLED;
 
         public static final Supplier<Boolean> CRYSTAL_DISPLAY_ENABLED;
 
@@ -266,12 +239,6 @@ public class CommonConfigs {
                     .define("double_opening", true);
             CONSISTENT_GATE = builder.comment("Makes iron (ang gold) gates behave like their door counterpart so for example iron gates will only be openable by redstone")
                     .define("door-like_gates", false);
-            builder.pop();
-
-            builder.push("item_shelf");
-            ITEM_SHELF_ENABLED = feature(builder);
-            ITEM_SHELF_LADDER = builder.comment("Makes item shelves climbable")
-                    .define("climbable_shelves", false);
             builder.pop();
 
             builder.push("sugar_cube");
@@ -355,7 +322,6 @@ public class CommonConfigs {
             BLACKSTONE_TILE_ENABLED = feature(builder, ModConstants.BLACKSTONE_TILE_NAME);
             SCONCE_ENABLED = feature(builder, ModConstants.SCONCE_NAME);
             SCONCE_LEVER_ENABLED = feature(builder, ModConstants.SCONCE_LEVER_NAME);
-            SCONCE_GREEN_ENABLED = feature(builder, ModConstants.SCONCE_NAME_GREEN, ModConstants.SCONCE_NAME_GREEN, false);
             PANCAKES_ENABLED = feature(builder, ModConstants.PANCAKE_NAME);
             NETHERITE_DOOR_ENABLED = feature(builder, ModConstants.NETHERITE_DOOR_NAME);
             NETHERITE_TRAPDOOR_ENABLED = feature(builder, ModConstants.NETHERITE_TRAPDOOR_NAME);
@@ -366,11 +332,9 @@ public class CommonConfigs {
             HANGING_SIGN_ENABLED = feature(builder, ModConstants.HANGING_SIGN_NAME);
             CRIMSON_LANTERN_ENABLED = feature(builder, ModConstants.CRIMSON_LANTERN_NAME);
             COPPER_LANTERN_ENABLED = feature(builder, ModConstants.COPPER_LANTERN_NAME);
-            CHECKERBOARD_ENABLED = feature(builder, ModConstants.CHECKER_BLOCK_NAME);
             RAKED_GRAVEL_ENABLED = feature(builder, ModConstants.RAKED_GRAVEL_NAME);
             FEATHER_BLOCK_ENABLED = feature(builder, ModConstants.FEATHER_BLOCK_NAME);
             STATUE_ENABLED = feature(builder, ModConstants.STATUE_NAME);
-            FLOWER_BOX_ENABLED = feature(builder, ModConstants.FLOWER_BOX_NAME);
             DOORMAT_ENABLED = feature(builder, ModConstants.DOORMAT_NAME);
             FLINT_BLOCK_ENABLED = feature(builder, ModConstants.FLINT_BLOCK_NAME);
             CANDLE_HOLDER_ENABLED = feature(builder, ModConstants.CANDLE_HOLDER_NAME);
@@ -394,9 +358,6 @@ public class CommonConfigs {
 
         public static final Supplier<Boolean> SUGAR_CUBE_ENABLED;
         public static final Supplier<Integer> SUGAR_BLOCK_HORSE_SPEED_DURATION;
-
-        public static final Supplier<Boolean> ITEM_SHELF_ENABLED;
-        public static final Supplier<Boolean> ITEM_SHELF_LADDER;
 
         public static final Supplier<Boolean> NOTICE_BOARD_ENABLED;
         public static final Supplier<Boolean> NOTICE_BOARDS_UNRESTRICTED;
@@ -437,8 +398,6 @@ public class CommonConfigs {
 
         public static final Supplier<Boolean> SCONCE_ENABLED;
 
-        public static final Supplier<Boolean> SCONCE_GREEN_ENABLED;
-
         public static final Supplier<Boolean> SCONCE_LEVER_ENABLED;
 
         public static final Supplier<Boolean> STONE_LAMP_ENABLED;
@@ -450,8 +409,6 @@ public class CommonConfigs {
         public static final Supplier<Boolean> DEEPSLATE_LAMP_ENABLED;
 
         public static final Supplier<Boolean> COPPER_LANTERN_ENABLED;
-
-        public static final Supplier<Boolean> CHECKERBOARD_ENABLED;
 
         public static final Supplier<Boolean> NETHERITE_TRAPDOOR_ENABLED;
 
@@ -472,8 +429,6 @@ public class CommonConfigs {
         public static final Supplier<Boolean> FLINT_BLOCK_ENABLED;
 
         public static final Supplier<Boolean> DOORMAT_ENABLED;
-
-        public static final Supplier<Boolean> FLOWER_BOX_ENABLED;
 
         public static final Supplier<Boolean> BLACKSTONE_TILE_ENABLED;
 
@@ -563,15 +518,6 @@ public class CommonConfigs {
                     .define("slots", 9, 1, 27);
             builder.pop();
 
-            builder.push("bamboo_spikes");
-            BAMBOO_SPIKES_ENABLED = feature(builder);
-            TIPPED_SPIKES_ENABLED = feature(builder, "tipped_spikes");
-            BAMBOO_SPIKES_DROP_LOOT = builder.comment("Allows entities killed by spikes to drop loot as if they were killed by a player")
-                    .define("player_loot", false);
-            ONLY_ALLOW_HARMFUL = builder.comment("Alternative mode for bamboo spikes. Allows only harmful effects to be applied on them and they obtain infinite durability")
-                    .define("only_allow_harmful_effects", true);
-            builder.pop();
-
             builder.push("urn");
             URN_ENABLED = feature(builder);
             URN_ENTITY_SPAWN_CHANCE = builder.comment("Chance for an urn to spawn a critter from the urn_spawn tag")
@@ -617,11 +563,6 @@ public class CommonConfigs {
         public static final Supplier<Boolean> SAFE_ENABLED;
         public static final Supplier<Boolean> SAFE_UNBREAKABLE;
         public static final Supplier<Boolean> SAFE_SIMPLE;
-
-        public static final Supplier<Boolean> BAMBOO_SPIKES_ENABLED;
-        public static final Supplier<Boolean> TIPPED_SPIKES_ENABLED;
-        public static final Supplier<Boolean> ONLY_ALLOW_HARMFUL;
-        public static final Supplier<Boolean> BAMBOO_SPIKES_DROP_LOOT;
 
         public static final Supplier<Boolean> SACK_ENABLED;
         public static final Supplier<Boolean> SACK_PENALTY;
@@ -707,23 +648,6 @@ public class CommonConfigs {
 
             builder.pop();
 
-            builder.push("bomb");
-            BOMB_ENABLED = feature(builder);
-            BOMB_RADIUS = builder.comment("Bomb explosion radius (damage depends on this)")
-                    .define("explosion_radius", 2, 0.1, 10);
-            BOMB_BREAKS = builder.comment("Do bombs break blocks like tnt?")
-                    .define("break_blocks", BombEntity.BreakingMode.WEAK);
-            BOMB_FUSE = builder.comment("Put here any number other than 0 to have your bombs explode after a certaom amount of ticks instead than on contact")
-                    .define("bomb_fuse", 0, 0, 100000);
-            builder.push("blue_bomb");
-            BOMB_BLUE_RADIUS = builder.comment("Bomb explosion radius (damage depends on this)")
-                    .define("explosion_radius", 5.15, 0.1, 10);
-            BOMB_BLUE_BREAKS = builder.comment("Do bombs break blocks like tnt?")
-                    .define("break_blocks", BombEntity.BreakingMode.WEAK);
-            //TODO: blue bomb config
-            builder.pop();
-            builder.pop();
-
             ANTIQUE_INK_ENABLED = feature(builder, ModConstants.ANTIQUE_INK_NAME);
             CANDY_ENABLED = feature(builder, ModConstants.CANDY_NAME);
             STASIS_ENABLED = feature(builder, ModConstants.STASIS_NAME);
@@ -737,13 +661,6 @@ public class CommonConfigs {
         public static final Supplier<Integer> BUBBLE_LIFETIME;
         public static final Supplier<Boolean> BUBBLE_BREAK;
         public static final Supplier<Boolean> BUBBLE_FEATHER_FALLING;
-
-        public static final Supplier<Boolean> BOMB_ENABLED;
-        public static final Supplier<Double> BOMB_RADIUS;
-        public static final Supplier<Integer> BOMB_FUSE;
-        public static final Supplier<BombEntity.BreakingMode> BOMB_BREAKS;
-        public static final Supplier<Double> BOMB_BLUE_RADIUS;
-        public static final Supplier<BombEntity.BreakingMode> BOMB_BLUE_BREAKS;
 
         public static final Supplier<Boolean> FLUTE_ENABLED;
         public static final Supplier<Integer> FLUTE_RADIUS;
@@ -849,15 +766,6 @@ public class CommonConfigs {
                     .define("sticks", true);
             PLACEABLE_RODS = builder.comment("Allow placeable blaze rods")
                     .define("blaze_rods", true);
-            builder.pop();
-
-            builder.push("placeable_gunpowder");
-            PLACEABLE_GUNPOWDER = builder.comment("Allow placeable gunpowder")
-                    .define("enabled", true);
-            GUNPOWDER_BURN_SPEED = builder.comment("Number of ticks it takes for gunpowder to burn 1 stage (out of 8). Increase to slow it down")
-                    .define("speed", 2, 0, 20);
-            GUNPOWDER_SPREAD_AGE = builder.comment("Age at which it spread to the next gunpowder block. Also affects speed")
-                    .define("spread_age", 2, 0, 8);
             builder.pop();
 
             builder.push("raked_gravel");
@@ -967,9 +875,6 @@ public class CommonConfigs {
         public static final Supplier<Boolean> ZOMBIE_HORSE;
         public static final Supplier<Integer> ZOMBIE_HORSE_COST;
         public static final Supplier<Boolean> ZOMBIE_HORSE_UNDERWATER;
-        public static final Supplier<Boolean> PLACEABLE_GUNPOWDER;
-        public static final Supplier<Integer> GUNPOWDER_BURN_SPEED;
-        public static final Supplier<Integer> GUNPOWDER_SPREAD_AGE;
         public static final Supplier<Boolean> MIXED_BOOKS;
         public static final Supplier<Boolean> SKULL_PILES;
         public static final Supplier<Boolean> SKULL_CANDLES;
@@ -1000,12 +905,8 @@ public class CommonConfigs {
             SERVER_PROTECTION = builder.comment("Turn this on to disable any interaction on blocks placed by other players. This affects item shelves, signs, flower pots, and boards. " +
                             "Useful for protected servers. Note that it will affect only blocks placed after this is turned on and such blocks will keep being protected after this option is disabled")
                     .define("server_protection", false);
-            RED_MERCHANT_SPAWN_MULTIPLIER = builder.comment("slightly increase this or decrease this number to tweak the red marchant spawn chance. Won't spawn at 0 and will spawn twice as often on 2")
-                    .define("red_merchant_spawn_multiplier", 1d, 0, 10);
             builder.pop();
         }
-
-        public static final Supplier<Double> RED_MERCHANT_SPAWN_MULTIPLIER;
 
         public static final Supplier<Boolean> JAR_TAB;
         public static final Supplier<Boolean> CREATIVE_TAB;
@@ -1038,8 +939,6 @@ public class CommonConfigs {
                     Functional.PRESENT_ENABLED.get() && Functional.TRAPPED_PRESENT_ENABLED.get();
             case ModConstants.FLAX_BLOCK_NAME, ModConstants.FLAX_WILD_NAME -> Functional.FLAX_ENABLED.get();
             case ModConstants.SOAP_BLOCK_NAME -> Functional.SOAP_ENABLED.get();
-            case ModConstants.CHECKER_SLAB_NAME, ModConstants.CHECKER_VERTICAL_SLAB_NAME ->
-                    Building.CHECKERBOARD_ENABLED.get();
             case "planter_rich", "planter_rich_soul" -> Building.PLANTER_ENABLED.get();
             case "vertical_slabs" -> CompatHandler.isVerticalSlabEnabled();
             case ModConstants.GLOBE_SEPIA_NAME -> Building.GLOBE_SEPIA.get() && Tools.ANTIQUE_INK_ENABLED.get();

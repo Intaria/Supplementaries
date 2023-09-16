@@ -8,7 +8,6 @@ import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
 import net.mehvahdjukaar.supplementaries.common.block.blocks.*;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.*;
-import net.mehvahdjukaar.supplementaries.common.entities.BombEntity;
 import net.mehvahdjukaar.supplementaries.common.items.*;
 import net.mehvahdjukaar.supplementaries.common.items.loot.CurseLootFunction;
 import net.mehvahdjukaar.supplementaries.common.misc.OverencumberedEffect;
@@ -58,10 +57,6 @@ public class ModRegistry {
     public static final Supplier<LootItemFunctionType> CURSE_LOOT_FUNCTION = RegHelper.register(res("curse_loot"),
             () -> new LootItemFunctionType(new CurseLootFunction.Serializer()), Registry.LOOT_FUNCTION_TYPE);
 
-    //paintings
-    public static final Supplier<PaintingVariant> BOMB_PAINTING = RegHelper.registerPainting(
-            res("bombs"), () -> new PaintingVariant(32, 32));
-
     //enchantment
     public static final Supplier<Enchantment> STASIS_ENCHANTMENT = RegHelper.registerAsync(
             res(STASIS_NAME), StasisEnchantment::new, Registry.ENCHANTMENT);
@@ -70,34 +65,9 @@ public class ModRegistry {
     public static final Supplier<MobEffect> OVERENCUMBERED = RegHelper.registerEffect(
             res("overencumbered"), OverencumberedEffect::new);
 
-
-    //red merchant
-    public static final Supplier<Item> RED_MERCHANT_SPAWN_EGG_ITEM = regItem(RED_MERCHANT_NAME + "_spawn_egg", () ->
-            PlatformHelper.newSpawnEgg(ModEntities.RED_MERCHANT, 0x7A090F, 0xF4f1e0,
-                    new Item.Properties().tab(getTab(null, RED_MERCHANT_NAME))));
-
-
     //dispenser minecart
     public static final Supplier<Item> DISPENSER_MINECART_ITEM = regItem(DISPENSER_MINECART_NAME, () -> new DispenserMinecartItem(new Item.Properties()
             .stacksTo(1).tab(getTab(CreativeModeTab.TAB_TRANSPORTATION, DISPENSER_MINECART_NAME))));
-
-
-    public static final Supplier<Item> BOMB_ITEM = regItem(BOMB_NAME, () -> new BombItem(new Item.Properties()
-            .tab(getTab(CreativeModeTab.TAB_COMBAT, BOMB_NAME))));
-    public static final Supplier<Item> BOMB_ITEM_ON = regItem("bomb_projectile", () -> new BombItem(new Item.Properties()
-            .tab(null)));
-
-    public static final Supplier<Item> BOMB_BLUE_ITEM = regItem(BOMB_BLUE_NAME, () -> new BombItem(new Item.Properties()
-            .tab(getTab(CreativeModeTab.TAB_COMBAT, BOMB_NAME)), BombEntity.BombType.BLUE, true));
-    public static final Supplier<Item> BOMB_BLUE_ITEM_ON = regItem("bomb_blue_projectile", () -> new BombItem(new Item.Properties()
-            .tab(null), BombEntity.BombType.BLUE, false));
-
-    //sharpnel bomb
-    public static final Supplier<Item> BOMB_SPIKY_ITEM = regItem(BOMB_SPIKY_NAME, () -> new BombItem(new Item.Properties()
-            .tab(getTab(CreativeModeTab.TAB_COMBAT, BOMB_SPIKY_NAME)), BombEntity.BombType.SPIKY, false));
-    public static final Supplier<Item> BOMB_SPIKY_ITEM_ON = regItem("bomb_spiky_projectile", () -> new BombItem(new Item.Properties()
-            .tab(null), BombEntity.BombType.SPIKY, false));
-
 
     //soap bubbler
     public static final Supplier<Item> BUBBLE_BLOWER = regItem(BUBBLE_BLOWER_NAME, () -> new BubbleBlower((new Item.Properties())
@@ -353,15 +323,6 @@ public class ModRegistry {
     public static final Supplier<Item> SCONCE_ITEM_GLOW = regItem(SCONCE_NAME_GLOW, () -> new StandingAndWallBlockItem(SCONCE_GLOW.get(), SCONCE_WALL_GLOW.get(),
             (new Item.Properties()).tab(getTab("infernalexp", CreativeModeTab.TAB_DECORATIONS, SCONCE_NAME))));
 
-    //green
-    public static final Supplier<Block> SCONCE_GREEN = regBlock(SCONCE_NAME_GREEN, () -> new SconceBlock(
-            BlockBehaviour.Properties.copy(SCONCE_ENDER.get()), 14, ModParticles.GREEN_FLAME));
-    public static final Supplier<Block> SCONCE_WALL_GREEN = regBlock("sconce_wall_green", () -> new SconceWallBlock(
-            BlockBehaviour.Properties.copy(SCONCE_ENDER.get())
-                    .dropsLike(SCONCE_GREEN.get()), ModParticles.GREEN_FLAME));
-    public static final Supplier<Item> SCONCE_ITEM_GREEN = regItem(SCONCE_NAME_GREEN, () -> new StandingAndWallBlockItem(SCONCE_GREEN.get(), SCONCE_WALL_GREEN.get(),
-            (new Item.Properties()).tab(getTab(CreativeModeTab.TAB_DECORATIONS, SCONCE_NAME_GREEN))));
-
     //nether brass
     public static final Supplier<Block> SCONCE_NETHER_BRASS = regBlock(SCONCE_NAME_NETHER_BRASS, () -> new SconceBlock(
             BlockBehaviour.Properties.copy(SCONCE.get()), 14,
@@ -443,24 +404,6 @@ public class ModRegistry {
             ROPE_KNOT_NAME, () -> PlatformHelper.newBlockEntityType(
                     RopeKnotBlockTile::new, ROPE_KNOT.get()));
 
-    //spikes
-    public static final Supplier<Block> BAMBOO_SPIKES = regBlock(BAMBOO_SPIKES_NAME, () -> new BambooSpikesBlock(
-            BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.SAND)
-                    .sound(SoundType.SCAFFOLDING)
-                    .isRedstoneConductor((a, b, c) -> false)
-                    .strength(2)
-                    .noOcclusion()));
-
-    public static final Supplier<BlockEntityType<BambooSpikesBlockTile>> BAMBOO_SPIKES_TILE = regTile(
-            BAMBOO_SPIKES_NAME, () -> PlatformHelper.newBlockEntityType(
-                    BambooSpikesBlockTile::new, BAMBOO_SPIKES.get()));
-
-    public static final Supplier<Item> BAMBOO_SPIKES_ITEM = regItem(BAMBOO_SPIKES_NAME, () -> new BambooSpikesItem(BAMBOO_SPIKES.get(),
-            (new Item.Properties()).tab(getTab(CreativeModeTab.TAB_DECORATIONS, BAMBOO_SPIKES_NAME))));
-
-    public static final Supplier<Item> BAMBOO_SPIKES_TIPPED_ITEM = regItem(TIPPED_SPIKES_NAME, () -> new BambooSpikesTippedItem(BAMBOO_SPIKES.get(),
-            (new Item.Properties()).defaultDurability(BambooSpikesBlockTile.MAX_CHARGES).tab(getTab(CreativeModeTab.TAB_BREWING, TIPPED_SPIKES_NAME))));
-
     //goblet
     public static final Supplier<Block> GOBLET = regWithItem(GOBLET_NAME, () -> new GobletBlock(
                     BlockBehaviour.Properties.of(Material.METAL, MaterialColor.METAL)
@@ -483,19 +426,6 @@ public class ModRegistry {
     public static final Supplier<BlockEntityType<HourGlassBlockTile>> HOURGLASS_TILE = regTile(
             HOURGLASS_NAME, () -> PlatformHelper.newBlockEntityType(
                     HourGlassBlockTile::new, HOURGLASS.get()));
-
-    //item shelf
-    public static final Supplier<Block> ITEM_SHELF = regWithItem(ITEM_SHELF_NAME, () -> new ItemShelfBlock(
-            BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD)
-                    .sound(SoundType.WOOD)
-                    .strength(0.75f, 0.1f)
-                    .noOcclusion()
-                    .noCollission()
-    ), CreativeModeTab.TAB_DECORATIONS, 100);
-
-    public static final Supplier<BlockEntityType<ItemShelfBlockTile>> ITEM_SHELF_TILE = regTile(
-            ITEM_SHELF_NAME, () -> PlatformHelper.newBlockEntityType(
-                    ItemShelfBlockTile::new, ItemShelfBlock.ITEM_SHELF_BLOCKS.toArray(Block[]::new)));
 
     //doormat
     public static final Supplier<Block> DOORMAT = regWithItem(DOORMAT_NAME, () -> new DoormatBlock(
@@ -523,19 +453,6 @@ public class ModRegistry {
     ), CreativeModeTab.TAB_DECORATIONS);
 
     //redstone blocks
-
-    //cog block
-    public static final Supplier<Block> COG_BLOCK = regWithItem(COG_BLOCK_NAME, () -> new CogBlock(
-            BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)
-                    .strength(3f, 6f)
-                    .sound(SoundType.COPPER)
-                    .requiresCorrectToolForDrops()
-    ), CreativeModeTab.TAB_REDSTONE);
-
-    //diode block
-    public static final Supplier<Block> RELAYER = regWithItem(RELAYER_NAME, () -> new RelayerBlock(
-            BlockBehaviour.Properties.copy(Blocks.OBSERVER).isRedstoneConductor((s, l, p) -> false)
-    ), CreativeModeTab.TAB_REDSTONE);
 
     //piston launcher base
     public static final Supplier<Block> SPRING_LAUNCHER = regWithItem(SPRING_LAUNCHER_NAME, () -> new SpringLauncherBlock(
@@ -578,17 +495,6 @@ public class ModRegistry {
     public static final Supplier<BlockEntityType<SpeakerBlockTile>> SPEAKER_BLOCK_TILE = regTile(
             SPEAKER_BLOCK_NAME, () -> PlatformHelper.newBlockEntityType(
                     SpeakerBlockTile::new, SPEAKER_BLOCK.get()));
-
-    //turn table
-    public static final Supplier<Block> TURN_TABLE = regWithItem(TURN_TABLE_NAME, () -> new TurnTableBlock(
-            BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE)
-                    .strength(0.75f, 2f)
-                    .sound(SoundType.STONE)
-    ), CreativeModeTab.TAB_REDSTONE);
-
-    public static final Supplier<BlockEntityType<TurnTableBlockTile>> TURN_TABLE_TILE = regTile(
-            TURN_TABLE_NAME, () -> PlatformHelper.newBlockEntityType(
-                    TurnTableBlockTile::new, TURN_TABLE.get()));
 
     //illuminator
     public static final Supplier<Block> REDSTONE_ILLUMINATOR = regWithItem(REDSTONE_ILLUMINATOR_NAME, () -> new RedstoneIlluminatorBlock(
@@ -793,24 +699,6 @@ public class ModRegistry {
                     .dropsLike(Blocks.CAKE)
     ));
 
-    //checker block
-    public static final Supplier<Block> CHECKER_BLOCK = regWithItem(CHECKER_BLOCK_NAME, () -> new Block(
-            BlockBehaviour.Properties.of(Material.STONE)
-                    .requiresCorrectToolForDrops()
-                    .strength(1.5F, 6.0F)
-    ), CreativeModeTab.TAB_BUILDING_BLOCKS);
-
-    //slab
-    public static final Supplier<Block> CHECKER_SLAB = regWithItem(CHECKER_SLAB_NAME, () -> new SlabBlock(
-            BlockBehaviour.Properties.copy(CHECKER_BLOCK.get())
-    ), CreativeModeTab.TAB_BUILDING_BLOCKS);
-
-    //vertical slab
-    public static final Supplier<Block> CHECKER_VERTICAL_SLAB = regWithItem(CHECKER_VERTICAL_SLAB_NAME, () -> new VerticalSlabBlock(
-                    BlockBehaviour.Properties.copy(CHECKER_BLOCK.get())
-            ), CreativeModeTab.TAB_BUILDING_BLOCKS, "quark"
-    );
-
     //pancakes
     public static final Supplier<Block> PANCAKE = regBlock(PANCAKE_NAME, () -> new PancakeBlock(
             BlockBehaviour.Properties.of(Material.CAKE, MaterialColor.TERRACOTTA_ORANGE)
@@ -1014,15 +902,6 @@ public class ModRegistry {
             BlockBehaviour.Properties.copy(Blocks.END_STONE).lightLevel(s -> 15)
     ), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
-    //flower box
-    public static final Supplier<Block> FLOWER_BOX = regWithItem(FLOWER_BOX_NAME, () -> {
-        var p = BlockBehaviour.Properties.of(Material.WOOD).sound(SoundType.WOOD).strength(0.5F);
-        return /*CompatHandler.create ? SchematicCannonStuff.makeFlowerBox(p) : */new FlowerBoxBlock(p);
-    }, CreativeModeTab.TAB_DECORATIONS);
-
-    public static final Supplier<BlockEntityType<FlowerBoxBlockTile>> FLOWER_BOX_TILE = regTile(FLOWER_BOX_NAME, () ->
-            PlatformHelper.newBlockEntityType(FlowerBoxBlockTile::new, FLOWER_BOX.get()));
-
     //statue
     public static final Supplier<Block> STATUE = regWithItem(STATUE_NAME, () -> new StatueBlock(
             BlockBehaviour.Properties.of(Material.STONE)
@@ -1051,11 +930,6 @@ public class ModRegistry {
     public static final Supplier<Item> SUGAR_CUBE_ITEM = regItem(SUGAR_CUBE_NAME, () -> new SugarCubeItem(
             SUGAR_CUBE.get(), new Item.Properties().tab(getTab(CreativeModeTab.TAB_BUILDING_BLOCKS, SUGAR_CUBE_NAME))
     ));
-
-    //gunpowder block
-    public static final Supplier<Block> GUNPOWDER_BLOCK = regPlaceableItem(GUNPOWDER_BLOCK_NAME, () -> new GunpowderBlock(
-                    BlockBehaviour.Properties.copy(Blocks.REDSTONE_WIRE).sound(SoundType.SAND)),
-            () -> Items.GUNPOWDER, CommonConfigs.Tweaks.PLACEABLE_GUNPOWDER);
 
     //placeable book
     public static final Supplier<Block> BOOK_PILE = regPlaceableItem(BOOK_PILE_NAME, () -> new BookPileBlock(
@@ -1154,21 +1028,6 @@ public class ModRegistry {
     public static final Supplier<BlockEntityType<BubbleBlockTile>> BUBBLE_BLOCK_TILE = regTile(
             BUBBLE_BLOCK_NAME, () -> PlatformHelper.newBlockEntityType(
                     BubbleBlockTile::new, BUBBLE_BLOCK.get()));
-
-    //enderman skull
-    public static final Supplier<EndermanSkullBlock> ENDERMAN_SKULL_BLOCK = regBlock(ENDERMAN_HEAD_NAME, () ->
-            new EndermanSkullBlock(BlockBehaviour.Properties.copy(Blocks.WITHER_SKELETON_SKULL))
-    );
-    public static final Supplier<EndermanSkullWallBlock> ENDERMAN_SKULL_BLOCK_WALL = regBlock("enderman_wall_head", () ->
-            new EndermanSkullWallBlock(BlockBehaviour.Properties.copy(Blocks.WITHER_SKELETON_SKULL))
-    );
-    public static final Supplier<Item> ENDERMAN_SKULL_ITEM = regItem(ENDERMAN_HEAD_NAME, () ->
-            new EndermanHeadItem(ENDERMAN_SKULL_BLOCK.get(), ENDERMAN_SKULL_BLOCK_WALL.get(),
-                    new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS,ENDERMAN_HEAD_NAME)).rarity(Rarity.UNCOMMON)));
-
-    public static final Supplier<BlockEntityType<EndermanSkullBlockTile>> ENDERMAN_SKULL_TILE = regTile(
-            ENDERMAN_HEAD_NAME, () -> PlatformHelper.newBlockEntityType(
-                    EndermanSkullBlockTile::new, ENDERMAN_SKULL_BLOCK.get(), ENDERMAN_SKULL_BLOCK_WALL.get()));
 
     //ash basalt
     public static final Supplier<Block> ASHEN_BASALT = regBlock("ashen_basalt", () ->

@@ -17,9 +17,6 @@ accessible field net/minecraft/client/GameNarrator narrator Lcom/mojang/text2spe
 #structure locator
 accessible method net/minecraft/world/level/chunk/ChunkGenerator getStructureGeneratingAt (Ljava/util/Set;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/world/level/StructureManager;ZLnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement;Lnet/minecraft/world/level/ChunkPos;)Lcom/mojang/datafixers/util/Pair;
 
-#relayer diode block reading
-accessible method net/minecraft/world/level/block/DiodeBlock getOutputSignal (Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)I
-
 #explosions
 accessible field net/minecraft/world/level/Explosion source Lnet/minecraft/world/entity/Entity;
 
@@ -73,16 +70,3 @@ accessible field net/minecraft/world/level/block/FlowerPotBlock POTTED_BY_CONTEN
 #fixing banner stuff for other mods...
 mutable field net/minecraft/client/renderer/Sheets SHIELD_MATERIALS Ljava/util/Map;
 mutable field net/minecraft/client/renderer/Sheets BANNER_MATERIALS Ljava/util/Map;
-
-
-#bomb stuff
-accessible field net/minecraft/world/level/Explosion damageCalculator Lnet/minecraft/world/level/ExplosionDamageCalculator;
-accessible field net/minecraft/world/level/Explosion level Lnet/minecraft/world/level/Level;
-accessible field net/minecraft/world/level/Explosion radius F
-accessible field net/minecraft/world/level/Explosion x D
-accessible field net/minecraft/world/level/Explosion y D
-accessible field net/minecraft/world/level/Explosion z D
-accessible field net/minecraft/world/level/Explosion damageSource Lnet/minecraft/world/damagesource/DamageSource;
-mutable field net/minecraft/world/level/Explosion damageSource Lnet/minecraft/world/damagesource/DamageSource;
-accessible field net/minecraft/world/level/Explosion blockInteraction Lnet/minecraft/world/level/Explosion$BlockInteraction;
-extendable method net/minecraft/world/level/Explosion addBlockDrops (Lit/unimi/dsi/fastutil/objects/ObjectArrayList;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/core/BlockPos;)V

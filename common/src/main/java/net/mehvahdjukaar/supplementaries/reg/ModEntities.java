@@ -24,7 +24,7 @@ public class ModEntities {
 
     @EventCalled
     public static void registerEntityAttributes(RegHelper.AttributeEvent event) {
-        event.register(ModEntities.RED_MERCHANT.get(), Mob.createMobAttributes());
+        
     }
 
     //entities
@@ -35,11 +35,6 @@ public class ModEntities {
     public static final Supplier<EntityType<DispenserMinecartEntity>> DISPENSER_MINECART = regEntity(DISPENSER_MINECART_NAME, () ->
             EntityType.Builder.<DispenserMinecartEntity>of(DispenserMinecartEntity::new, MobCategory.MISC)
                     .sized(0.98F, 0.7F).clientTrackingRange(8));
-
-    //red trader
-    public static final Supplier<EntityType<RedMerchantEntity>> RED_MERCHANT = regEntity(RED_MERCHANT_NAME,
-            RedMerchantEntity::new, MobCategory.CREATURE, 0.6F, 1.95F, 10, true, 3);
-
 
     //urn
     public static final Supplier<EntityType<FallingUrnEntity>> FALLING_URN = regEntity(FALLING_URN_NAME, () ->
@@ -72,13 +67,6 @@ public class ModEntities {
     public static final Supplier<EntityType<ThrowableBrickEntity>> THROWABLE_BRICK = regEntity(THROWABLE_BRICK_NAME, () ->
             EntityType.Builder.<ThrowableBrickEntity>of(ThrowableBrickEntity::new, MobCategory.MISC)
                     .sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10));
-
-    //bomb
-    public static final Supplier<EntityType<BombEntity>> BOMB = regEntity(BOMB_NAME, () ->
-            EntityType.Builder.<BombEntity>of(BombEntity::new, MobCategory.MISC)
-                    .sized(0.5F, 0.5F).clientTrackingRange(8).updateInterval(10));
-
-
 
     //firefly
 

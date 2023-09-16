@@ -7,7 +7,6 @@ import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
 import net.mehvahdjukaar.supplementaries.client.renderers.color.CrossbowColor;
 import net.mehvahdjukaar.supplementaries.client.renderers.color.DefaultWaterColor;
-import net.mehvahdjukaar.supplementaries.client.renderers.color.TippedSpikesColor;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.SafeBlockTile;
 import net.mehvahdjukaar.supplementaries.common.items.SackItem;
 import net.mehvahdjukaar.supplementaries.common.items.SafeItem;

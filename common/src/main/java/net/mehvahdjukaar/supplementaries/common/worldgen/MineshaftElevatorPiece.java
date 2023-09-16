@@ -3,7 +3,6 @@ package net.mehvahdjukaar.supplementaries.common.worldgen;
 import net.mehvahdjukaar.supplementaries.common.block.ModBlockProperties;
 import net.mehvahdjukaar.supplementaries.common.block.blocks.PulleyBlock;
 import net.mehvahdjukaar.supplementaries.common.block.blocks.RopeBlock;
-import net.mehvahdjukaar.supplementaries.common.block.blocks.TurnTableBlock;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.PulleyBlockTile;
 import net.mehvahdjukaar.supplementaries.configs.CommonConfigs;
 import net.mehvahdjukaar.supplementaries.reg.ModRegistry;
@@ -63,26 +62,6 @@ public class MineshaftElevatorPiece extends MineshaftPieces.MineShaftPiece {
             Direction direction, int genDepth, MineshaftStructure.Type type) {
         if (y > 48) {
             return null;
-        }
-        if (random.nextFloat() < CommonConfigs.Redstone.MINESHAFT_ELEVATOR.get() && CommonConfigs.Redstone.PULLEY_ENABLED.get() && CommonConfigs.Redstone.TURN_TABLE_ENABLED.get()) {
-            byte height = 12;
-
-            int floor = random.nextInt(3);
-            if (random.nextBoolean() && floor != 2) floor += 1;
-            int yOffset = floor * 4;
-
-            BoundingBox boundingBox = switch (direction) {
-                default -> new BoundingBox(-1, -yOffset, -4, 3, height - yOffset, 0);
-                case SOUTH -> new BoundingBox(-1, -yOffset, 0, 3, height - yOffset, 4);
-                case WEST -> new BoundingBox(-4, -yOffset, -1, 0, height - yOffset, 3);
-                case EAST -> new BoundingBox(0, -yOffset, -1, 4, height - yOffset, 3);
-            };
-
-            boundingBox.move(x, y, z);
-            if (pieces.findCollisionPiece(boundingBox) == null) {
-                boolean hasChain = random.nextInt(5) == 0;
-                return new MineshaftElevatorPiece(genDepth, boundingBox, direction, (byte) floor, hasChain, type);
-            }
         }
         return null;
     }
@@ -338,9 +317,11 @@ public class MineshaftElevatorPiece extends MineshaftPieces.MineShaftPiece {
         }
         contraptionPos.move(d);
         Direction dOpposite = d.getOpposite();
+        /*
         this.placeBlock(level, ModRegistry.TURN_TABLE.get().defaultBlockState()
                 .setValue(TurnTableBlock.INVERTED, d.getAxisDirection() == Direction.AxisDirection.NEGATIVE)
                 .setValue(TurnTableBlock.FACING, dOpposite), contraptionPos.getX(), contraptionPos.getY(), contraptionPos.getZ(), box);
+        */
         contraptionPos.move(d.getClockWise());
         this.placeBlock(level, Blocks.TARGET.defaultBlockState(),
                 contraptionPos.getX(), contraptionPos.getY(), contraptionPos.getZ(), box);

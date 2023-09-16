@@ -2,7 +2,6 @@
 {
   "replace": false,
   "values": [
-    {"id":"minecraft:gunpowder","required":false},
     {"id":"#forge:dusts","required":false},
     {"id":"supplementaries:ash","required":false},
     {"id":"#forge:dusts","required":false},

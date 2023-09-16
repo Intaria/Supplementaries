@@ -6,7 +6,6 @@ import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigSpec;
 import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigType;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.BookPileBlockTile;
-import net.mehvahdjukaar.supplementaries.common.items.BambooSpikesTippedItem;
 import net.mehvahdjukaar.supplementaries.integration.CompatHandler;
 import net.minecraft.world.item.DyeColor;
 
@@ -159,7 +158,6 @@ public class ClientConfigs {
         public static final Supplier<Boolean> PEDESTAL_SPIN;
         public static final Supplier<Boolean> PEDESTAL_SPECIAL;
         public static final Supplier<Double> PEDESTAL_SPEED;
-        public static final Supplier<Boolean> SHELF_TRANSLATE;
         public static final Supplier<Double> WIND_VANE_POWER_SCALING;
         public static final Supplier<Double> WIND_VANE_ANGLE_1;
         public static final Supplier<Double> WIND_VANE_ANGLE_2;
@@ -168,7 +166,6 @@ public class ClientConfigs {
         public static final Supplier<Boolean> CLOCK_24H;
         public static final Supplier<Boolean> GLOBE_RANDOM;
         public static final Supplier<Boolean> GLOBE_COORDINATES;
-        public static final Supplier<Boolean> TIPPED_BAMBOO_SPIKES_TAB;
 
         public static final Supplier<GraphicsFanciness> FLAG_FANCINESS;
         public static final Supplier<Boolean> FLAG_BANNER;
@@ -182,7 +179,6 @@ public class ClientConfigs {
 
         public static final Supplier<Boolean> FAST_SIGNS;
         public static final Supplier<Boolean> FAST_LANTERNS;
-        public static final Supplier<Boolean> TURN_TABLE_PARTICLES;
         public static final Supplier<Boolean> SPEAKER_BLOCK_MUTE;
         public static final Supplier<Double> ROPE_WOBBLE_AMPLITUDE;
         public static final Supplier<Double> ROPE_WOBBLE_PERIOD;
@@ -225,12 +221,6 @@ public class ClientConfigs {
                     .define("wobble", 0.2, 0, 1);
             BUBBLE_BLOCK_GROW_SPEED = builder.comment("How fast it grows when created. 1 to be instant")
                     .define("grow_speed", 0.4, 0, 1);
-            builder.pop();
-
-            builder.push("item_shelf");
-            SHELF_TRANSLATE = builder.comment("Translate down displayed 3d blocks so that they are touching the shelf.\n" +
-                            "Note that they will not be centered vertically this way")
-                    .define("supported_blocks", true);
             builder.pop();
 
             builder.push("wind_vane");
@@ -287,16 +277,6 @@ public class ClientConfigs {
             FAST_SIGNS = builder.comment("Makes hanging signs use a simple block model instead of the animated tile entity renderer. This will make them render much faster but will also remove the animation" +
                             "Note that this option only affect lanterns close by as the one far away render as fast by default")
                     .define("fast_signs", false);
-            builder.pop();
-
-            builder.push("bamboo_spikes");
-            TIPPED_BAMBOO_SPIKES_TAB = builder.comment("Populate the creative inventory with all tipped spikes variations")
-                    .define("populate_creative_tab", true);
-            builder.pop();
-
-            builder.push("turn_table");
-            TURN_TABLE_PARTICLES = builder.comment("Display visual particles when a block is rotated")
-                    .define("turn_particles", true);
             builder.pop();
 
             builder.push("speaker_block");

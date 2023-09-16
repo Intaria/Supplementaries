@@ -63,16 +63,6 @@ public class DispenserBehaviorsManager {
         if (CommonConfigs.Redstone.DISPENSER_MINECART_ENABLED.get()) {
             DispenserBlock.registerBehavior(ModRegistry.DISPENSER_MINECART_ITEM.get(), DispenserMinecartItem.DISPENSE_ITEM_BEHAVIOR);
         }
-        if (CommonConfigs.Redstone.ENDERMAN_HEAD_ENABLED.get()) {
-            DispenseItemBehavior armorBehavior = new OptionalDispenseItemBehavior() {
-                @Override
-                protected ItemStack execute(BlockSource source, ItemStack stack) {
-                    this.setSuccess(ArmorItem.dispenseArmor(source, stack));
-                    return stack;
-                }
-            };
-            DispenserBlock.registerBehavior(ModRegistry.ENDERMAN_SKULL_ITEM.get(), armorBehavior);
-        }
         if (CommonConfigs.Functional.FODDER_ENABLED.get()) {
             DispenserHelper.registerPlaceBlockBehavior(ModRegistry.FODDER.get());
         }
@@ -87,13 +77,6 @@ public class DispenserBehaviorsManager {
             DispenserHelper.registerCustomBehavior(new AddItemToInventoryBehavior(Items.COOKIE));
         }
         DispenserHelper.registerCustomBehavior(new FlintAndSteelBehavior(Items.FLINT_AND_STEEL));
-        if (CommonConfigs.Functional.BAMBOO_SPIKES_ENABLED.get()) {
-            DispenserHelper.registerPlaceBlockBehavior(ModRegistry.BAMBOO_SPIKES_ITEM.get());
-        }
-        if (CommonConfigs.Functional.TIPPED_SPIKES_ENABLED.get()) {
-            DispenserHelper.registerPlaceBlockBehavior(ModRegistry.BAMBOO_SPIKES_TIPPED_ITEM.get());
-            DispenserHelper.registerCustomBehavior(new BambooSpikesBehavior(Items.LINGERING_POTION));
-        }
         if (isForge) {
             DispenserHelper.registerCustomBehavior(new FakePlayerUseItemBehavior(ModRegistry.SOAP.get()));
         }
@@ -102,21 +85,6 @@ public class DispenserBehaviorsManager {
             Registry.ITEM.getTagOrEmpty(ModTags.BRICKS).iterator().forEachRemaining(h ->
                     DispenserHelper.registerCustomBehavior(new ThrowableBricksBehavior(h.value()))
             );
-        }
-        //bomb
-        if (CommonConfigs.Tools.BOMB_ENABLED.get()) {
-            //default behaviors for modded items
-            var bombBehavior = new BombsBehavior();
-            DispenserBlock.registerBehavior(ModRegistry.BOMB_ITEM.get(), bombBehavior);
-            DispenserBlock.registerBehavior(ModRegistry.BOMB_ITEM_ON.get(), bombBehavior);
-            DispenserBlock.registerBehavior(ModRegistry.BOMB_BLUE_ITEM.get(), bombBehavior);
-            DispenserBlock.registerBehavior(ModRegistry.BOMB_BLUE_ITEM_ON.get(), bombBehavior);
-            DispenserBlock.registerBehavior(ModRegistry.BOMB_SPIKY_ITEM.get(), bombBehavior);
-            DispenserBlock.registerBehavior(ModRegistry.BOMB_SPIKY_ITEM_ON.get(), bombBehavior);
-        }
-        //gunpowder
-        if (CommonConfigs.Tweaks.PLACEABLE_GUNPOWDER.get()) {
-            DispenserHelper.registerCustomBehavior(new GunpowderBehavior(Items.GUNPOWDER));
         }
 
         boolean axe = CommonConfigs.Tweaks.AXE_DISPENSER_BEHAVIORS.get();

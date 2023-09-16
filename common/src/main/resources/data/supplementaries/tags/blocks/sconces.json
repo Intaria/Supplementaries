@@ -5,8 +5,6 @@
     {"id":"supplementaries:sconce_wall","required":false},
     {"id":"supplementaries:sconce_soul","required":false},
     {"id":"supplementaries:sconce_soul_wall","required":false},
-    {"id":"supplementaries:sconce_green","required":false},
-    {"id":"supplementaries:sconce_green_wall","required":false},
     {"id":"supplementaries:sconce_ender","required":false},
     {"id":"supplementaries:sconce_ender_wall","required":false},
     {"id":"supplementaries:sconce_soul","required":false},

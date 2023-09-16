@@ -9,7 +9,6 @@ import net.mehvahdjukaar.supplementaries.common.block.IRopeConnection;
 import net.mehvahdjukaar.supplementaries.common.block.blocks.AshLayerBlock;
 import net.mehvahdjukaar.supplementaries.common.block.hourglass.HourglassTimesManager;
 import net.mehvahdjukaar.supplementaries.common.entities.goals.EatFodderGoal;
-import net.mehvahdjukaar.supplementaries.common.entities.goals.EvokerRedMerchantWololooSpellGoal;
 import net.mehvahdjukaar.supplementaries.common.events.overrides.InteractEventOverrideHandler;
 import net.mehvahdjukaar.supplementaries.common.items.AbstractMobContainerItem;
 import net.mehvahdjukaar.supplementaries.common.items.FluteItem;
@@ -162,10 +161,6 @@ public class ServerEvents {
                 }
                 return;
             }
-        }
-        if (entity.getType() == EntityType.EVOKER) {
-            ((Evoker) entity).goalSelector.addGoal(6,
-                    new EvokerRedMerchantWololooSpellGoal((Evoker) entity));
         }
     }
 

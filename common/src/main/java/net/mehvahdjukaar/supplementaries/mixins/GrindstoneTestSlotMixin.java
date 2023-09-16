@@ -15,7 +15,7 @@ public abstract class GrindstoneTestSlotMixin {
     @Inject(method = {"getExperienceFromItem"}, at = @At("HEAD"), cancellable = true)
     private void getExperienceFromItem(ItemStack stack, CallbackInfoReturnable<Integer> cir){
         Item i = stack.getItem();
-        if(i == Items.ENCHANTED_GOLDEN_APPLE || i == ModRegistry.BOMB_BLUE_ITEM.get()){
+        if(i == Items.ENCHANTED_GOLDEN_APPLE){
             cir.setReturnValue(500);
         }
     }

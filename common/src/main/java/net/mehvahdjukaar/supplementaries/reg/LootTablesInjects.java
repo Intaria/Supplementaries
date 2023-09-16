@@ -28,12 +28,7 @@ public class LootTablesInjects {
         if (CommonConfigs.Building.GLOBE_ENABLED.get()) LOOT_INJECTS.add(LootTablesInjects::tryInjectGlobe);
         if (CommonConfigs.Functional.ROPE_ENABLED.get()) LOOT_INJECTS.add(LootTablesInjects::tryInjectRope);
         if (CommonConfigs.Functional.FLAX_ENABLED.get()) LOOT_INJECTS.add(LootTablesInjects::tryInjectFlax);
-        if (CommonConfigs.Tools.BOMB_ENABLED.get()) LOOT_INJECTS.add(LootTablesInjects::tryInjectBlueBomb);
-        if (CommonConfigs.Tools.BOMB_ENABLED.get()) LOOT_INJECTS.add(LootTablesInjects::tryInjectBomb);
         if (CommonConfigs.stasisEnabled()) LOOT_INJECTS.add(LootTablesInjects::tryInjectStasis);
-        if (CommonConfigs.Functional.BAMBOO_SPIKES_ENABLED.get() &&
-                CommonConfigs.Functional.TIPPED_SPIKES_ENABLED.get())
-            LOOT_INJECTS.add(LootTablesInjects::tryInjectSpikes);
     }
 
     public static void injectLootTables(ResourceLocation name, Consumer<LootPool.Builder> builder) {
@@ -166,20 +161,6 @@ public class LootTablesInjects {
     public static void tryInjectFlax(Consumer<LootPool.Builder> e, TableType type) {
         if (type == TableType.MINESHAFT || type == TableType.DUNGEON || type == TableType.SHIPWRECK_STORAGE || type == TableType.PILLAGER) {
             injectLootPool(e, type, "flax");
-        }
-    }
-
-    public static void tryInjectBlueBomb(Consumer<LootPool.Builder> e, TableType type) {
-        if (type == TableType.STRONGHOLD || type == TableType.MINESHAFT || type == TableType.TEMPLE
-                || type == TableType.FORTRESS || type == TableType.DUNGEON) {
-            injectLootPool(e, type, "blue_bomb");
-        }
-    }
-
-    public static void tryInjectBomb(Consumer<LootPool.Builder> e, TableType type) {
-        if (type == TableType.STRONGHOLD || type == TableType.MINESHAFT || type == TableType.TEMPLE
-                || type == TableType.FORTRESS) {
-            injectLootPool(e, type, "bomb");
         }
     }
 

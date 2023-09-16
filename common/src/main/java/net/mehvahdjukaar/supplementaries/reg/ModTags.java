@@ -32,7 +32,6 @@ public class ModTags {
     public static final TagKey<Block> FAUCET_CONNECTION_WHITELIST = blockTag("faucet_connection_whitelist");
     public static final TagKey<Block> VINE_SUPPORT = blockTag("vine_support");
     public static final TagKey<Block> ROTATION_BLACKLIST = blockTag("un_rotatable");
-    public static final TagKey<Block> BOMB_BREAKABLE = blockTag("bomb_breakable");
     public static final TagKey<Block> BRICK_BREAKABLE_GLASS = blockTag("brick_breakable");
     public static final TagKey<Block> FLINT_METALS = blockTag("flint_metals");
     public static final TagKey<Block> WALL_LANTERNS_BLACKLIST = blockTag("wall_lanterns_blacklist");
@@ -49,7 +48,6 @@ public class ModTags {
     public static final TagKey<Item> PEDESTAL_DOWNRIGHT = itemTag("pedestal_downright");
     public static final TagKey<Item> CHOCOLATE_BARS = itemTag("chocolate_bars");
     public static final TagKey<Item> FLINT_AND_STEELS = ILightable.FLINT_AND_STEELS;
-    public static final TagKey<Item> FLOWER_BOX_PLANTABLE = itemTag("flower_box_plantable");
     public static final Map<DyeColor, TagKey<Item>> BLACKBOARD_TAGS = Arrays.stream(DyeColor.values())
             .collect(Collectors.toUnmodifiableMap(d -> d, d -> itemTag("blackboard_" + d.getName())));
     public static final TagKey<Item> BOOKS = itemTag("placeable_books");
@@ -82,8 +80,6 @@ public class ModTags {
     public static final TagKey<Structure> JUNGLE_TEMPLE = MCstructureTag("jungle_pyramid");
     public static final TagKey<Structure> PILLAGER_OUTPOST = MCstructureTag("pillager_outpost");
     public static final TagKey<Structure> SWAMP_HUT = MCstructureTag("swamp_hut");
-
-    public static final TagKey<Potion> TIPPED_SPIKES_POTION_BLACKLIST = potionTag("tipped_spikes_blacklist");
 
 
     //biomes

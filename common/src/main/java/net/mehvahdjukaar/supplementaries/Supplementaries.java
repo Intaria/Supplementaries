@@ -11,7 +11,6 @@ import net.mehvahdjukaar.supplementaries.common.block.faucet.FaucetBehaviorsMana
 import net.mehvahdjukaar.supplementaries.common.block.hourglass.HourglassTimesManager;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.NoticeBoardBlockTile;
 import net.mehvahdjukaar.supplementaries.common.entities.trades.AdventurerMapsHandler;
-import net.mehvahdjukaar.supplementaries.common.entities.trades.ModVillagerTrades;
 import net.mehvahdjukaar.supplementaries.common.events.ServerEvents;
 import net.mehvahdjukaar.supplementaries.common.misc.map_markers.ModMapMarkers;
 import net.mehvahdjukaar.supplementaries.common.misc.mob_container.CapturedMobHandler;
@@ -80,7 +79,6 @@ public class Supplementaries {
         ModEntities.init();
         ModParticles.init();
         ModCommands.init();
-        ModVillagerTrades.init();
         ModWorldgenRegistry.init();
         ModMapMarkers.init();
 
@@ -125,7 +123,6 @@ public class Supplementaries {
     //3d particle mod
     //quiver not rendering in curio
     //pulley flint
-    //TODO relayer on piston retract
     //mod to wax anything to prevent interaction
     //sugar block fall in water
     //soap in water makes soap particles

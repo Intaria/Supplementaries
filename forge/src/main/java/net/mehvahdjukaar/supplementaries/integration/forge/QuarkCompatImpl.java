@@ -3,8 +3,6 @@ package net.mehvahdjukaar.supplementaries.integration.forge;
 import net.mehvahdjukaar.moonlight.api.block.IBlockHolder;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
-import net.mehvahdjukaar.supplementaries.common.block.blocks.BambooSpikesBlock;
-import net.mehvahdjukaar.supplementaries.common.block.tiles.BambooSpikesBlockTile;
 import net.mehvahdjukaar.supplementaries.common.items.JarItem;
 import net.mehvahdjukaar.supplementaries.common.items.SackItem;
 import net.mehvahdjukaar.supplementaries.configs.CommonConfigs;
@@ -101,29 +99,6 @@ public class QuarkCompatImpl {
         }
     }
 
-    @SubscribeEvent
-    public static void noteBlockEvent(final NoteBlockEvent.Play event) {
-        if (isMoreNoteBlockSoundsOn()) {
-            LevelAccessor world = event.getLevel();
-            BlockPos pos = event.getPos();
-            if (world.getBlockState(pos).getBlock() == Blocks.NOTE_BLOCK) {
-                for (Direction dir : Direction.Plane.HORIZONTAL) {
-                    BlockState state = world.getBlockState(pos.relative(dir));
-                    Block block = state.getBlock();
-                    if (block instanceof WallSkullBlock && state.getValue(WallSkullBlock.FACING) == dir) {
-                        if (block == ModRegistry.ENDERMAN_SKULL_BLOCK_WALL.get()) {
-                            SoundEvent sound = SoundEvents.ENDERMAN_TELEPORT;
-                            event.setCanceled(true);
-                            float pitch = (float) Math.pow(2.0, (event.getVanillaNoteId() - 12) / 12.0);
-                            world.playSound(null, pos.above(), sound, SoundSource.BLOCKS, 1.0F, pitch);
-                            return;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     //this should have been implemented in the post block updateShape method
     public static @Nullable BlockState updateWoodPostShape(BlockState post, Direction facing, BlockState facingState) {
         if (post.getBlock() instanceof WoodPostBlock) {
@@ -167,35 +142,6 @@ public class QuarkCompatImpl {
     }
 
     public static void tickPiston(Level level, BlockPos pos, BlockState spikes, AABB pistonBB, boolean sameDir, BlockEntity movingTile) {
-        List<Entity> list = level.getEntities(null, pistonBB);
-        for (Entity entity : list) {
-            if (entity instanceof Player player && player.isCreative()) return;
-            if (entity instanceof LivingEntity livingEntity && entity.isAlive()) {
-                AABB entityBB = entity.getBoundingBox();
-                if (pistonBB.intersects(entityBB)) {
-                    //apply potions using quark moving tiles
-                    if (CompatHandler.QUARK) {
-                        //get tile
-                        if (getMovingBlockEntity(pos, spikes, level) instanceof BambooSpikesBlockTile tile) {
-                            //apply effects
-                            if (tile.interactWithEntity(livingEntity, level)) {
-                                //change block state if empty
-                                if (movingTile instanceof IBlockHolder te) {
-                                    //remove last charge and set new blockState
-                                    BlockState state = te.getHeldBlock();
-                                    if (state.getBlock() instanceof BambooSpikesBlock) {
-                                        te.setHeldBlock(state.setValue(BambooSpikesBlock.TIPPED, false));
-                                    }
-                                }
-                            }
-                            //update tile entity in its list
-                            PistonsMoveTileEntitiesModule.setMovingBlockEntityData(level, pos, tile.saveWithFullMetadata());
-                        }
-                    }
-                    entity.hurt(BambooSpikesBlock.getDamageSource(level), sameDir ? 3 : 1);
-                }
-            }
-        }
     }
 
     public static BlockEntity getMovingBlockEntity(BlockPos pos, BlockState state, Level level) {

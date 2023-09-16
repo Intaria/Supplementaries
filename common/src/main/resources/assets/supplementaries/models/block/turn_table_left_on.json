@@ -1,9 +1,0 @@
-
-{
-  "parent": "minecraft:block/template_piston",
-  "textures": {
-    "platform": "supplementaries:blocks/turn_table_top",
-    "bottom": "supplementaries:blocks/turn_table_bottom",
-    "side": "supplementaries:blocks/turn_table_side_left_on"
-  }
-}

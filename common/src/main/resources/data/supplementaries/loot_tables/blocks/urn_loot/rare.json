@@ -175,22 +175,6 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 7,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 2.0,
-                "max": 5.0
-              },
-              "add": false
-            }
-          ],
-          "name": "supplementaries:bomb"
-        },
-        {
-          "type": "minecraft:item",
           "weight": 2,
           "name": "minecraft:skeleton_skull"
         },

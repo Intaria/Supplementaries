@@ -35,31 +35,4 @@ public class JEICompat implements IModPlugin {
             SpecialRecipeDisplays.registerCraftingRecipes(r -> registry.addRecipes(RecipeTypes.CRAFTING, r));
         }
     }
-
-    @Override
-    public void registerItemSubtypes(ISubtypeRegistration registration) {
-        registration.registerSubtypeInterpreter(VanillaTypes.ITEM_STACK, ModRegistry.BAMBOO_SPIKES_TIPPED_ITEM.get(), SpikesSubtypeInterpreter.INSTANCE);
-    }
-
-    public static class SpikesSubtypeInterpreter implements IIngredientSubtypeInterpreter<ItemStack> {
-        public static final SpikesSubtypeInterpreter INSTANCE = new SpikesSubtypeInterpreter();
-
-        private SpikesSubtypeInterpreter() {
-        }
-
-        public String apply(ItemStack itemStack, UidContext uidContext) {
-
-            Potion potionType = PotionUtils.getPotion(itemStack);
-            String potionTypeString = potionType.getName("");
-            StringBuilder stringBuilder = new StringBuilder(potionTypeString);
-            List<MobEffectInstance> effects = PotionUtils.getMobEffects(itemStack);
-
-            for (MobEffectInstance effect : effects) {
-                stringBuilder.append(";").append(effect);
-            }
-
-            return stringBuilder.toString();
-        }
-    }
-
 }

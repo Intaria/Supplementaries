@@ -20,8 +20,6 @@ public class ModRecipes {
     //recipes
     public static final Supplier<RecipeSerializer<BlackboardDuplicateRecipe>> BLACKBOARD_DUPLICATE = reg(
             "blackboard_duplicate", BlackboardDuplicateRecipe::new);
-    public static final Supplier<RecipeSerializer<TippedBambooSpikesRecipe>> BAMBOO_SPIKES_TIPPED = reg(
-            "bamboo_spikes_tipped", TippedBambooSpikesRecipe::new);
     public static final Supplier<RecipeSerializer<RepairBubbleBlowerRecipe>> BUBBLE_BLOWER_REPAIR = reg(
             "bubble_blower_charge", RepairBubbleBlowerRecipe::new);
     public static final Supplier<RecipeSerializer<FlagFromBannerRecipe>> FLAG_FROM_BANNER = reg(
