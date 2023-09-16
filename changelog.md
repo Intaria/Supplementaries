@@ -1,2 +1,0 @@
-- fixed a crash with present screen
-- fixed a crash with overencumbered effect
