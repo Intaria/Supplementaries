@@ -65,7 +65,7 @@ public class BookPileBlock extends WaterBlock implements EntityBlock {
     }
 
     public static boolean isEnchantedBook(Item i) {
-        return i == Items.ENCHANTED_BOOK || isQuarkTome(i);
+        return i == Items.ENCHANTED_BOOK;
     }
 
     public static boolean isNormalBook(Item i) {
@@ -74,10 +74,6 @@ public class BookPileBlock extends WaterBlock implements EntityBlock {
 
     public static boolean isWrittenBook(Item i) {
         return i instanceof WrittenBookItem || i instanceof WritableBookItem;
-    }
-
-    public static boolean isQuarkTome(Item i) {
-        return CompatHandler.QUARK && CompatObjects.TOME.get() == i;
     }
 
     @Override

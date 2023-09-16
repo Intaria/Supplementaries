@@ -27,14 +27,4 @@ public class CuriosCompatImpl {
             return KeyLockableTile.KeyStatus.INCORRECT_KEY;
         }
     }
-
-    @Nullable
-    public static ItemStack getEquippedQuiver(Player player) {
-        var found = CuriosApi.getCuriosHelper().findCurios(player, i -> i.is(ModRegistry.QUIVER_ITEM.get()));
-        for (var slot : found) {
-            return slot.stack();
-        }
-        return null;
-    }
-
 }

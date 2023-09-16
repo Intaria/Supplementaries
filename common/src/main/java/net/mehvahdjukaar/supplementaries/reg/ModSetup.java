@@ -10,7 +10,6 @@ import net.mehvahdjukaar.supplementaries.common.block.faucet.FaucetBehaviorsMana
 import net.mehvahdjukaar.supplementaries.common.block.present.PresentBehaviorsManager;
 import net.mehvahdjukaar.supplementaries.common.events.overrides.InteractEventOverrideHandler;
 import net.mehvahdjukaar.supplementaries.common.items.loot.CurseLootFunction;
-import net.mehvahdjukaar.supplementaries.common.items.loot.RandomArrowFunction;
 import net.mehvahdjukaar.supplementaries.common.misc.map_markers.WeatheredMap;
 import net.mehvahdjukaar.supplementaries.common.utils.FlowerPotHandler;
 import net.mehvahdjukaar.supplementaries.integration.CompatHandler;
@@ -51,7 +50,6 @@ public class ModSetup {
     public static void asyncSetup() {
         PresentBehaviorsManager.registerBehaviors();
         FaucetBehaviorsManager.registerBehaviors();
-        RandomArrowFunction.setup();
         LootTablesInjects.setup();
     }
 

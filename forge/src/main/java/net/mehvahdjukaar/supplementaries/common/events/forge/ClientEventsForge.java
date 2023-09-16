@@ -2,10 +2,7 @@ package net.mehvahdjukaar.supplementaries.common.events.forge;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
-import net.mehvahdjukaar.supplementaries.client.QuiverArrowSelectGui;
 import net.mehvahdjukaar.supplementaries.client.renderers.CapturedMobCache;
-import net.mehvahdjukaar.supplementaries.client.renderers.entities.layers.QuiverLayer;
-import net.mehvahdjukaar.supplementaries.client.renderers.forge.QuiverArrowSelectGuiImpl;
 import net.mehvahdjukaar.supplementaries.common.block.blocks.EndermanSkullBlock;
 import net.mehvahdjukaar.supplementaries.common.events.ClientEvents;
 import net.mehvahdjukaar.supplementaries.common.utils.ItemsUtil;
@@ -34,8 +31,6 @@ public class ClientEventsForge {
 
     public static void init() {
         MinecraftForge.EVENT_BUS.register(ClientEventsForge.class);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEventsForge::onAddLayers);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEventsForge::onAddGuiLayers);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEventsForge::onRegisterSkullModels);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEventsForge::loadComplete);
     }
@@ -49,30 +44,6 @@ public class ClientEventsForge {
                 new SkullModel(event.getEntityModelSet().bakeLayer(ModelLayers.SKELETON_SKULL)));
         SkullBlockRenderer.SKIN_BY_TYPE.put(EndermanSkullBlock.TYPE,
                 Supplementaries.res("textures/entity/enderman_head.png"));
-    }
-
-
-    @SuppressWarnings("unchecked")
-    public static void onAddLayers(EntityRenderersEvent.AddLayers event) {
-        for (String skinType : event.getSkins()) {
-            var renderer = event.getSkin(skinType);
-            if (renderer != null) {
-                renderer.addLayer(new QuiverLayer(renderer, false));
-            }
-        }
-        var renderer = event.getRenderer(EntityType.SKELETON);
-        if (renderer != null) {
-            renderer.addLayer(new QuiverLayer(renderer, true));
-        }
-        var renderer2 = event.getRenderer(EntityType.STRAY);
-        if (renderer2 != null) {
-            renderer2.addLayer(new QuiverLayer(renderer2, true));
-        }
-    }
-
-    public static void onAddGuiLayers(RegisterGuiOverlaysEvent event) {
-        event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "quiver_overlay",
-                new QuiverArrowSelectGuiImpl());
     }
 
     @SubscribeEvent
@@ -89,21 +60,11 @@ public class ClientEventsForge {
         }
     }
 
+    //TODO:
     @SubscribeEvent
     public static void clientTick(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
             ClientEvents.onClientTick(Minecraft.getInstance());
-            if(QuiverArrowSelectGui.isUsingKey()){
-                QuiverArrowSelectGui.setUsingKeybind(InputConstants.isKeyDown(Minecraft.getInstance().getWindow().getWindow(),
-                        ClientRegistry.QUIVER_KEYBIND.getKey().getValue()));
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void onMouseScrolled(InputEvent.MouseScrollingEvent event) {
-        if (QuiverArrowSelectGui.isActive() && QuiverArrowSelectGui.onMouseScrolled(event.getScrollDelta())) {
-            event.setCanceled(true);
         }
     }
 
@@ -130,17 +91,4 @@ public class ClientEventsForge {
             }
         }
     }
-
-    @SubscribeEvent
-    public static void onKeyPress(InputEvent.Key event) {
-        if (Minecraft.getInstance().screen == null &&
-                event.getKey() == ClientRegistry.QUIVER_KEYBIND.getKey().getValue() &&
-                !Minecraft.getInstance().isPaused()) {
-            int a = event.getAction();
-            if (a < 2) {
-                QuiverArrowSelectGui.setUsingKeybind(a == 1);
-            }
-        }
-    }
-
 }

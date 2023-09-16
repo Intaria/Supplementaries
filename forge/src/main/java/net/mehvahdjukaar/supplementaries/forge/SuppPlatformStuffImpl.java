@@ -79,11 +79,6 @@ public class SuppPlatformStuffImpl {
     public static int getItemLifeSpawn(ItemEntity itemEntity) {
         return itemEntity.lifespan;
     }
-
-    public static void onItemPickup(Player player, ItemEntity itemEntity, ItemStack copy) {
-        ForgeEventFactory.firePlayerItemPickupEvent(player, itemEntity, copy);
-    }
-
     public static int getLightEmission(BlockState state, Level level, BlockPos pos) {
         return state.getLightEmission(level, pos);
     }

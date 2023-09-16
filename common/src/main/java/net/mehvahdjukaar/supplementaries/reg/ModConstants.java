@@ -13,15 +13,12 @@ public final class ModConstants {
     public static final String BOMB_NAME = "bomb";
     public static final String BOMB_BLUE_NAME = "bomb_blue";
     public static final String BOMB_SPIKY_NAME = "bomb_spiky";
-    public static final String ROPE_ARROW_NAME = "rope_arrow";
 
     public static final String BUBBLE_BLOWER_NAME = "bubble_blower";
     public static final String FLUTE_NAME = "flute";
     public static final String KEY_NAME = "key";
     public static final String CANDY_NAME = "candy";
     public static final String ANTIQUE_INK_NAME = "antique_ink";
-    public static final String WRENCH_NAME = "wrench";
-    public static final String QUIVER_NAME = "quiver";
 
     public static final String HANGING_SIGN_NAME = "hanging_sign";
     public static final String SIGN_POST_NAME = "sign_post";

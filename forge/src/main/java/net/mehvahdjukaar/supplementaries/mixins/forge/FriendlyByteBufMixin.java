@@ -14,11 +14,4 @@ public abstract class FriendlyByteBufMixin {
 
     @Shadow
     public abstract FriendlyByteBuf writeItemStack(ItemStack arg, boolean limitedTag);
-
-    @Inject(method = "writeItemStack", at = @At(value = "HEAD"), remap = false, cancellable = true)
-    public void sendCapsFromCreative(ItemStack stack, boolean useShareTag, CallbackInfoReturnable<FriendlyByteBuf> cir) {
-        if (!useShareTag && stack.getItem() == ModRegistry.QUIVER_ITEM.get()) {
-            cir.setReturnValue(this.writeItemStack(stack, true)); //thanks forge
-        }
-    }
 }

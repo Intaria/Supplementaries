@@ -74,7 +74,6 @@ public class InteractEventOverrideHandler {
         itemUseOnBlockHP.add(new AntiqueInkBehavior());
         itemUseOnBlockHP.add(new SoapBehavior());
         itemUseOnBlockHP.add(new DyeBehavior());
-        itemUseOnBlockHP.add(new WrenchBehavior());
         itemUseOnBlockHP.add(new SkullCandlesBehavior());
 
         //maybe move in mixin system (can't for cakes as block interaction has priority)
@@ -95,12 +94,6 @@ public class InteractEventOverrideHandler {
             if (CommonConfigs.Tweaks.WALL_LANTERN_PLACEMENT.get()) {
                 if (i instanceof BlockItem bi && WallLanternBlock.isValidBlock(bi.getBlock())) {
                     ((IExtendedItem) i).addAdditionalBehavior(new WallLanternPlacement());
-                    continue;
-                }
-            }
-            if (CommonConfigs.Tweaks.PLACEABLE_BOOKS.get()) {
-                if (BookPileBlock.isQuarkTome(i)) {
-                    ((IExtendedItem) i).addAdditionalBehavior(new SimplePlacement(ModRegistry.BOOK_PILE.get()));
                     continue;
                 }
             }

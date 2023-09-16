@@ -9,22 +9,17 @@
     "BlockEntityRendererDispatcherMixin"
   ],
   "mixins": [
-    "TreasureMapForEmeraldsMixin",
-    "ExplorationMapFunctionMixin",
     "CompatFarmersDelightMixin",
     "CompatQuarkSelfCandleSkullMixin",
     "SelfSpeakerBlockTileMixin",
-    "SelfWrenchMixin",
     "SelfOpenableContainerMixin",
     "SelfFrameMixin",
     "SelfGunpowderMixin",
     "SelfSafeMixin",
     "SelfPlanterMixin",
     "SelfSoapItemMixin",
-    "SelfQuiverItem",
     "ChunkHolderMixin",
     "FriendlyByteBufMixin",
-    "PlayerProjectileMixin",
     "MobBucketItemAccessor"
   ],
   "injectors": {

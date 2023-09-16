@@ -13,10 +13,4 @@ public class CuriosCompat {
     public static KeyLockableTile.KeyStatus isKeyInCurio(Player player, String key) {
         throw new AssertionError();
     }
-
-    @Nullable
-    @ExpectPlatform
-    public static ItemStack getEquippedQuiver(Player player) {
-        throw new AssertionError();
-    }
 }

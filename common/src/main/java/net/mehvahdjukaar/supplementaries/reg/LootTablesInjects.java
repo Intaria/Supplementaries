@@ -26,7 +26,6 @@ public class LootTablesInjects {
     //initialize so I don't have to constantly check configs for each loot table entry
     public static void setup() {
         if (CommonConfigs.Building.GLOBE_ENABLED.get()) LOOT_INJECTS.add(LootTablesInjects::tryInjectGlobe);
-        if (CommonConfigs.Tools.QUIVER_ENABLED.get()) LOOT_INJECTS.add(LootTablesInjects::tryInjectQuiver);
         if (CommonConfigs.Functional.ROPE_ENABLED.get()) LOOT_INJECTS.add(LootTablesInjects::tryInjectRope);
         if (CommonConfigs.Functional.FLAX_ENABLED.get()) LOOT_INJECTS.add(LootTablesInjects::tryInjectFlax);
         if (CommonConfigs.Tools.BOMB_ENABLED.get()) LOOT_INJECTS.add(LootTablesInjects::tryInjectBlueBomb);
@@ -155,12 +154,6 @@ public class LootTablesInjects {
     public static void tryInjectGlobe(Consumer<LootPool.Builder> e, TableType type) {
         if (type == TableType.SHIPWRECK_TREASURE) {
             injectLootPool(e, type, "globe");
-        }
-    }
-
-    private static void tryInjectQuiver(Consumer<LootPool.Builder> e, TableType type) {
-        if (type == TableType.DUNGEON || type == TableType.MANSION) {
-            injectLootPool(e, type, "quiver");
         }
     }
 

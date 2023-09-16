@@ -5,17 +5,14 @@ import com.mojang.datafixers.util.Either;
 import net.mehvahdjukaar.moonlight.api.misc.EventCalled;
 import net.mehvahdjukaar.moonlight.api.platform.ClientPlatformHelper;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
-import net.mehvahdjukaar.supplementaries.api.IQuiverEntity;
 import net.mehvahdjukaar.supplementaries.client.renderers.color.CrossbowColor;
 import net.mehvahdjukaar.supplementaries.client.renderers.color.DefaultWaterColor;
 import net.mehvahdjukaar.supplementaries.client.renderers.color.TippedSpikesColor;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.SafeBlockTile;
-import net.mehvahdjukaar.supplementaries.common.items.QuiverItem;
 import net.mehvahdjukaar.supplementaries.common.items.SackItem;
 import net.mehvahdjukaar.supplementaries.common.items.SafeItem;
 import net.mehvahdjukaar.supplementaries.common.items.tooltip_components.InventoryTooltip;
 import net.mehvahdjukaar.supplementaries.integration.QuarkCompat;
-import net.mehvahdjukaar.supplementaries.integration.forge.quark.CartographersQuillItem;
 import net.mehvahdjukaar.supplementaries.integration.forge.quark.QuarkInventoryTooltipComponent;
 import net.mehvahdjukaar.supplementaries.reg.ClientRegistry;
 import net.mehvahdjukaar.supplementaries.reg.ModRegistry;
@@ -42,7 +39,6 @@ import vazkii.quark.addons.oddities.client.render.be.TinyPotatoRenderer;
 import vazkii.quark.api.event.UsageTickerEvent;
 import vazkii.quark.base.handler.GeneralConfig;
 import vazkii.quark.base.module.ModuleLoader;
-import vazkii.quark.content.client.module.ImprovedTooltipsModule;
 import vazkii.quark.content.management.module.ExpandedItemInteractionsModule;
 
 import java.util.ArrayList;
@@ -51,25 +47,11 @@ import java.util.List;
 public class QuarkClientCompatImpl {
 
     public static void initClient() {
-        ClientPlatformHelper.addBlockEntityRenderersRegistration(QuarkClientCompatImpl::registerEntityRenderers);
-        ClientPlatformHelper.addItemColorsRegistration(QuarkClientCompatImpl::registerItemColors);
         MinecraftForge.EVENT_BUS.addListener(QuarkClientCompatImpl::onItemTooltipEvent);
-        MinecraftForge.EVENT_BUS.addListener(QuarkClientCompatImpl::quiverUsageTicker);
-    }
-
-    private static void registerEntityRenderers(ClientPlatformHelper.BlockEntityRendererEvent event) {
-        event.register(QuarkCompatImpl.TATER_IN_A_JAR_TILE.get(), TaterInAJarTileRenderer::new);
     }
 
     public static void setupClient() {
-        ClientPlatformHelper.registerRenderType(QuarkCompatImpl.TATER_IN_A_JAR.get(), RenderType.cutout());
-    }
-
-    @EventCalled
-    private static void registerItemColors(ClientPlatformHelper.ItemColorEvent event) {
-        event.register(CartographersQuillItem::getItemColor,
-                QuarkCompatImpl.CARTOGRAPHERS_QUILL.get());
-
+        
     }
 
     public static boolean shouldHaveButtonOnRight() {
@@ -82,7 +64,7 @@ public class QuarkClientCompatImpl {
 
     public static boolean canRenderQuarkTooltip() {
         return ModuleLoader.INSTANCE.isModuleEnabled(ExpandedItemInteractionsModule.class) &&
-                (!ImprovedTooltipsModule.shulkerBoxRequireShift || Screen.hasShiftDown());
+                (Screen.hasShiftDown());
     }
 
     public static void registerTooltipComponent(ClientPlatformHelper.TooltipComponentEvent event) {
@@ -118,59 +100,9 @@ public class QuarkClientCompatImpl {
                             tooltip.remove(either);
                     }
                 }
-                if (ImprovedTooltipsModule.shulkerBoxRequireShift && !Screen.hasShiftDown())
-                    tooltip.add(1, Either.left(Component.translatable("quark.misc.shulker_box_shift")));
             }
         }
     }
-
-
-    public static class TaterInAJarTileRenderer extends TinyPotatoRenderer {
-        public TaterInAJarTileRenderer(BlockEntityRendererProvider.Context ctx) {
-            super(ctx);
-        }
-
-        @Override
-        public void render(TinyPotatoBlockEntity potato, float partialTicks, PoseStack ms, MultiBufferSource buffers, int light, int overlay) {
-            ms.pushPose();
-            ms.translate(0, 1 / 16f, 0);
-            super.render(potato, partialTicks, ms, buffers, light, overlay);
-            ms.popPose();
-        }
-    }
-
-    public static void quiverUsageTicker(UsageTickerEvent.GetCount event) {
-        if (event.currentRealStack.getItem() instanceof ProjectileWeaponItem && event.currentStack != event.currentRealStack) {
-            //adds missing ones from quiver
-
-            if (event.player instanceof IQuiverEntity qe) {
-                var q = qe.getQuiver();
-                if (!q.isEmpty()) {
-                    QuiverItem.Data data = QuiverItem.getQuiverData(q);
-                    if (data != null) {
-                        //sanity check
-                        ItemStack selected = data.getSelected();
-
-                        if (event.currentStack.is(selected.getItem())) {
-                            //just recomputes everything
-                            int count = data.getSelectedArrowCount();
-                            Inventory inventory = event.player.getInventory();
-
-                            for (int i = 0; i < inventory.getContainerSize(); ++i) {
-                                ItemStack stackAt = inventory.getItem(i);
-                                if (selected.is(stackAt.getItem())) {
-                                    count += stackAt.getCount();
-                                }
-                            }
-                            event.setResultCount(count);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
 
 
 }

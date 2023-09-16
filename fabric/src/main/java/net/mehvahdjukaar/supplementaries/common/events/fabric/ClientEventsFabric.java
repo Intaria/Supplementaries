@@ -7,8 +7,6 @@ import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
-import net.mehvahdjukaar.supplementaries.client.renderers.entities.layers.QuiverLayer;
-import net.mehvahdjukaar.supplementaries.client.renderers.fabric.QuiverArrowSelectGuiImpl;
 import net.mehvahdjukaar.supplementaries.common.events.ClientEvents;
 import net.mehvahdjukaar.supplementaries.integration.CompatHandler;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -31,23 +29,5 @@ public class ClientEventsFabric {
             }
         });
         ClientTickEvents.END_CLIENT_TICK.register(ClientEvents::onClientTick);
-
-
-        HudRenderCallback.EVENT.register(ClientEventsFabric::onRenderHud);
-
-        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((t, r, e, c) -> {
-            if (r instanceof PlayerRenderer) {
-                e.register(new QuiverLayer(r, false));
-            } else if (t == EntityType.SKELETON) {
-                e.register(new QuiverLayer(r, true));
-            } else if (t == EntityType.STRAY) {
-                e.register(new QuiverLayer(r, true));
-            }
-        });
-
-    }
-
-    private static void onRenderHud(PoseStack poseStack, float partialTicks) {
-        QuiverArrowSelectGuiImpl.INSTANCE.render(poseStack, partialTicks);
     }
 }

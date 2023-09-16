@@ -11,7 +11,6 @@ import net.mehvahdjukaar.supplementaries.common.block.tiles.*;
 import net.mehvahdjukaar.supplementaries.common.entities.BombEntity;
 import net.mehvahdjukaar.supplementaries.common.items.*;
 import net.mehvahdjukaar.supplementaries.common.items.loot.CurseLootFunction;
-import net.mehvahdjukaar.supplementaries.common.items.loot.RandomArrowFunction;
 import net.mehvahdjukaar.supplementaries.common.misc.OverencumberedEffect;
 import net.mehvahdjukaar.supplementaries.common.misc.StasisEnchantment;
 import net.mehvahdjukaar.supplementaries.configs.CommonConfigs;
@@ -58,8 +57,6 @@ public class ModRegistry {
     //loot
     public static final Supplier<LootItemFunctionType> CURSE_LOOT_FUNCTION = RegHelper.register(res("curse_loot"),
             () -> new LootItemFunctionType(new CurseLootFunction.Serializer()), Registry.LOOT_FUNCTION_TYPE);
-    public static final Supplier<LootItemFunctionType> RANDOM_ARROW_FUNCTION = RegHelper.register(res("random_arrows"),
-            () -> new LootItemFunctionType(new RandomArrowFunction.Serializer()), Registry.LOOT_FUNCTION_TYPE);
 
     //paintings
     public static final Supplier<PaintingVariant> BOMB_PAINTING = RegHelper.registerPainting(
@@ -101,10 +98,6 @@ public class ModRegistry {
     public static final Supplier<Item> BOMB_SPIKY_ITEM_ON = regItem("bomb_spiky_projectile", () -> new BombItem(new Item.Properties()
             .tab(null), BombEntity.BombType.SPIKY, false));
 
-    //rope arrow
-    public static final Supplier<Item> ROPE_ARROW_ITEM = regItem(ROPE_ARROW_NAME, () -> new RopeArrowItem(
-            new Item.Properties().tab(getTab(CreativeModeTab.TAB_MISC, ROPE_ARROW_NAME)).defaultDurability(32)));
-
 
     //soap bubbler
     public static final Supplier<Item> BUBBLE_BLOWER = regItem(BUBBLE_BLOWER_NAME, () -> new BubbleBlower((new Item.Properties())
@@ -127,14 +120,6 @@ public class ModRegistry {
     //antique ink
     public static final Supplier<Item> ANTIQUE_INK = regItem(ANTIQUE_INK_NAME, () -> new Item((new Item.Properties())
             .tab(getTab(CreativeModeTab.TAB_MISC, ANTIQUE_INK_NAME))));
-
-    //wrench
-    public static final Supplier<Item> WRENCH = regItem(WRENCH_NAME, () -> new WrenchItem((new Item.Properties())
-            .tab(getTab(CreativeModeTab.TAB_TOOLS, WRENCH_NAME)).stacksTo(1).durability(200)));
-
-    //quiver
-    public static final Supplier<QuiverItem> QUIVER_ITEM = regItem(QUIVER_NAME, () -> new QuiverItem((new Item.Properties())
-            .tab(getTab(CreativeModeTab.TAB_TOOLS, QUIVER_NAME)).stacksTo(1).rarity(Rarity.RARE)));
 
 
     //speedometer

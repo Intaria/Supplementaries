@@ -15,9 +15,6 @@ public class CompatHandlerClientImpl {
         if (CompatHandler.CONFIGURED && ClientConfigs.General.CUSTOM_CONFIGURED_SCREEN.get()) {
             ModConfigSelectScreen.registerConfigScreen(Supplementaries.MOD_ID, ModConfigSelectScreen::new);
         }
-        if (CompatHandler.QUARK) {
-            QuarkClientCompatImpl.setupClient();
-        }
 
         if(CompatHandler.CREATE){
             CreateCompatImpl.setupClient();
@@ -28,9 +25,6 @@ public class CompatHandlerClientImpl {
     }
 
     public static void init() {
-        if (CompatHandler.QUARK) {
-            QuarkClientCompatImpl.initClient();
-        }
     }
 
 }

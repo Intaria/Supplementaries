@@ -43,7 +43,7 @@ public class ClientEvents {
         }
 
         Item item = itemStack.getItem();
-        if (item == ModRegistry.ROPE_ARROW_ITEM.get() || item == ModRegistry.BUBBLE_BLOWER.get()) {
+        if (item == ModRegistry.BUBBLE_BLOWER.get()) {
 
             Optional<Component> r = components.stream().filter(t -> (t.getContents() instanceof TranslatableContents tc) &&
                     tc.getKey().equals("item.durability")).findFirst();

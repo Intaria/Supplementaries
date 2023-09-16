@@ -8,7 +8,6 @@ import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
 import net.mehvahdjukaar.moonlight.api.util.DispenserHelper;
 import net.mehvahdjukaar.moonlight.api.util.DispenserHelper.AddItemToInventoryBehavior;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
-import net.mehvahdjukaar.supplementaries.common.entities.RopeArrowEntity;
 import net.mehvahdjukaar.supplementaries.common.items.DispenserMinecartItem;
 import net.mehvahdjukaar.supplementaries.common.items.KeyItem;
 import net.mehvahdjukaar.supplementaries.common.misc.mob_container.BucketHelper;
@@ -118,23 +117,6 @@ public class DispenserBehaviorsManager {
         //gunpowder
         if (CommonConfigs.Tweaks.PLACEABLE_GUNPOWDER.get()) {
             DispenserHelper.registerCustomBehavior(new GunpowderBehavior(Items.GUNPOWDER));
-        }
-        if (CommonConfigs.Tools.ROPE_ARROW_ENABLED.get()) {
-
-            DispenserBlock.registerBehavior(ModRegistry.ROPE_ARROW_ITEM.get(), new AbstractProjectileDispenseBehavior() {
-                protected Projectile getProjectile(Level world, Position pos, ItemStack stack) {
-                    CompoundTag com = stack.getTag();
-                    int charges = stack.getMaxDamage();
-                    if (com != null) {
-                        if (com.contains("Damage")) {
-                            charges = charges - com.getInt("Damage");
-                        }
-                    }
-                    RopeArrowEntity arrow = new RopeArrowEntity(world, pos.x(), pos.y(), pos.z(), charges);
-                    arrow.pickup = AbstractArrow.Pickup.ALLOWED;
-                    return arrow;
-                }
-            });
         }
 
         boolean axe = CommonConfigs.Tweaks.AXE_DISPENSER_BEHAVIORS.get();

@@ -21,7 +21,6 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import vazkii.quark.content.client.module.ChestSearchingModule;
-import vazkii.quark.content.client.tooltip.ShulkerBoxTooltips;
 
 public class QuarkInventoryTooltipComponent implements ClientTooltipComponent {
 
@@ -75,7 +74,7 @@ public class QuarkInventoryTooltipComponent implements ClientTooltipComponent {
 
                 int color = -1;
 
-                ShulkerBoxTooltips.ShulkerComponent.renderTooltipBackground(mc, pose, currentX, tooltipY, dimensions[0], dimensions[1], color);
+                //ShulkerBoxTooltips.ShulkerComponent.renderTooltipBackground(mc, pose, currentX, tooltipY, dimensions[0], dimensions[1], color);
 
                 ItemRenderer render = mc.getItemRenderer();
 

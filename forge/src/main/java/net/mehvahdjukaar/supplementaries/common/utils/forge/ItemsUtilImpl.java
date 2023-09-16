@@ -9,12 +9,10 @@ import net.mehvahdjukaar.supplementaries.common.items.SackItem;
 import net.mehvahdjukaar.supplementaries.common.utils.ItemsUtil;
 import net.mehvahdjukaar.supplementaries.integration.CompatHandler;
 import net.mehvahdjukaar.supplementaries.integration.CuriosCompat;
-import net.mehvahdjukaar.supplementaries.integration.QuarkCompat;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
@@ -120,11 +118,6 @@ public class ItemsUtilImpl {
             for (int idx = 0; idx < reference.get().getSlots(); idx++) {
                 ItemStack slotItem = reference.get().getStackInSlot(idx);
                 amount += SackItem.getEncumber(slotItem);
-            }
-
-            if (CompatHandler.QUARK) {
-                ItemStack backpack = player.getItemBySlot(EquipmentSlot.CHEST);
-                amount += QuarkCompat.getEncumbermentFromBackpack(backpack);
             }
         }
         return amount;

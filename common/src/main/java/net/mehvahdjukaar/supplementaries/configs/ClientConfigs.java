@@ -5,7 +5,6 @@ import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigBuilder;
 import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigSpec;
 import net.mehvahdjukaar.moonlight.api.platform.configs.ConfigType;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
-import net.mehvahdjukaar.supplementaries.client.renderers.entities.layers.QuiverLayer;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.BookPileBlockTile;
 import net.mehvahdjukaar.supplementaries.common.items.BambooSpikesTippedItem;
 import net.mehvahdjukaar.supplementaries.integration.CompatHandler;
@@ -51,42 +50,12 @@ public class ClientConfigs {
         private static void init() {
         }
 
-        public static final Supplier<QuiverLayer.QuiverMode> QUIVER_RENDER_MODE;
-        public static final Supplier<QuiverLayer.QuiverMode> QUIVER_SKELETON_RENDER_MODE;
-        public static final Supplier<Double> QUIVER_ARMOR_OFFSET;
-        public static final Supplier<Boolean> QUIVER_MOUSE_MOVEMENT;
-        public static final Supplier<Boolean> QUIVER_OVERLAY;
-        public static final Supplier<Integer> QUIVER_GUI_X;
-        public static final Supplier<Integer> QUIVER_GUI_Y;
-        public static final Supplier<Boolean> WRENCH_PARTICLES;
         public static final Supplier<Boolean> FLUTE_PARTICLES;
 
         static {
             ConfigBuilder builder = builderReference.get();
 
             builder.push("items");
-
-            builder.push("quiver");
-            QUIVER_ARMOR_OFFSET = builder.comment("Z offset for quiver render when wearing armor. Useful for when you have custom armor bigger than vanilla to void clipping. Leave at -1 for automatic offset")
-                    .define("armor_render_offset", -1d, -1d, 1);
-            QUIVER_RENDER_MODE = builder.comment("How quivers should render onto players")
-                    .define("render_mode", QuiverLayer.QuiverMode.THIGH);
-            QUIVER_SKELETON_RENDER_MODE = builder.comment("How skeleton with quivers should render it")
-                    .define("skeleton_render_mode", QuiverLayer.QuiverMode.THIGH);
-            QUIVER_OVERLAY = builder.comment("Adds an overlay to quivers in gui displaying currently selected arrow")
-                    .define("overlay", true);
-            QUIVER_MOUSE_MOVEMENT = builder.comment("Allows using your mouse to select an arrow in the quiver GUI")
-                    .define("mouse_movement_in_gui", true);
-            QUIVER_GUI_X = builder.comment("Quiver GUI X offset from default position")
-                    .define("gui_x_offset", 0, -1000, 1000);
-            QUIVER_GUI_Y = builder.comment("Quiver GUI Y offset from default position")
-                    .define("gui_y_offset", 0, -1000, 1000);
-            builder.pop();
-
-            builder.push("wrench");
-            WRENCH_PARTICLES = builder.comment("Display visual particles when a block is rotated")
-                    .define("turn_particles", true);
-            builder.pop();
 
             builder.push("flute");
             FLUTE_PARTICLES = builder.comment("Display visual particles when a playing a flute")

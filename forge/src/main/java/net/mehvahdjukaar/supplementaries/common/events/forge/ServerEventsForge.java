@@ -175,16 +175,6 @@ public class ServerEventsForge {
     }
 
     @SubscribeEvent
-    public static void onItemPickup(EntityItemPickupEvent event) {
-        if (!event.isCanceled() && event.getResult() != Event.Result.DENY) {
-            if (ServerEvents.onItemPickup(event.getItem(), event.getEntity())) {
-                event.setCanceled(true);
-                event.setResult(Event.Result.DENY);
-            }
-        }
-    }
-
-    @SubscribeEvent
     public static void onWorldUnload(LevelEvent.Unload event) {
         if (event.getLevel().isClientSide()) {
             CapturedMobCache.clear();

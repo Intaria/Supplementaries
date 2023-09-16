@@ -83,7 +83,6 @@ public class ModTags {
     public static final TagKey<Structure> PILLAGER_OUTPOST = MCstructureTag("pillager_outpost");
     public static final TagKey<Structure> SWAMP_HUT = MCstructureTag("swamp_hut");
 
-    public static final TagKey<Potion> QUIVER_POTION_BLACKLIST = potionTag("quiver_blacklist");
     public static final TagKey<Potion> TIPPED_SPIKES_POTION_BLACKLIST = potionTag("tipped_spikes_blacklist");
 
 

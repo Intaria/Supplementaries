@@ -14,19 +14,7 @@ public class QuarkClientCompat {
 
     @Contract
     @ExpectPlatform
-    public static boolean canRenderBlackboardTooltip() {
-        throw new AssertionError();
-    }
-
-    @Contract
-    @ExpectPlatform
     public static boolean canRenderQuarkTooltip() {
         throw new AssertionError();
     }
-
-    @ExpectPlatform
-    public static void registerTooltipComponent(ClientPlatformHelper.TooltipComponentEvent event) {
-        throw new AssertionError();
-    }
-
 }

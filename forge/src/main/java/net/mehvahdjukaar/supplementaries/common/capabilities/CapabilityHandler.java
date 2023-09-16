@@ -5,8 +5,6 @@ import net.mehvahdjukaar.moonlight.api.block.IWashable;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
 import net.mehvahdjukaar.supplementaries.api.IAntiqueTextProvider;
 import net.mehvahdjukaar.supplementaries.api.ICatchableMob;
-import net.mehvahdjukaar.supplementaries.api.IQuiverEntity;
-import net.mehvahdjukaar.supplementaries.common.items.forge.QuiverItemImpl;
 import net.mehvahdjukaar.supplementaries.common.misc.AntiqueInkHelper;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
@@ -24,9 +22,7 @@ public class CapabilityHandler {
     public static final Capability<ICatchableMob> CATCHABLE_MOB_CAP = CapabilityManager.get(new CapabilityToken<>() {});
     public static final Capability<IAntiqueTextProvider> ANTIQUE_TEXT_CAP = CapabilityManager.get(new CapabilityToken<>() {});
     public static final Capability<IWashable> SOAP_WASHABLE_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
-    public static final Capability<QuiverItemImpl.QuiverCapability> QUIVER_ITEM_HANDLER = CapabilityManager.get(new CapabilityToken<>() {});
-    public static final Capability<IQuiverEntity> QUIVER_PLAYER = CapabilityManager.get(new CapabilityToken<>() {});
-
+    
 
     public static void register(RegisterCapabilitiesEvent event) {
         event.register(ICatchableMob.class);

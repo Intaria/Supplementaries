@@ -80,10 +80,6 @@ public class NetworkHandler {
                 PicklePacket.ClientBound.class, PicklePacket.ClientBound::new);
 
         CHANNEL.register(NetworkDir.PLAY_TO_SERVER,
-                ServerBoundCycleQuiverPacket.class, ServerBoundCycleQuiverPacket::new);
-
-
-        CHANNEL.register(NetworkDir.PLAY_TO_SERVER,
                 RequestConfigReloadPacket.class, RequestConfigReloadPacket::new);
 
     }

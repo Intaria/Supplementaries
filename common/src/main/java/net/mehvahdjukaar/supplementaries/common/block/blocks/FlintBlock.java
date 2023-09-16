@@ -3,8 +3,6 @@ package net.mehvahdjukaar.supplementaries.common.block.blocks;
 import net.mehvahdjukaar.moonlight.api.block.IPistonMotionReact;
 import net.mehvahdjukaar.supplementaries.common.network.ClientBoundParticlePacket;
 import net.mehvahdjukaar.supplementaries.common.network.NetworkHandler;
-import net.mehvahdjukaar.supplementaries.integration.CompatHandler;
-import net.mehvahdjukaar.supplementaries.integration.QuarkCompat;
 import net.mehvahdjukaar.supplementaries.reg.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -89,12 +87,6 @@ public class FlintBlock extends Block implements IPistonMotionReact {
                     if (canBlockCreateSpark(piston.getMovedState(), level, tilePos, dir)) {
                         ignitePosition(level, targetPos, true);
                     }
-                }
-            } else if (be != null && CompatHandler.QUARK) {
-                BlockState magnetState = QuarkCompat.getMagnetStateForFlintBlock(be, pistonDir);
-                if (magnetState != null && magnetState.is(oldNeghbor) &&
-                        canBlockCreateSpark(magnetState, level, tilePos, dir)) {
-                    ignitePosition(level, targetPos, true);
                 }
             }
         }

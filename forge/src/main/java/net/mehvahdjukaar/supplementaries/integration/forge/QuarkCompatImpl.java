@@ -9,8 +9,6 @@ import net.mehvahdjukaar.supplementaries.common.items.JarItem;
 import net.mehvahdjukaar.supplementaries.common.items.SackItem;
 import net.mehvahdjukaar.supplementaries.configs.CommonConfigs;
 import net.mehvahdjukaar.supplementaries.integration.CompatHandler;
-import net.mehvahdjukaar.supplementaries.integration.forge.quark.CartographersQuillItem;
-import net.mehvahdjukaar.supplementaries.integration.forge.quark.TaterInAJarBlock;
 import net.mehvahdjukaar.supplementaries.reg.ModRegistry;
 import net.mehvahdjukaar.supplementaries.reg.RegUtils;
 import net.minecraft.core.*;
@@ -53,9 +51,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 import vazkii.arl.util.ItemNBTHelper;
 import vazkii.arl.util.RegistryHelper;
-import vazkii.quark.addons.oddities.block.be.MagnetizedBlockBlockEntity;
-import vazkii.quark.addons.oddities.block.be.TinyPotatoBlockEntity;
-import vazkii.quark.addons.oddities.item.BackpackItem;
 import vazkii.quark.api.event.GatherAdvancementModifiersEvent;
 import vazkii.quark.base.module.ModuleLoader;
 import vazkii.quark.content.automation.module.JukeboxAutomationModule;
@@ -77,23 +72,6 @@ import java.util.*;
 import java.util.function.Supplier;
 
 public class QuarkCompatImpl {
-
-    public static final String TATER_IN_A_JAR_NAME = "tater_in_a_jar";
-
-    public static final Supplier<Block> TATER_IN_A_JAR;
-    public static final Supplier<BlockEntityType<TaterInAJarBlock.Tile>> TATER_IN_A_JAR_TILE;
-    public static final Supplier<Item> CARTOGRAPHERS_QUILL;
-
-    static {
-        TATER_IN_A_JAR = RegUtils.regWithItem(TATER_IN_A_JAR_NAME, TaterInAJarBlock::new,
-                new Item.Properties().tab(null).rarity(Rarity.UNCOMMON), 0);
-
-        TATER_IN_A_JAR_TILE = RegUtils.regTile(TATER_IN_A_JAR_NAME, () -> BlockEntityType.Builder.of(
-                TaterInAJarBlock.Tile::new, TATER_IN_A_JAR.get()).build(null));
-
-        CARTOGRAPHERS_QUILL = RegUtils.regItem("cartographers_quill", CartographersQuillItem::new);
-    }
-
     public static void init() {
         MinecraftForge.EVENT_BUS.register(QuarkCompatImpl.class);
     }
@@ -173,16 +151,6 @@ public class QuarkCompatImpl {
 
     public static float getEncumbermentFromBackpack(ItemStack stack) {
         float j = 0;
-        if (stack.getItem() instanceof BackpackItem) {
-            LazyOptional<IItemHandler> handlerOpt = stack.getCapability(ForgeCapabilities.ITEM_HANDLER, null);
-            if (handlerOpt.isPresent()) {
-                IItemHandler handler = handlerOpt.resolve().get();
-                for (int i = 0; i < handler.getSlots(); ++i) {
-                    ItemStack slotItem = handler.getStackInSlot(i);
-                    j += SackItem.getEncumber(slotItem);
-                }
-            }
-        }
         return j;
     }
 
@@ -247,23 +215,6 @@ public class QuarkCompatImpl {
     public static InteractionResult tryCaptureTater(JarItem item, UseOnContext context) {
         BlockPos pos = context.getClickedPos();
         Level world = context.getLevel();
-        if (world.getBlockEntity(pos) instanceof TinyPotatoBlockEntity te && te.getType() != TATER_IN_A_JAR_TILE.get()) {
-            ItemStack stack = context.getItemInHand();
-            CompoundTag com = stack.getTagElement("BlockEntityTag");
-            if (com == null || com.isEmpty()) {
-                if (!world.isClientSide) {
-                    Player player = context.getPlayer();
-                    item.playCatchSound(player);
-
-                    ItemStack returnItem = new ItemStack(TATER_IN_A_JAR.get());
-                    if (te.hasCustomName()) returnItem.setHoverName(te.getCustomName());
-                    Utils.swapItemNBT(player, context.getHand(), stack, returnItem);
-
-                    world.removeBlock(pos, false);
-                }
-                return InteractionResult.sidedSuccess(world.isClientSide);
-            }
-        }
         return InteractionResult.PASS;
     }
 
@@ -272,9 +223,6 @@ public class QuarkCompatImpl {
     }
 
     public static BlockState getMagnetStateForFlintBlock(BlockEntity be, Direction dir) {
-        if (be instanceof MagnetizedBlockBlockEntity magnet && dir == magnet.getFacing()) {
-            return magnet.getMagnetState();
-        }
         return null;
     }
 
@@ -319,7 +267,4 @@ public class QuarkCompatImpl {
         }
     }
 
-    public static ItemStack makeAdventurerQuill(ServerLevel serverLevel, TagKey<Structure> destination, int radius, boolean skipKnown, int zoom, MapDecoration.Type destinationType, @org.jetbrains.annotations.Nullable String name, int color) {
-       return CartographersQuillItem.forStructure(serverLevel, destination, radius, skipKnown,zoom, destinationType, name, color);
-    }
 }

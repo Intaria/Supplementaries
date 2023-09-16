@@ -4,16 +4,12 @@
   "package": "net.mehvahdjukaar.supplementaries.mixins.fabric",
   "compatibilityLevel": "JAVA_17",
   "client": [
-    "MouseScrollMixin",
     "SkullBlockRendererMixin"
   ],
   "mixins": [
-    "BowMixin",
     "BushBlockMixin",
     "CropBlockMixin",
-    "CrossbowMixin",
-    "MobBucketItemAccessor",
-    "PlayerProjectileMixin"
+    "MobBucketItemAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

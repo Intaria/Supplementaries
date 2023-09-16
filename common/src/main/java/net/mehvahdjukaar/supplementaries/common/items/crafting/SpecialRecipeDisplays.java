@@ -86,41 +86,6 @@ public class SpecialRecipeDisplays {
         return recipes;
     }
 
-    private static List<CraftingRecipe> createRopeArrowCreateRecipe() {
-        List<CraftingRecipe> recipes = new ArrayList<>();
-        String group = "supplementaries.rope_arrow";
-
-        ItemStack ropeArrow = new ItemStack(ModRegistry.ROPE_ARROW_ITEM.get());
-        ropeArrow.setDamageValue(ropeArrow.getMaxDamage() - 4);
-
-        Ingredient arrow = Ingredient.of(new ItemStack(Items.ARROW));
-        Ingredient rope = Ingredient.of(ModTags.ROPES);
-        NonNullList<Ingredient> inputs = NonNullList.of(Ingredient.EMPTY, arrow, rope, rope, rope, rope);
-        ResourceLocation id = new ResourceLocation(Supplementaries.MOD_ID, "rope_arrow_create_display");
-        ShapelessRecipe recipe = new ShapelessRecipe(id, group, ropeArrow, inputs);
-        recipes.add(recipe);
-
-        return recipes;
-    }
-
-    private static List<CraftingRecipe> createRopeArrowAddRecipe() {
-        List<CraftingRecipe> recipes = new ArrayList<>();
-        String group = "supplementaries.rope_arrow_add";
-
-        ItemStack ropeArrow = new ItemStack(ModRegistry.ROPE_ARROW_ITEM.get());
-        ItemStack ropeArrow2 = ropeArrow.copy();
-        ropeArrow2.setDamageValue(8);
-
-        Ingredient arrow = Ingredient.of(ropeArrow2);
-        Ingredient rope = Ingredient.of(ModTags.ROPES);
-        NonNullList<Ingredient> inputs = NonNullList.of(Ingredient.EMPTY, rope, rope, rope, rope, arrow, rope, rope, rope, rope);
-        ResourceLocation id = new ResourceLocation(Supplementaries.MOD_ID, "rope_arrow_add_display");
-        ShapelessRecipe recipe = new ShapelessRecipe(id, group, ropeArrow, inputs);
-        recipes.add(recipe);
-
-        return recipes;
-    }
-
     private static List<CraftingRecipe> createSoapCleanRecipe() {
         List<CraftingRecipe> recipes = new ArrayList<>();
         String group = "supplementaries.soap";
@@ -208,15 +173,15 @@ public class SpecialRecipeDisplays {
         List<CraftingRecipe> recipes = new ArrayList<>();
         String group = "bubble_blower";
 
-        ItemStack ropeArrow = new ItemStack(ModRegistry.BUBBLE_BLOWER.get());
-        ItemStack empty = ropeArrow.copy();
+        ItemStack bubbleBlower = new ItemStack(ModRegistry.BUBBLE_BLOWER.get());
+        ItemStack empty = bubbleBlower.copy();
         empty.setDamageValue(empty.getMaxDamage());
 
         Ingredient base = Ingredient.of(empty);
         Ingredient soap = Ingredient.of(ModRegistry.SOAP.get());
         NonNullList<Ingredient> inputs = NonNullList.of(Ingredient.EMPTY, base, soap);
         ResourceLocation id = new ResourceLocation(Supplementaries.MOD_ID, "bubble_blower_charge_display");
-        ShapelessRecipe recipe = new ShapelessRecipe(id, group, ropeArrow, inputs);
+        ShapelessRecipe recipe = new ShapelessRecipe(id, group, bubbleBlower, inputs);
         recipes.add(recipe);
 
         return recipes;
@@ -385,10 +350,6 @@ public class SpecialRecipeDisplays {
                 registry.accept(createBlackboardDuplicate());
             }
         } else if (category == RecipeBookCategories.CRAFTING_EQUIPMENT) {
-            if (CommonConfigs.Tools.ROPE_ARROW_ENABLED.get()) {
-                registry.accept(createRopeArrowCreateRecipe());
-                registry.accept(createRopeArrowAddRecipe());
-            }
             if (CommonConfigs.Tools.BUBBLE_BLOWER_ENABLED.get()) {
                 registry.accept(createBubbleBlowerChargeRecipe());
             }

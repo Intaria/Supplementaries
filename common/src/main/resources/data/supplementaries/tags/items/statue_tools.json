@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    {"id":"supplementaries:wrench","required":false},
     {"id":"create:wrench","required":false}
   ]
 }

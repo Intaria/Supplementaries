@@ -94,8 +94,6 @@ public class BookPileBlockTile extends ItemDisplayTile {
         for (int i = 0; i < 4; i++) {
             Item item = this.getItem(i).getItem();
             if (BookPileBlock.isNormalBook(item)) this.enchantPower += CommonConfigs.Tweaks.BOOK_POWER.get() / 4f;
-            else if (BookPileBlock.isQuarkTome(item))
-                this.enchantPower += (CommonConfigs.Tweaks.BOOK_POWER.get() / 4f) * 2;
             else if (BookPileBlock.isEnchantedBook(item))
                 this.enchantPower += CommonConfigs.Tweaks.ENCHANTED_BOOK_POWER.get() / 4f;
         }
@@ -185,7 +183,7 @@ public class BookPileBlockTile extends ItemDisplayTile {
             } else {
                 this.color = null;
 
-                this.material = BookPileBlock.isQuarkTome(item) ? ModMaterials.BOOK_TOME_MATERIAL : ModMaterials.BOOK_ENCHANTED_MATERIAL;
+                this.material = ModMaterials.BOOK_ENCHANTED_MATERIAL;
                 this.isEnchanted = true;
             }
         }

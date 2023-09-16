@@ -15,7 +15,6 @@ public class CauldronBehaviorsManager {
         for (var item : ModRegistry.FLAGS.values()) {
             CauldronInteraction.WATER.put(item.get().asItem(), CauldronInteraction.BANNER);
         }
-        CauldronInteraction.WATER.put(ModRegistry.QUIVER_ITEM.get(), CauldronInteraction.DYED_ITEM);
 
         var atlas = Registry.ITEM.getOptional(new ResourceLocation("map_atlases:atlas"));
         atlas.ifPresent(item -> CauldronInteraction.WATER.put(item, MAP_INTERACTION));

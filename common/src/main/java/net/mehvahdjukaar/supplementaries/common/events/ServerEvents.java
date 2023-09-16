@@ -13,7 +13,6 @@ import net.mehvahdjukaar.supplementaries.common.entities.goals.EvokerRedMerchant
 import net.mehvahdjukaar.supplementaries.common.events.overrides.InteractEventOverrideHandler;
 import net.mehvahdjukaar.supplementaries.common.items.AbstractMobContainerItem;
 import net.mehvahdjukaar.supplementaries.common.items.FluteItem;
-import net.mehvahdjukaar.supplementaries.common.items.QuiverItem;
 import net.mehvahdjukaar.supplementaries.common.items.SoapItem;
 import net.mehvahdjukaar.supplementaries.common.misc.globe.GlobeData;
 import net.mehvahdjukaar.supplementaries.common.misc.mob_container.CapturedMobHandler;
@@ -174,57 +173,4 @@ public class ServerEvents {
     public static void injectLootTables(LootTables lootManager, ResourceLocation name, Consumer<LootPool.Builder> builder) {
         LootTablesInjects.injectLootTables(name, builder);
     }
-
-
-    //TODO: fabric
-    @EventCalled
-    public static boolean onItemPickup(ItemEntity itemEntity, Player player) {
-        ItemStack stack = itemEntity.getItem();
-        if (!itemEntity.hasPickUpDelay() && CommonConfigs.Tools.QUIVER_PICKUP.get() &&
-                stack.getItem() instanceof ArrowItem &&
-                (itemEntity.getOwner() == null ||
-                        SuppPlatformStuff.getItemLifeSpawn(itemEntity) - itemEntity.getAge() <= 200 ||
-                        itemEntity.getOwner().equals(player.getUUID()))
-        ) {
-            ItemStack old = stack.copy();
-            if (takeArrow(itemEntity, player, stack)){
-                SuppPlatformStuff.onItemPickup(player, itemEntity, old);
-                player.onItemPickup(itemEntity);
-                player.awardStat(Stats.ITEM_PICKED_UP.get(stack.getItem()), old.getCount() - stack.getCount());
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @EventCalled
-    public static boolean onArrowPickup(AbstractArrow arrow, Player player, Supplier<ItemStack> pickup) {
-        if (CommonConfigs.Tools.QUIVER_PICKUP.get()){
-            ItemStack stack = pickup.get();
-            return takeArrow(arrow, player, stack);
-        }
-        return false;
-    }
-
-    private static boolean takeArrow(Entity itemEntity, Player player, ItemStack stack) {
-        ItemStack quiverItem = QuiverItem.getQuiver(player);
-        if (quiverItem != null) {
-            var data = QuiverItem.getQuiverData(quiverItem);
-            if (data != null) {
-                ItemStack copy = stack.copy();
-                int count = copy.getCount();
-                int newCount = data.tryAdding(copy, true).getCount();
-                if (count != newCount) {
-                    player.take(itemEntity, count);
-                    stack.setCount(newCount);
-                    if (stack.isEmpty()) {
-                        itemEntity.discard();
-                    }
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
 }

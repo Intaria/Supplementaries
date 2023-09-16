@@ -57,7 +57,6 @@ public class SuppPlatformStuff {
 
     @ExpectPlatform
     public static void onItemPickup(Player player, ItemEntity itemEntity, ItemStack copy) {
-        throw new AssertionError();
     }
 
     @ExpectPlatform

@@ -22,10 +22,6 @@ public class ModRecipes {
             "blackboard_duplicate", BlackboardDuplicateRecipe::new);
     public static final Supplier<RecipeSerializer<TippedBambooSpikesRecipe>> BAMBOO_SPIKES_TIPPED = reg(
             "bamboo_spikes_tipped", TippedBambooSpikesRecipe::new);
-    public static final Supplier<RecipeSerializer<RopeArrowCreateRecipe>> ROPE_ARROW_CREATE = reg(
-            "rope_arrow_create", RopeArrowCreateRecipe::new);
-    public static final Supplier<RecipeSerializer<RopeArrowAddRecipe>> ROPE_ARROW_ADD = reg(
-            "rope_arrow_add", RopeArrowAddRecipe::new);
     public static final Supplier<RecipeSerializer<RepairBubbleBlowerRecipe>> BUBBLE_BLOWER_REPAIR = reg(
             "bubble_blower_charge", RepairBubbleBlowerRecipe::new);
     public static final Supplier<RecipeSerializer<FlagFromBannerRecipe>> FLAG_FROM_BANNER = reg(

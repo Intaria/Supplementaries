@@ -58,12 +58,6 @@ public class ModVillagerTrades {
         trades.add(new RocketForEmeraldTrade(3, 1, 3, 8));
         trades.add(itemForEmeraldTrade(Items.TNT, 1, 4, 8));
 
-        if (CommonConfigs.Tools.ROPE_ARROW_ENABLED.get()) {
-            Item i = ModRegistry.ROPE_ARROW_ITEM.get();
-            ItemStack stack = new ItemStack(i);
-            stack.setDamageValue(Math.max(0, stack.getMaxDamage() - 16));
-            trades.add(itemForEmeraldTrade(stack, 4, 6));
-        }
         if (CommonConfigs.Tools.BOMB_ENABLED.get()) {
             trades.add(itemForEmeraldTrade(ModRegistry.BOMB_BLUE_ITEM.get(), 1, ModRegistry.BOMB_ITEM.get(), 1, 40, 3));
 

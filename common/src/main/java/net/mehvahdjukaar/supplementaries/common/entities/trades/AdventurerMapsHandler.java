@@ -6,16 +6,12 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.JsonOps;
-import net.mehvahdjukaar.moonlight.api.map.MapDecorationRegistry;
 import net.mehvahdjukaar.moonlight.api.map.MapHelper;
-import net.mehvahdjukaar.moonlight.api.map.type.MapDecorationType;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
 import net.mehvahdjukaar.supplementaries.common.misc.map_markers.ModMapMarkers;
 import net.mehvahdjukaar.supplementaries.common.worldgen.StructureLocator;
 import net.mehvahdjukaar.supplementaries.configs.CommonConfigs;
-import net.mehvahdjukaar.supplementaries.integration.CompatHandler;
-import net.mehvahdjukaar.supplementaries.integration.QuarkCompat;
 import net.mehvahdjukaar.supplementaries.reg.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -184,12 +180,6 @@ public class AdventurerMapsHandler extends SimpleJsonResourceReloadListener {
     private static ItemStack createMapOrQuill(BlockPos pos, ServerLevel serverLevel,@Nullable TagKey<Structure> tag,
                                               int zoom, @Nullable ResourceLocation mapMarker,
                                               @Nullable String name, int color) {
-        if (CompatHandler.QUARK && CommonConfigs.Tweaks.QUARK_QUILL.get()) {
-            var item = QuarkCompat.makeAdventurerQuill(serverLevel, tag,
-                    SEARCH_RADIUS, true, zoom, null, name, color);
-            item.setHoverName(Component.translatable(name));
-            return item;
-        }
 
         if (!serverLevel.getServer().getWorldData().worldGenSettings().generateStructures())
             return ItemStack.EMPTY;

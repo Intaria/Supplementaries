@@ -122,15 +122,6 @@ public class ClientDynamicResourcesGenerator extends DynClientResourcesProvider 
 
     @Override
     public void regenerateDynamicAssets(ResourceManager manager) {
-
-        if (CommonConfigs.Tools.ROPE_ARROW_ENABLED.get()) {
-            RPUtils.addCrossbowModel(manager, this.dynamicPack, e -> {
-                e.add(new ItemOverride(new ResourceLocation("item/crossbow_rope_arrow"),
-                        List.of(new ItemOverride.Predicate(new ResourceLocation("charged"), 1f),
-                                new ItemOverride.Predicate(Supplementaries.res("rope_arrow"), 1f))));
-            });
-        }
-
         if (CommonConfigs.Tools.ANTIQUE_INK_ENABLED.get()) {
             addModelOverride(manager, this.dynamicPack, new ResourceLocation("written_book"), e -> {
                 e.add(new ItemOverride(new ResourceLocation("item/written_book_tattered"),

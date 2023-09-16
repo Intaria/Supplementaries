@@ -17,22 +17,18 @@ import net.mehvahdjukaar.supplementaries.client.particles.*;
 import net.mehvahdjukaar.supplementaries.client.renderers.color.*;
 import net.mehvahdjukaar.supplementaries.client.renderers.entities.PearlMarkerRenderer;
 import net.mehvahdjukaar.supplementaries.client.renderers.entities.RedMerchantRenderer;
-import net.mehvahdjukaar.supplementaries.client.renderers.entities.RopeArrowRenderer;
 import net.mehvahdjukaar.supplementaries.client.renderers.entities.funny.JarredModel;
 import net.mehvahdjukaar.supplementaries.client.renderers.entities.funny.PickleModel;
 import net.mehvahdjukaar.supplementaries.client.renderers.entities.models.SkullCandleOverlayModel;
-import net.mehvahdjukaar.supplementaries.client.renderers.items.QuiverItemOverlayRenderer;
 import net.mehvahdjukaar.supplementaries.client.renderers.tiles.*;
 import net.mehvahdjukaar.supplementaries.client.screens.*;
 import net.mehvahdjukaar.supplementaries.client.tooltip.BannerPatternTooltipComponent;
 import net.mehvahdjukaar.supplementaries.client.tooltip.BlackboardTooltipComponent;
 import net.mehvahdjukaar.supplementaries.client.tooltip.PaintingTooltipComponent;
-import net.mehvahdjukaar.supplementaries.client.tooltip.QuiverTooltipComponent;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.GlobeBlockTile;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.TrappedPresentBlockTile;
 import net.mehvahdjukaar.supplementaries.common.items.tooltip_components.BannerPatternTooltip;
 import net.mehvahdjukaar.supplementaries.common.items.tooltip_components.PaintingTooltip;
-import net.mehvahdjukaar.supplementaries.common.items.tooltip_components.QuiverTooltip;
 import net.mehvahdjukaar.supplementaries.common.misc.AntiqueInkHelper;
 import net.mehvahdjukaar.supplementaries.common.misc.map_markers.client.ModMapMarkersClient;
 import net.mehvahdjukaar.supplementaries.common.utils.Credits;
@@ -93,8 +89,6 @@ public class ClientRegistry {
     //special models locations
     public static final ResourceLocation FLUTE_3D_MODEL = Supplementaries.res("item/flute_in_hand");
     public static final ResourceLocation FLUTE_2D_MODEL = Supplementaries.res("item/flute_gui");
-    public static final ResourceLocation QUIVER_3D_MODEL = Supplementaries.res("item/quiver_in_hand_dyed");
-    public static final ResourceLocation QUIVER_2D_MODEL = Supplementaries.res("item/quiver_gui_dyed");
 
     public static final ResourceLocation BELL_ROPE = Supplementaries.res("block/bell_rope");
     public static final ResourceLocation BELL_CHAIN = Supplementaries.res("block/bell_chain");
@@ -102,8 +96,6 @@ public class ClientRegistry {
     public static final ResourceLocation WIND_VANE_BLOCK_MODEL = Supplementaries.res("block/wind_vane_up");
     public static final ResourceLocation BLACKBOARD_FRAME = Supplementaries.res("block/blackboard_frame");
     public static final Map<WoodType, ResourceLocation> HANGING_SIGNS_BLOCK_MODELS = new IdentityHashMap<>();
-
-    public static KeyMapping QUIVER_KEYBIND = null;
 
     private static ModelLayerLocation loc(String name) {
         return new ModelLayerLocation(Supplementaries.res(name), name);
@@ -122,8 +114,6 @@ public class ClientRegistry {
         ClientPlatformHelper.addSpecialModelRegistration(ClientRegistry::registerSpecialModels);
         ClientPlatformHelper.addTooltipComponentRegistration(ClientRegistry::registerTooltipComponent);
         ClientPlatformHelper.addModelLoaderRegistration(ClientRegistry::registerModelLoaders);
-        ClientPlatformHelper.addItemDecoratorsRegistration(ClientRegistry::registerItemDecorators);
-        ClientPlatformHelper.addKeyBindRegistration(ClientRegistry::registerKeyBinds);
         ClientPlatformHelper.addAtlasTextureCallback(TextureAtlas.LOCATION_BLOCKS, e -> {
             ModTextures.getTexturesForBlockAtlas().forEach(e::addSprite);
         });
@@ -213,10 +203,6 @@ public class ClientRegistry {
         ClientPlatformHelper.registerRenderType(ModRegistry.CRYSTAL_DISPLAY.get(), RenderType.cutout());
         ModRegistry.CANDLE_HOLDERS.values().forEach(c -> ClientPlatformHelper.registerRenderType(c.get(), RenderType.cutout()));
 
-
-        ClientPlatformHelper.registerItemProperty(Items.CROSSBOW, Supplementaries.res("rope_arrow"),
-                new CrossbowProperty(ModRegistry.ROPE_ARROW_ITEM.get()));
-
         ClampedItemPropertyFunction antiqueProp = (itemStack, clientLevel, livingEntity, i) -> AntiqueInkHelper.hasAntiqueInk(itemStack) ? 1 : 0;
         ClientPlatformHelper.registerItemProperty(Items.WRITTEN_BOOK, Supplementaries.res("antique_ink"), antiqueProp);
         ClientPlatformHelper.registerItemProperty(Items.FILLED_MAP, Supplementaries.res("antique_ink"), antiqueProp);
@@ -233,9 +219,6 @@ public class ClientRegistry {
 
         ClientPlatformHelper.registerItemProperty(ModRegistry.CANDY_ITEM.get(), Supplementaries.res("wrapping"),
                 (stack, world, entity, s) -> MiscUtils.FESTIVITY.getCandyWrappingIndex());
-
-        ClientPlatformHelper.registerItemProperty(ModRegistry.QUIVER_ITEM.get(), Supplementaries.res("dyed"),
-                (stack, world, entity, s) -> ((DyeableLeatherItem) stack.getItem()).hasCustomColor(stack) ? 1 : 0);
 
         ClientPlatformHelper.registerItemProperty(ModRegistry.GLOBE_ITEM.get(), Supplementaries.res("type"),
                 new GlobeProperty());
@@ -289,17 +272,6 @@ public class ClientRegistry {
     }
 
     @EventCalled
-    private static void registerKeyBinds(ClientPlatformHelper.KeyBindEvent event) {
-        if (PlatformHelper.getPlatform().isForge()) {
-            QUIVER_KEYBIND = new KeyMapping("supplementaries.keybind.quiver",
-                    InputConstants.Type.KEYSYM,
-                    InputConstants.getKey("key.keyboard.v").getValue(),
-                    "supplementaries.gui.controls");
-            event.register(QUIVER_KEYBIND);
-        }
-    }
-
-    @EventCalled
     private static void registerParticles(ClientPlatformHelper.ParticleEvent event) {
         event.register(ModParticles.SPEAKER_SOUND.get(), SpeakerSoundParticle.Factory::new);
         event.register(ModParticles.GREEN_FLAME.get(), FlameParticle.Provider::new);
@@ -341,7 +313,6 @@ public class ClientRegistry {
         event.register(ModEntities.THROWABLE_BRICK.get(), context -> new ThrownItemRenderer<>(context, 1, false));
         event.register(ModEntities.DISPENSER_MINECART.get(), c -> new MinecartRenderer<>(c, ModelLayers.HOPPER_MINECART));
         event.register(ModEntities.RED_MERCHANT.get(), RedMerchantRenderer::new);
-        event.register(ModEntities.ROPE_ARROW.get(), RopeArrowRenderer::new);
         event.register(ModEntities.FALLING_URN.get(), FallingBlockRenderer::new);
         event.register(ModEntities.FALLING_ASH.get(), FallingBlockRendererGeneric::new);
         event.register(ModEntities.FALLING_LANTERN.get(), FallingBlockRenderer::new);
@@ -399,8 +370,6 @@ public class ClientRegistry {
         if (PlatformHelper.getPlatform().isFabric()) {
             event.register(FLUTE_3D_MODEL);
             event.register(FLUTE_2D_MODEL);
-            event.register(QUIVER_2D_MODEL);
-            event.register(QUIVER_3D_MODEL);
         }
     }
 
@@ -417,17 +386,10 @@ public class ClientRegistry {
     }
 
     @EventCalled
-    private static void registerItemDecorators(ClientPlatformHelper.ItemDecoratorEvent event) {
-        event.register(ModRegistry.QUIVER_ITEM.get(), new QuiverItemOverlayRenderer());
-    }
-
-    @EventCalled
     private static void registerTooltipComponent(ClientPlatformHelper.TooltipComponentEvent event) {
         event.register(BlackboardManager.Key.class, BlackboardTooltipComponent::new);
-        event.register(QuiverTooltip.class, QuiverTooltipComponent::new);
         event.register(BannerPatternTooltip.class, BannerPatternTooltipComponent::new);
         event.register(PaintingTooltip.class, PaintingTooltipComponent::new);
-        if (CompatHandler.QUARK) QuarkClientCompat.registerTooltipComponent(event);
     }
 
     @EventCalled
@@ -448,10 +410,6 @@ public class ClientRegistry {
         event.register(new TippedSpikesColor(), ModRegistry.BAMBOO_SPIKES_TIPPED_ITEM.get());
         event.register(new DefaultWaterColor(), ModRegistry.JAR_BOAT.get());
         event.register(new CrossbowColor(), Items.CROSSBOW);
-        event.register((itemStack, i) -> i != 1 ? -1 : ((DyeableLeatherItem) itemStack.getItem()).getColor(itemStack),
-                ModRegistry.QUIVER_ITEM.get());
-
-
     }
 
     @EventCalled

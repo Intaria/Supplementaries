@@ -32,7 +32,6 @@ public class ModConfigScreen extends CustomConfigScreen {
         addIcon("particles", Items.BLAZE_POWDER);
         addIcon("items", Items.AMETHYST_SHARD);
         addIcon("spawns", Items.TURTLE_EGG);
-        addIcon("tweaks", ModRegistry.WRENCH.get());
         addIcon("turn particles", ModRegistry.TURN_TABLE.get());
         addIcon("captured mobs", ModRegistry.CAGE_ITEM.get());
         addIcon("flag", ModRegistry.FLAGS.get(DyeColor.WHITE).get());

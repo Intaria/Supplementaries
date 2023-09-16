@@ -54,29 +54,6 @@ public class BlockUtil {
     //rotation stuff
     //returns rotation direction axis which might be different that the clicked face
 
-    /**
-     * A more powerful rotate method. Not only rotates the block itself but tries to rotate its connected ones aswell like chests
-     * If it fails it will also try to rotate using the Y axis. Used by wrench
-     *
-     * @return Optional face on which it was rotated
-     */
-    public static Optional<Direction> tryRotatingBlockAndConnected(Direction face, boolean ccw, BlockPos targetPos, Level level, Vec3 hit) {
-        BlockState state = level.getBlockState(targetPos);
-        if (state.getBlock() instanceof IRotatable rotatable) {
-            return rotatable.rotateOverAxis(state, level, targetPos, ccw ? Rotation.COUNTERCLOCKWISE_90 : Rotation.CLOCKWISE_90, face, hit);
-        }
-        Optional<Direction> special = tryRotatingSpecial(face, ccw, targetPos, level, state, hit);
-        if (special.isPresent()) return special;
-
-        var ret = tryRotatingBlock(face, ccw, targetPos, level, state, hit);
-
-        //try again using up direction if previously failed. Doing this cause many people dont even realize you have to click on the axis you want to rotate
-        if (ret.isEmpty()) {
-            ret = tryRotatingBlock(Direction.UP, ccw, targetPos, level, level.getBlockState(targetPos), hit);
-        }
-        return ret;
-    }
-
     public static Optional<Direction> tryRotatingBlock(Direction face, boolean ccw, BlockPos targetPos, Level level, Vec3 hit) {
         return tryRotatingBlock(face, ccw, targetPos, level, level.getBlockState(targetPos), hit);
     }

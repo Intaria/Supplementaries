@@ -682,20 +682,6 @@ public class CommonConfigs {
 
             builder.push("tools");
 
-            builder.push("quiver");
-            QUIVER_ENABLED = feature(builder);
-            QUIVER_PREVENTS_SLOWS = builder.comment("Allows using a quiver without being slowed down")
-                    .define("use_without_slow", true);
-            QUIVER_SLOTS = builder.comment("Arrow stacks that can fit inside a quiver. Requires reboot")
-                    .define("slots", 6, 1, 9);
-            QUIVER_SKELETON_SPAWN = builder.comment("Increase this number to alter the probability for a Skeleton with quiver to spawn. Note that this also depends on local difficulty so you wont ever see them on easy and very rarely on normal. Similar logic to equipment")
-                    .define("quiver_skeleton_spawn_chance", 0.025d, 0, 1);
-            QUIVER_CURIO_ONLY = builder.comment("Allows quiver to only be used when in offhand or in curio slot")
-                    .define("only_works_in_curio", false);
-            QUIVER_PICKUP = builder.comment("Arrows you pickup will try to go in a quiver if available provided it has some arrow of the same type")
-                    .define("quiver_pickup", true);
-            builder.pop();
-
             builder.push("bubble_blower");
             BUBBLE_BLOWER_ENABLED = feature(builder);
             BUBBLE_BLOWER_COST = builder.comment("Amount of soap consumed per bubble block placed")
@@ -711,20 +697,6 @@ public class CommonConfigs {
 
             builder.pop();
 
-            builder.push("wrench");
-            WRENCH_ENABLED = feature(builder);
-            WRENCH_BYPASS = builder.comment("Allows wrenches to bypass a block interaction action prioritizing their own when on said hand")
-                    .define("bypass_when_on", CommonConfigs.Hands.MAIN_HAND);
-            builder.pop();
-
-            //rope arrow
-            builder.push("rope_arrow");
-            ROPE_ARROW_ENABLED = feature(builder);
-            ROPE_ARROW_CAPACITY = builder.comment("Max number of robe items allowed to be stored inside a rope arrow")
-                    .define("capacity", 32, 1, 256);
-            ROPE_ARROW_CROSSBOW = builder.comment("Makes rope arrows exclusive to crossbows")
-                    .define("exclusive_to_crossbows", false);
-            builder.pop();
             //flute
             builder.push("flute");
             FLUTE_ENABLED = feature(builder);
@@ -766,16 +738,6 @@ public class CommonConfigs {
         public static final Supplier<Boolean> BUBBLE_BREAK;
         public static final Supplier<Boolean> BUBBLE_FEATHER_FALLING;
 
-        public static final Supplier<Boolean> QUIVER_ENABLED;
-        public static final Supplier<Boolean> QUIVER_PREVENTS_SLOWS;
-        public static final Supplier<Integer> QUIVER_SLOTS;
-        public static final Supplier<Double> QUIVER_SKELETON_SPAWN;
-        public static final Supplier<Boolean> QUIVER_CURIO_ONLY;
-        public static final Supplier<Boolean> QUIVER_PICKUP;
-
-        public static final Supplier<Boolean> WRENCH_ENABLED;
-        public static final Supplier<CommonConfigs.Hands> WRENCH_BYPASS;
-
         public static final Supplier<Boolean> BOMB_ENABLED;
         public static final Supplier<Double> BOMB_RADIUS;
         public static final Supplier<Integer> BOMB_FUSE;
@@ -786,10 +748,6 @@ public class CommonConfigs {
         public static final Supplier<Boolean> FLUTE_ENABLED;
         public static final Supplier<Integer> FLUTE_RADIUS;
         public static final Supplier<Integer> FLUTE_DISTANCE;
-
-        public static final Supplier<Boolean> ROPE_ARROW_ENABLED;
-        public static final Supplier<Integer> ROPE_ARROW_CAPACITY;
-        public static final Supplier<Boolean> ROPE_ARROW_CROSSBOW;
 
         public static final Supplier<Boolean> ANTIQUE_INK_ENABLED;
 
