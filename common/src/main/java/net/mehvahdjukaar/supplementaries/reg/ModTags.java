@@ -69,7 +69,6 @@ public class ModTags {
     public static final TagKey<EntityType<?>> URN_SPAWN = entityTag("urn_spawn");
     public static final TagKey<EntityType<?>> ASH_BLACKLIST = entityTag("ash_blacklist"); //TODO
     //features
-    public static final TagKey<Structure> WAY_SIGN_DESTINATIONS = structureTag("way_sign_destinations");
     public static final TagKey<Structure> ADVENTURE_MAP_DESTINATIONS = structureTag("adventure_map_destinations");
     public static final TagKey<Structure> BASTION_REMNANT = MCstructureTag("bastion_remnant");
     public static final TagKey<Structure> DESERT_PYRAMID = MCstructureTag("desert_pyramid");
@@ -83,7 +82,6 @@ public class ModTags {
 
 
     //biomes
-    public static final TagKey<Biome> HAS_WAY_SIGNS = biomeTag("has_way_signs");
     public static final TagKey<Biome> HAS_CAVE_URNS = biomeTag("has_cave_urns");
     public static final TagKey<Biome> HAS_WILD_FLAX = biomeTag("has_wild_flax");
     public static final TagKey<Biome> HAS_BASALT_ASH = biomeTag("has_basalt_ash");

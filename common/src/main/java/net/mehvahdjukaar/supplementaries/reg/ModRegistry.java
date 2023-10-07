@@ -767,12 +767,15 @@ public class ModRegistry {
     public static final Supplier<BlockPlacerItem> BLOCK_PLACER = regItem("placeable_item", () -> new BlockPlacerItem(STRUCTURE_TEMP.get(),
             (new Item.Properties()).tab(null)));
 
+/*
     public static final Supplier<Block> BLOCK_GENERATOR = regBlock(BLOCK_GENERATOR_NAME, () -> new BlockGeneratorBlock(
             BlockBehaviour.Properties.copy(STRUCTURE_TEMP.get()).lightLevel((s) -> 14)));
+
 
     public static final Supplier<BlockEntityType<BlockGeneratorBlockTile>> BLOCK_GENERATOR_TILE = regTile(
             BLOCK_GENERATOR_NAME, () -> PlatformHelper.newBlockEntityType(
                     BlockGeneratorBlockTile::new, BLOCK_GENERATOR.get()));
+*/
 
     //sticks
     public static final Supplier<Block> STICK_BLOCK = regPlaceableItem(STICK_NAME, () -> new StickBlock(

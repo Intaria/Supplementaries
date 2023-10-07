@@ -22,17 +22,10 @@ public class ModWorldgenRegistry {
     public static final Supplier<StructurePieceType> MINESHAFT_ELEVATOR = RegHelper.register(
             Supplementaries.res("mineshaft_elevator"), () -> MineshaftElevatorPiece::new, Registry.STRUCTURE_PIECE);
 
-    //structure types
-
-    public static final Supplier<StructureType<WaySignStructure>> WAY_SIGN = RegHelper.registerStructure(
-            Supplementaries.res("way_sign"), WaySignStructure.Type::new);
 
     //feature types
 
     //feature spawned by the structure
-    public static final Supplier<Feature<RoadSignFeature.Config>> ROAD_SIGN_FEATURE = RegHelper.registerFeature(
-            Supplementaries.res("road_sign_feature"), () -> new RoadSignFeature(RoadSignFeature.Config.CODEC));
-
     public static final Supplier<Feature<BasaltAshFeature.Config>> BASALT_ASH_FEATURE = RegHelper.registerFeature(
             Supplementaries.res("surface_scan_random_patch"), () -> new BasaltAshFeature(BasaltAshFeature.Config.CODEC));
 

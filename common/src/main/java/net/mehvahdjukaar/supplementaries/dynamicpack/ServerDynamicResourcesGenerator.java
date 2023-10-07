@@ -71,15 +71,6 @@ public class ServerDynamicResourcesGenerator extends DynServerResourcesProvider 
             addHangingSignRecipes(manager);
         }
 
-        //way signs tag
-        {
-            SimpleTagBuilder builder = SimpleTagBuilder.of(ModTags.HAS_WAY_SIGNS);
-            if (CommonConfigs.Building.WAY_SIGN_ENABLED.get() && CommonConfigs.Building.SIGN_POST_ENABLED.get()) {
-                builder.addTag(BiomeTags.IS_OVERWORLD);
-            }
-            dynamicPack.addTag(builder, Registry.BIOME_REGISTRY);
-        }
-
         //cave urns tag
 
         {
