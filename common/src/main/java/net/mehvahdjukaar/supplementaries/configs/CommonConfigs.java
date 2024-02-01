@@ -470,7 +470,7 @@ public class CommonConfigs {
             JAR_AUTO_DETECT = builder.comment("Dynamically allows all small mobs inside jars depending on their hitbox size. Tinted jars can accept hostile mbos too")
                     .define("jar_auto_detect", false);
             JAR_CAPTURE = builder.comment("Allow Jars to capture small mobs")
-                    .define("jar_capture", true);
+                    .define("jar_capture", false);
             JAR_COOKIES = builder.comment("Allow Jars to hold cookies")
                     .define("jar_cookies", true);
             JAR_LIQUIDS = builder.comment("Allow Jars to hold liquids from bottles, buckets and bowls")
