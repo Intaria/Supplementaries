@@ -2,7 +2,6 @@ package net.mehvahdjukaar.supplementaries.common.entities;
 
 import net.mehvahdjukaar.moonlight.api.entity.ImprovedProjectileEntity;
 import net.mehvahdjukaar.moonlight.api.platform.PlatformHelper;
-import net.mehvahdjukaar.supplementaries.common.block.blocks.JarBlock;
 import net.mehvahdjukaar.supplementaries.integration.CompatHandler;
 import net.mehvahdjukaar.supplementaries.integration.FlanCompat;
 import net.mehvahdjukaar.supplementaries.reg.ModEntities;
@@ -85,11 +84,7 @@ public class ThrowableBrickEntity extends ImprovedProjectileEntity {
             }
             if (!(entity instanceof Mob) || this.level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING) || PlatformHelper.isMobGriefingOn(this.level, this)) {
 
-                if (level.getBlockState(pos).getBlock() instanceof JarBlock) {
-                    level.destroyBlock(pos, true);
-                } else {
-                    breakGlass(pos, 6);
-                }
+                breakGlass(pos, 6);
             }
         }
     }

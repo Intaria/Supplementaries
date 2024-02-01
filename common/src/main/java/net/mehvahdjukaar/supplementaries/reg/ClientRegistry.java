@@ -146,7 +146,6 @@ public class ClientRegistry {
 
         ClientPlatformHelper.registerRenderType(ModRegistry.WIND_VANE.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModRegistry.CRANK.get(), RenderType.cutout());
-        ClientPlatformHelper.registerRenderType(ModRegistry.JAR.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModRegistry.FAUCET.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModRegistry.SIGN_POST.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModRegistry.WALL_LANTERN.get(), RenderType.cutout());
@@ -312,7 +311,6 @@ public class ClientRegistry {
         event.register(ModRegistry.PEDESTAL_TILE.get(), PedestalBlockTileRenderer::new);
         event.register(ModRegistry.WIND_VANE_TILE.get(), WindVaneBlockTileRenderer::new);
         event.register(ModRegistry.NOTICE_BOARD_TILE.get(), NoticeBoardBlockTileRenderer::new);
-        event.register(ModRegistry.JAR_TILE.get(), JarBlockTileRenderer::new);
         event.register(ModRegistry.FAUCET_TILE.get(), FaucetBlockTileRenderer::new);
         event.register(ModRegistry.SPRING_LAUNCHER_ARM_TILE.get(), SpringLauncherArmBlockTileRenderer::new);
         event.register(ModRegistry.SIGN_POST_TILE.get(), SignPostBlockTileRenderer::new);

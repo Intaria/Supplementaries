@@ -129,10 +129,6 @@ public class CreateCompatImpl {
             AllDisplayBehaviours.assignBlockEntity(itemDisplaySource, ModRegistry.STATUE_TILE.get());
             AllDisplayBehaviours.assignBlockEntity(itemDisplaySource, ModRegistry.HOURGLASS_TILE.get());
 
-            AllDisplayBehaviours.assignBlockEntity(AllDisplayBehaviours.register(
-                    Supplementaries.res("fluid_tank_source"),
-                    new FluidFillLevelDisplaySource()), ModRegistry.JAR_TILE.get());
-
         } catch (Exception e) {
             Supplementaries.LOGGER.warn("failed to register supplementaries create behaviors: " + e);
         }
@@ -147,7 +143,6 @@ public class CreateCompatImpl {
         PonderRegistry.TAGS.forTag(AllPonderTags.DISPLAY_SOURCES).add(ModRegistry.NOTICE_BOARD.get());
         PonderRegistry.TAGS.forTag(AllPonderTags.DISPLAY_SOURCES).add(ModRegistry.GLOBE_ITEM.get());
         PonderRegistry.TAGS.forTag(AllPonderTags.DISPLAY_SOURCES).add(ModRegistry.PEDESTAL.get());
-        PonderRegistry.TAGS.forTag(AllPonderTags.DISPLAY_SOURCES).add(ModRegistry.JAR.get());
         //PonderRegistry.TAGS.forTag(PonderTag.DISPLAY_SOURCES).add(ModRegistry.CLOCK_BLOCK.get());
         //PonderRegistry.TAGS.forTag(PonderTag.DISPLAY_TARGETS).add(ModRegistry.DOORMAT.get());
 

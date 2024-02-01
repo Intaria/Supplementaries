@@ -1,6 +1,5 @@
 package net.mehvahdjukaar.supplementaries.integration.fabric;
 
-import net.mehvahdjukaar.supplementaries.common.items.JarItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -22,10 +21,6 @@ public class QuarkCompatImpl {
 
     public static BlockState updateWoodPostShape(BlockState oldHeld, Direction facing, BlockState facingState) {
         return oldHeld;
-    }
-
-    public static InteractionResult tryCaptureTater(JarItem jarItem, UseOnContext context) {
-        return InteractionResult.PASS;
     }
 
     public static boolean isDoubleDoorEnabled() {

@@ -458,25 +458,6 @@ public class CommonConfigs {
                     .define("rope_override", Supplementaries.res("rope"));
             builder.pop();
 
-            builder.push("jar");
-            JAR_ENABLED = feature(builder);
-            JAR_CAPACITY = builder.comment("Jar liquid capacity: leave at 12 for pixel accuracy")
-                    .define("capacity", 12, 0, 1024);
-            JAR_EAT = builder.comment("Allow right click to instantly eat or drink food or potions inside a placed jar.\n" +
-                            "Disable if you think this ability is op (honey for example). Cookies are excluded")
-                    .define("drink_from_jar", false);
-            JAR_ITEM_DRINK = builder.comment("Allows the player to directly drink from jar items")
-                    .define("drink_from_jar_item", false);
-            JAR_AUTO_DETECT = builder.comment("Dynamically allows all small mobs inside jars depending on their hitbox size. Tinted jars can accept hostile mbos too")
-                    .define("jar_auto_detect", false);
-            JAR_CAPTURE = builder.comment("Allow Jars to capture small mobs")
-                    .define("jar_capture", false);
-            JAR_COOKIES = builder.comment("Allow Jars to hold cookies")
-                    .define("jar_cookies", true);
-            JAR_LIQUIDS = builder.comment("Allow Jars to hold liquids from bottles, buckets and bowls")
-                    .define("jar_liquids", true);
-            builder.pop();
-
             builder.push("cage");
             CAGE_ENABLED = feature(builder);
             CAGE_ALL_MOBS = builder.comment("Allows all entities to be captured by cages and jars. Not meant for survival")
@@ -560,15 +541,6 @@ public class CommonConfigs {
         public static final Supplier<Boolean> SACK_PENALTY;
         public static final Supplier<Integer> SACK_INCREMENT;
         public static final Supplier<Integer> SACK_SLOTS;
-
-        public static final Supplier<Boolean> JAR_ENABLED;
-        public static final Supplier<Integer> JAR_CAPACITY;
-        public static final Supplier<Boolean> JAR_EAT;
-        public static final Supplier<Boolean> JAR_CAPTURE;
-        public static final Supplier<Boolean> JAR_COOKIES;
-        public static final Supplier<Boolean> JAR_LIQUIDS;
-        public static final Supplier<Boolean> JAR_ITEM_DRINK;
-        public static final Supplier<Boolean> JAR_AUTO_DETECT;
 
         public static final Supplier<Boolean> CAGE_ENABLED;
         public static final Supplier<Boolean> CAGE_ALL_MOBS;
@@ -889,9 +861,6 @@ public class CommonConfigs {
 
             DISPENSERS = builder.comment("Set to false to disable custom dispenser behaviors (i.e: filling jars) if for some reason they are causing trouble").define("dispensers", true);
 
-            JAR_TAB = builder.gameRestart().comment("Creates a creative tab full of filled jars")
-                    .define("jar_tab", false);
-
             DEBUG_RESOURCES = builder.comment("Save generated resources to disk in a 'debug' folder in your game directory. Mainly for debug purposes but can be used to generate assets in all wood types for your mods :0")
                     .define("debug_save_dynamic_pack", false);
             SERVER_PROTECTION = builder.comment("Turn this on to disable any interaction on blocks placed by other players. This affects item shelves, signs, flower pots, and boards. " +
@@ -900,7 +869,6 @@ public class CommonConfigs {
             builder.pop();
         }
 
-        public static final Supplier<Boolean> JAR_TAB;
         public static final Supplier<Boolean> CREATIVE_TAB;
         public static final Supplier<Boolean> DISPENSERS;
         public static final Supplier<Boolean> DEBUG_RESOURCES;

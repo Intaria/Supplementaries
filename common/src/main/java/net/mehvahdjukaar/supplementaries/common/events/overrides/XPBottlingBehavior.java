@@ -1,9 +1,6 @@
 package net.mehvahdjukaar.supplementaries.common.events.overrides;
 
 import net.mehvahdjukaar.moonlight.api.util.Utils;
-import net.mehvahdjukaar.supplementaries.common.block.blocks.JarBlock;
-import net.mehvahdjukaar.supplementaries.common.block.tiles.JarBlockTile;
-import net.mehvahdjukaar.supplementaries.common.items.JarItem;
 import net.mehvahdjukaar.supplementaries.configs.CommonConfigs;
 import net.mehvahdjukaar.supplementaries.reg.ModDamageSources;
 import net.mehvahdjukaar.supplementaries.reg.ModParticles;
@@ -33,14 +30,12 @@ class XPBottlingBehavior implements ItemUseOnBlockOverride {
 
     @Override
     public boolean appliesToItem(Item item) {
-        return item == Items.GLASS_BOTTLE || item instanceof JarItem || item == Items.EXPERIENCE_BOTTLE;
+        return item == Items.GLASS_BOTTLE || item == Items.EXPERIENCE_BOTTLE;
     }
 
     @Override
     public InteractionResult tryPerformingAction(Level world, Player player, InteractionHand hand,
                                                  ItemStack stack, BlockHitResult hit) {
-
-        JarBlockTile dummyTile = new JarBlockTile(BlockPos.ZERO, ModRegistry.JAR.get().defaultBlockState());
 
         BlockPos pos = hit.getBlockPos();
         Item i = stack.getItem();
@@ -55,20 +50,6 @@ class XPBottlingBehavior implements ItemUseOnBlockOverride {
             if (player.experienceLevel > 0 || player.isCreative()) {
                 if (i == Items.GLASS_BOTTLE) {
                     returnStack = new ItemStack(Items.EXPERIENCE_BOTTLE);
-                } else if (i instanceof JarItem) {
-                    dummyTile.resetHolders();
-                    CompoundTag tag = stack.getTagElement("BlockEntityTag");
-                    if (tag != null) {
-                        dummyTile.load(tag);
-                    }
-
-                    if (dummyTile.canInteractWithSoftFluidTank()) {
-                        ItemStack tempStack = new ItemStack(Items.EXPERIENCE_BOTTLE);
-                        ItemStack temp = dummyTile.fluidHolder.interactWithItem(tempStack, null, null, false);
-                        if (temp != null && temp.getItem() == Items.GLASS_BOTTLE) {
-                            returnStack = ((JarBlock) ((BlockItem) i).getBlock()).getJarItem(dummyTile);
-                        }
-                    }
                 }
 
                 if (returnStack != null) {

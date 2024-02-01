@@ -56,7 +56,6 @@ public class ModConfigScreen extends CustomConfigScreen {
         addIcon("sign post", ModRegistry.SIGN_POST_ITEMS.get(WoodTypeRegistry.OAK_TYPE));
         addIcon("wattle and daub", ModRegistry.DAUB_BRACE.get());
         addIcon("shulker helmet", Items.SHULKER_SHELL);
-        addIcon("jar tab", ModRegistry.JAR_ITEM.get());
         addIcon("dispensers", Items.DISPENSER);
         addIcon("hanging sign", ModRegistry.HANGING_SIGNS.get(WoodTypeRegistry.OAK_TYPE));
         addIcon("dispensers", Items.DISPENSER);

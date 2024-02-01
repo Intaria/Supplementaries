@@ -8,7 +8,6 @@ import com.google.gson.JsonObject;
 import net.mehvahdjukaar.moonlight.api.resources.RPUtils;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
-import net.mehvahdjukaar.supplementaries.client.renderers.tiles.JarBlockTileRenderer;
 import net.mehvahdjukaar.supplementaries.common.block.blocks.WallLanternBlock;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.GlobeBlockTile;
 import net.minecraft.client.Minecraft;
@@ -69,21 +68,6 @@ public class WallLanternTexturesManager extends SimpleJsonResourceReloadListener
 
                 } catch (Exception ignored) {
                 }
-            }
-        }
-
-        //jar stuff
-        //using this to also load jar model
-        ResourceLocation fullPath = Supplementaries.res("textures/blocks/jar_fluid.json");
-        var resource = manager.getResource(fullPath);
-        if (resource.isPresent()) {
-            try (var stream = resource.get().open()) {
-                JsonObject bsElement = RPUtils.deserializeJson(stream);
-                float width = GsonHelper.getAsFloat(bsElement, "width") / 16f;
-                float height = GsonHelper.getAsFloat(bsElement, "height") / 16f;
-                float y0 = GsonHelper.getAsFloat(bsElement, "y") / 16f;
-                JarBlockTileRenderer.LIQUID_DIMENSIONS.set(width, height, y0);
-            } catch (Exception ignored) {
             }
         }
 

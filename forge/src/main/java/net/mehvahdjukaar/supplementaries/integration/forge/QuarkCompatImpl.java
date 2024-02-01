@@ -3,7 +3,6 @@ package net.mehvahdjukaar.supplementaries.integration.forge;
 import net.mehvahdjukaar.moonlight.api.block.IBlockHolder;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.mehvahdjukaar.supplementaries.Supplementaries;
-import net.mehvahdjukaar.supplementaries.common.items.JarItem;
 import net.mehvahdjukaar.supplementaries.common.items.SackItem;
 import net.mehvahdjukaar.supplementaries.configs.CommonConfigs;
 import net.mehvahdjukaar.supplementaries.integration.CompatHandler;
@@ -156,12 +155,6 @@ public class QuarkCompatImpl {
 
     public static boolean isJukeboxModuleOn() {
         return ModuleLoader.INSTANCE.isModuleEnabled(JukeboxAutomationModule.class);
-    }
-
-    public static InteractionResult tryCaptureTater(JarItem item, UseOnContext context) {
-        BlockPos pos = context.getClickedPos();
-        Level world = context.getLevel();
-        return InteractionResult.PASS;
     }
 
     public static boolean isMoreNoteBlockSoundsOn() {

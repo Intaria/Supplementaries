@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "supplementaries:jar"
+      "item": "iceandfire:pixie_jar_empty"
     },
     {
       "tag": "minecraft:boats"

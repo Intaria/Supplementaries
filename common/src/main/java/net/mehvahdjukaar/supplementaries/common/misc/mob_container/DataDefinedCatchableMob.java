@@ -6,7 +6,6 @@ import net.mehvahdjukaar.moonlight.api.fluids.SoftFluid;
 import net.mehvahdjukaar.moonlight.api.fluids.SoftFluidRegistry;
 import net.mehvahdjukaar.supplementaries.api.CapturedMobInstance;
 import net.mehvahdjukaar.supplementaries.api.ICatchableMob;
-import net.mehvahdjukaar.supplementaries.common.items.JarItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -129,13 +128,8 @@ public final class DataDefinedCatchableMob implements ICatchableMob {
         ).apply(instance, CaptureSettings::new));
 
         public boolean canCapture(Entity entity, Item item) {
-            if (item instanceof JarItem) {
-                return this.jarMode.on && (!this.jarMode.onlyBaby ||
+            return this.cageMode.on && (!this.cageMode.onlyBaby ||
                         (!(entity instanceof LivingEntity le) || le.isBaby()));
-            } else {
-                return this.cageMode.on && (!this.cageMode.onlyBaby ||
-                        (!(entity instanceof LivingEntity le) || le.isBaby()));
-            }
         }
     }
 

@@ -25,7 +25,6 @@ public class SupplementariesFabricClient implements ClientModInitializer {
 
     private static void fabricSetup() {
         registerISTER(ModRegistry.CAGE_ITEM.get());
-        registerISTER(ModRegistry.JAR_ITEM.get());
         registerISTER(ModRegistry.BLACKBOARD_ITEM.get());
         registerISTER(ModRegistry.BUBBLE_BLOCK_ITEM.get());
         BuiltinItemRendererRegistry.INSTANCE.register(ModRegistry.FLUTE_ITEM.get(),

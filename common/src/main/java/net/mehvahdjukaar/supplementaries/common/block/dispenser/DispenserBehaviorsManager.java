@@ -72,10 +72,7 @@ public class DispenserBehaviorsManager {
         if (CommonConfigs.Functional.SACK_ENABLED.get()) {
             DispenserHelper.registerPlaceBlockBehavior(ModRegistry.SACK.get());
         }
-        if (CommonConfigs.Functional.JAR_ENABLED.get()) {
-            DispenserHelper.registerPlaceBlockBehavior(ModRegistry.JAR_ITEM.get());
-            DispenserHelper.registerCustomBehavior(new AddItemToInventoryBehavior(Items.COOKIE));
-        }
+
         DispenserHelper.registerCustomBehavior(new FlintAndSteelBehavior(Items.FLINT_AND_STEEL));
         if (isForge) {
             DispenserHelper.registerCustomBehavior(new FakePlayerUseItemBehavior(ModRegistry.SOAP.get()));
@@ -88,15 +85,11 @@ public class DispenserBehaviorsManager {
         }
 
         boolean axe = CommonConfigs.Tweaks.AXE_DISPENSER_BEHAVIORS.get();
-        boolean jar = CommonConfigs.Functional.JAR_ENABLED.get();
         boolean key = CommonConfigs.isEnabled(ModConstants.KEY_NAME);
 
-        if (axe || jar || key) {
+        if (axe || key) {
             for (Item i : Registry.ITEM) {
                 try {
-                    if (jar && BucketHelper.isFishBucket(i)) {
-                        DispenserHelper.registerCustomBehavior(new FishBucketJarBehavior(i));
-                    }
                     if (isForge && axe && i instanceof AxeItem) {
                         DispenserHelper.registerCustomBehavior(new FakePlayerUseItemBehavior(i));
                     }

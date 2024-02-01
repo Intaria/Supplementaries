@@ -5,7 +5,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import net.mehvahdjukaar.moonlight.api.client.util.RenderUtil;
 import net.mehvahdjukaar.moonlight.api.client.util.RotHlpr;
-import net.mehvahdjukaar.supplementaries.common.block.blocks.JarBlock;
 import net.mehvahdjukaar.supplementaries.common.block.tiles.JarBoatTile;
 import net.mehvahdjukaar.supplementaries.reg.ClientRegistry;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -13,9 +12,12 @@ import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 
 
 public class JarBoatTileRenderer implements BlockEntityRenderer<JarBoatTile> {
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     private final BlockRenderDispatcher blockRenderer;
 
@@ -30,7 +32,7 @@ public class JarBoatTileRenderer implements BlockEntityRenderer<JarBoatTile> {
         matrixStackIn.pushPose();
 
         matrixStackIn.translate(0.5, 0.5, 0.5);
-        matrixStackIn.mulPose(RotHlpr.rot((int) -tile.getBlockState().getValue(JarBlock.FACING).getOpposite().toYRot()));
+        matrixStackIn.mulPose(RotHlpr.rot((int) -tile.getBlockState().getValue(FACING).getOpposite().toYRot()));
 
         matrixStackIn.translate(0, -3/16f, 0);
         //TODO: use world time here

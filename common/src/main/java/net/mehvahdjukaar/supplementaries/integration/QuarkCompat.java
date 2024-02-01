@@ -1,7 +1,6 @@
 package net.mehvahdjukaar.supplementaries.integration;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
-import net.mehvahdjukaar.supplementaries.common.items.JarItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -43,12 +42,6 @@ public class QuarkCompat {
 
     @ExpectPlatform
     public static boolean isFastSlideModuleEnabled() {
-        throw new AssertionError();
-    }
-
-
-    @ExpectPlatform
-    public static InteractionResult tryCaptureTater(JarItem jarItem, UseOnContext context) {
         throw new AssertionError();
     }
 

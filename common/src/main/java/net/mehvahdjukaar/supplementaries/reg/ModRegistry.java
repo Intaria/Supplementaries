@@ -215,21 +215,6 @@ public class ModRegistry {
             new Item.Properties().tab(getTab(CreativeModeTab.TAB_DECORATIONS, CAGE_NAME))
                     .stacksTo(16)));
 
-    //jar
-    public static final Supplier<Block> JAR = regBlock(JAR_NAME, () -> new JarBlock(
-            BlockBehaviour.Properties.of(Material.GLASS, MaterialColor.NONE)
-                    .strength(0.5f, 1f)
-                    .sound(ModSounds.JAR)
-                    .noOcclusion()
-    ));
-
-    public static final Supplier<BlockEntityType<JarBlockTile>> JAR_TILE = regTile(
-            JAR_NAME, () -> PlatformHelper.newBlockEntityType(
-                    JarBlockTile::new, JAR.get()));
-
-    public static final Supplier<Item> JAR_ITEM = regItem(JAR_NAME, () -> new JarItem(JAR.get(), new Item.Properties().tab(
-            getTab(CreativeModeTab.TAB_DECORATIONS, JAR_NAME)).stacksTo(16)));
-
 
     //sack
     public static final Supplier<Block> SACK = regBlock(SACK_NAME, () -> new SackBlock(
