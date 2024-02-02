@@ -24,8 +24,6 @@ public class ModRecipes {
             "bubble_blower_charge", RepairBubbleBlowerRecipe::new);
     public static final Supplier<RecipeSerializer<FlagFromBannerRecipe>> FLAG_FROM_BANNER = reg(
             "flag_from_banner", FlagFromBannerRecipe::new);
-    public static final Supplier<RecipeSerializer<WeatheredMapRecipe>> ANTIQUE_MAP = reg(
-            "weathered_map", WeatheredMapRecipe::new);
     public static final Supplier<RecipeSerializer<TatteredBookRecipe>> ANTIQUE_BOOK = reg(
             "antique_book", TatteredBookRecipe::new);
     public static final Supplier<RecipeSerializer<SoapClearRecipe>> SOAP_CLEARING = reg(

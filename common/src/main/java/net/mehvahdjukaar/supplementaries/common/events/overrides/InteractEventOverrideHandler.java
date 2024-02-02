@@ -81,7 +81,6 @@ public class InteractEventOverrideHandler {
         itemUseOnBlock.add(new DoubleCakeBehavior());
         itemUseOnBlock.add(new WrittenBookHackBehavior());
 
-        itemUseOnBlock.add(new MapMarkerBehavior());
         itemUseOnBlock.add(new XPBottlingBehavior());
 
         if (CommonConfigs.Tweaks.WRITTEN_BOOKS.get()) {

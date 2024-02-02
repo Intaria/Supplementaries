@@ -10,7 +10,6 @@ import net.mehvahdjukaar.supplementaries.common.block.faucet.FaucetBehaviorsMana
 import net.mehvahdjukaar.supplementaries.common.block.present.PresentBehaviorsManager;
 import net.mehvahdjukaar.supplementaries.common.events.overrides.InteractEventOverrideHandler;
 import net.mehvahdjukaar.supplementaries.common.items.loot.CurseLootFunction;
-import net.mehvahdjukaar.supplementaries.common.misc.map_markers.WeatheredMap;
 import net.mehvahdjukaar.supplementaries.common.utils.FlowerPotHandler;
 import net.mehvahdjukaar.supplementaries.integration.CompatHandler;
 import net.minecraft.core.RegistryAccess;
@@ -38,7 +37,6 @@ public class ModSetup {
             CurseLootFunction::setup,
             CompatHandler::setup,
             FlowerPotHandler::setup,
-            WeatheredMap::setup,
             ModSetup::registerCompostables,
             ModSetup::registerMobFoods,
             ModSetup::registerFabricFlammable,

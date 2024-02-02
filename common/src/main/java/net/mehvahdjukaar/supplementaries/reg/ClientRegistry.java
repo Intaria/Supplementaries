@@ -29,7 +29,6 @@ import net.mehvahdjukaar.supplementaries.common.block.tiles.TrappedPresentBlockT
 import net.mehvahdjukaar.supplementaries.common.items.tooltip_components.BannerPatternTooltip;
 import net.mehvahdjukaar.supplementaries.common.items.tooltip_components.PaintingTooltip;
 import net.mehvahdjukaar.supplementaries.common.misc.AntiqueInkHelper;
-import net.mehvahdjukaar.supplementaries.common.misc.map_markers.client.ModMapMarkersClient;
 import net.mehvahdjukaar.supplementaries.common.utils.Credits;
 import net.mehvahdjukaar.supplementaries.common.utils.FlowerPotHandler;
 import net.mehvahdjukaar.supplementaries.common.utils.MiscUtils;
@@ -130,8 +129,6 @@ public class ClientRegistry {
 
         //compat
         CompatHandlerClient.setup(); //if this fails other stuff below will to. In other words we'll at least know that it failed since nothing will work anymore
-        //map markers
-        ModMapMarkersClient.init();
 
         //overlay
         //SlimedGuiOverlay.register();
