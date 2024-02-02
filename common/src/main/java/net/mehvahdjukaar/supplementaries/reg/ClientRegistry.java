@@ -29,7 +29,6 @@ import net.mehvahdjukaar.supplementaries.common.block.tiles.TrappedPresentBlockT
 import net.mehvahdjukaar.supplementaries.common.items.tooltip_components.BannerPatternTooltip;
 import net.mehvahdjukaar.supplementaries.common.items.tooltip_components.PaintingTooltip;
 import net.mehvahdjukaar.supplementaries.common.misc.AntiqueInkHelper;
-import net.mehvahdjukaar.supplementaries.common.utils.Credits;
 import net.mehvahdjukaar.supplementaries.common.utils.FlowerPotHandler;
 import net.mehvahdjukaar.supplementaries.common.utils.MiscUtils;
 import net.mehvahdjukaar.supplementaries.integration.CompatHandler;
@@ -144,6 +143,8 @@ public class ClientRegistry {
         ClientPlatformHelper.registerRenderType(ModRegistry.WIND_VANE.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModRegistry.CRANK.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModRegistry.FAUCET.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModRegistry.GLOBE.get(), RenderType.cutout());
+        ClientPlatformHelper.registerRenderType(ModRegistry.GLOBE_SEPIA.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModRegistry.SIGN_POST.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModRegistry.WALL_LANTERN.get(), RenderType.cutout());
         ClientPlatformHelper.registerRenderType(ModRegistry.BELLOWS.get(), RenderType.cutout());

@@ -4,7 +4,6 @@ import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.mehvahdjukaar.moonlight.api.client.util.TextUtil;
 import net.mehvahdjukaar.supplementaries.common.block.TextHolder;
-import net.mehvahdjukaar.supplementaries.common.utils.Credits;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -15,17 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TextUtils {
-
-    private static final List<FormattedCharSequence> CREDITS = new ArrayList<>();
     private static final List<FormattedCharSequence> BEE_MOVIE = new ArrayList<>();
 
     private static final float SCALING_FACTOR = 16 * 8F;
     private static final float SCALE = 1 / SCALING_FACTOR;
 
     static {
-        String text = Credits.INSTANCE.createCreditsText();
         float lx = 1 - (2 * 0.125f);
-        CREDITS.addAll(Minecraft.getInstance().font.split(TextUtil.parseText(text), Mth.floor(lx * SCALING_FACTOR)));
         String b = """
                 THE BEE MOVIE\u00A7r
 
@@ -36,11 +31,6 @@ public class TextUtils {
     public static void renderBeeMovie(PoseStack matrixStack, MultiBufferSource bufferIn, int light,
                                       Font fontRenderer, float side) {
         renderScrollingText(matrixStack, bufferIn, light, fontRenderer, side, BEE_MOVIE);
-    }
-
-    public static void renderCredits(PoseStack matrixStack, MultiBufferSource bufferIn, int light,
-                                     Font fontRenderer, float side) {
-        renderScrollingText(matrixStack, bufferIn, light, fontRenderer, side, CREDITS);
     }
 
     private static void renderScrollingText(PoseStack matrixStack, MultiBufferSource bufferIn, int light,

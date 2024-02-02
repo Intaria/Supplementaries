@@ -5,7 +5,6 @@ import com.mojang.datafixers.util.Pair;
 import net.mehvahdjukaar.moonlight.api.block.ItemDisplayTile;
 import net.mehvahdjukaar.supplementaries.common.block.blocks.NoticeBoardBlock;
 import net.mehvahdjukaar.supplementaries.common.block.blocks.StatueBlock;
-import net.mehvahdjukaar.supplementaries.common.utils.Credits;
 import net.mehvahdjukaar.supplementaries.common.utils.MiscUtils;
 import net.mehvahdjukaar.supplementaries.reg.ModRegistry;
 import net.minecraft.core.BlockPos;
@@ -78,10 +77,6 @@ public class StatueBlockTile extends ItemDisplayTile {
         if (this.hasCustomName()) {
 
             String name = this.getCustomName().getString().toLowerCase(Locale.ROOT);
-            Pair<UUID, String> profile = Credits.INSTANCE.statues().get(name);
-            if (profile != null) {
-                this.setOwner(new GameProfile(profile.getFirst(), profile.getSecond()));
-            }
             //ClientPlayNetHandler connection = Minecraft.getInstance().getConnection();
             //if(connection!=null)
             //this.playerInfo = connection.getPlayerInfo(SpecialPlayers.STATUES.get(this.getCustomName().getString().toLowerCase(Locale.ROOT)));

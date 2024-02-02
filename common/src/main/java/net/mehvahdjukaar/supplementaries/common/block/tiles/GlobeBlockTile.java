@@ -4,7 +4,6 @@ import com.mojang.datafixers.util.Pair;
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import net.mehvahdjukaar.moonlight.api.util.math.MthUtils;
 import net.mehvahdjukaar.supplementaries.common.block.blocks.GlobeBlock;
-import net.mehvahdjukaar.supplementaries.common.utils.Credits;
 import net.mehvahdjukaar.supplementaries.reg.ModRegistry;
 import net.mehvahdjukaar.supplementaries.reg.ModSounds;
 import net.minecraft.core.BlockPos;
@@ -214,14 +213,6 @@ public class GlobeBlockTile extends BlockEntity implements Nameable {
                 }
             }
 
-            for (var g : Credits.INSTANCE.globes().entrySet()) {
-                var path = g.getValue();
-                GlobeModel model = GlobeModel.GLOBE;
-                if (path.getPath().contains("globe_wais")) {
-                    model = GlobeModel.SNOW;
-                }
-                nameCache.put(g.getKey(), Pair.of(model, path));
-            }
             textures.clear();
             nameCache.values().forEach(o -> {
                 if(!textures.contains(o.getSecond())) textures.add(o.getSecond());

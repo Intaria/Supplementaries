@@ -69,7 +69,7 @@ public class ModTags {
     public static final TagKey<EntityType<?>> URN_SPAWN = entityTag("urn_spawn");
     public static final TagKey<EntityType<?>> ASH_BLACKLIST = entityTag("ash_blacklist"); //TODO
     //features
-    public static final TagKey<Structure> ADVENTURE_MAP_DESTINATIONS = structureTag("adventure_map_destinations");
+    //public static final TagKey<Structure> ADVENTURE_MAP_DESTINATIONS = structureTag("adventure_map_destinations");
     public static final TagKey<Structure> BASTION_REMNANT = MCstructureTag("bastion_remnant");
     public static final TagKey<Structure> DESERT_PYRAMID = MCstructureTag("desert_pyramid");
     public static final TagKey<Structure> END_CITY = MCstructureTag("end_city");

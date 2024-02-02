@@ -41,7 +41,7 @@ public class BucketHelper {
         } else if (bucket instanceof MobBucketItem bucketItem) {
             EntityType<?> en = SuppPlatformStuff.getFishType(bucketItem);
             if (en != null) {
-                BUCKET_TO_MOB_MAP.putIfAbsent(bucket, en);
+                associateMobToBucketIfAbsent( en, bucketItem);
                 return en;
             }
         }

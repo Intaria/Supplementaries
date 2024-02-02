@@ -2,7 +2,6 @@ package net.mehvahdjukaar.supplementaries.client.renderers.entities.funny;
 
 import net.mehvahdjukaar.supplementaries.common.network.NetworkHandler;
 import net.mehvahdjukaar.supplementaries.common.network.PicklePacket;
-import net.mehvahdjukaar.supplementaries.common.utils.Credits;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -15,10 +14,6 @@ import java.util.UUID;
 public class PickleData {
 
     public static final Map<UUID, PickleValues> PICKLE_PLAYERS = new HashMap<>();
-
-    static {
-        for (UUID id : Credits.INSTANCE.getDevs()) PICKLE_PLAYERS.put(id, new PickleValues());
-    }
 
     //reset
     public static void onPlayerLogOff() {

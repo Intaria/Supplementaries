@@ -15,7 +15,6 @@ import net.mehvahdjukaar.supplementaries.common.misc.mob_container.CapturedMobHa
 import net.mehvahdjukaar.supplementaries.common.misc.songs.SongsManager;
 import net.mehvahdjukaar.supplementaries.common.network.NetworkHandler;
 import net.mehvahdjukaar.supplementaries.common.utils.BlockUtil;
-import net.mehvahdjukaar.supplementaries.common.utils.Credits;
 import net.mehvahdjukaar.supplementaries.configs.ClientConfigs;
 import net.mehvahdjukaar.supplementaries.configs.CommonConfigs;
 import net.mehvahdjukaar.supplementaries.dynamicpack.ClientDynamicResourcesGenerator;
@@ -58,9 +57,6 @@ public class Supplementaries {
 
     //called on mod creation
     public static void commonInit() {
-
-        Credits.fetchFromServer();
-
         CommonConfigs.init();
             ClientConfigs.init();
 

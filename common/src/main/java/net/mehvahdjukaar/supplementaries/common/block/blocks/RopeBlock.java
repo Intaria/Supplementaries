@@ -282,7 +282,11 @@ public class RopeBlock extends WaterBlock implements IRopeConnection {
                 for (var d2 : Direction.Plane.HORIZONTAL) {
                     BlockPos fp = pos.relative(d2);
                     if (BaseFireBlock.canBePlacedAt(level, fp, d2.getOpposite())) {
-                        level.setBlockAndUpdate(fp, BaseFireBlock.getState(level, fp).setValue(FireBlock.AGE, 14));
+                        BlockState fireState = BaseFireBlock.getState(level, fp);
+                        if (fireState.hasProperty(FireBlock.AGE)) {
+                            fireState = fireState.setValue(FireBlock.AGE, 14);
+                        }
+                        level.setBlockAndUpdate(fp, fireState);
                         level.scheduleTick(pos.relative(dir), Blocks.FIRE, 2 + level.random.nextInt(1));
                     }
                 }
@@ -334,16 +338,7 @@ public class RopeBlock extends WaterBlock implements IRopeConnection {
         if (b instanceof RopeBlock) {
             return findConnectedPulley(world, pos.above(), player, it + 1, rot);
         } else if (b instanceof PulleyBlock pulley && it != 0) {
-            if (world.getBlockEntity(pos) instanceof PulleyBlockTile tile) {
-                if (tile.isEmpty() && !player.isShiftKeyDown()) {
-                    tile.setDisplayedItem(new ItemStack(ModRegistry.ROPE.get()));
-                    boolean ret = pulley.windPulley(state, pos, world, rot, null);
-                    tile.getDisplayedItem().shrink(1);
-                    return ret;
-                } else {
-                    return pulley.windPulley(state, pos, world, rot, null);
-                }
-            }
+            return pulley.windPulley(state, pos, world, rot, null);
         }
         return false;
     }
