@@ -900,7 +900,7 @@ public class CommonConfigs {
             case ModConstants.FLAX_BLOCK_NAME, ModConstants.FLAX_WILD_NAME -> Functional.FLAX_ENABLED.get();
             case ModConstants.SOAP_BLOCK_NAME -> Functional.SOAP_ENABLED.get();
             case "planter_rich", "planter_rich_soul" -> Building.PLANTER_ENABLED.get();
-            case "vertical_slabs" -> false;
+            case "vertical_slabs" -> CompatHandler.isVerticalSlabEnabled();
             case ModConstants.GLOBE_SEPIA_NAME -> Building.GLOBE_SEPIA.get() && Tools.ANTIQUE_INK_ENABLED.get();
             case ModConstants.KEY_NAME ->
                     Building.NETHERITE_DOOR_ENABLED.get() || Building.NETHERITE_TRAPDOOR_ENABLED.get() || Functional.SAFE_ENABLED.get();
