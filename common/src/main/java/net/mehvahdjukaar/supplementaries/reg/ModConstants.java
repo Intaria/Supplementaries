@@ -78,6 +78,7 @@ public final class ModConstants {
     public static final String DOUBLE_CAKE_NAME = "double_cake";
     public static final String DIRECTIONAL_CAKE_NAME = "directional_cake";
     public static final String CHECKER_SLAB_NAME = "checker_slab";
+    public static final String CHECKER_VERTICAL_SLAB_NAME = "checker_vertical_slab";
     public static final String PANCAKE_NAME = "pancake";
     public static final String FLAX_NAME = "flax";
     public static final String FLAX_WILD_NAME = "wild_flax";

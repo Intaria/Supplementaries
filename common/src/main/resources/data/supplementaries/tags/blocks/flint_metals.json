@@ -17,14 +17,17 @@
     {"id":"quark:iron_plate","required":false},
     {"id":"quark:iron_plate_stairs","required":false},
     {"id":"quark:iron_plate_slab","required":false},
+    {"id":"quark:iron_plate_vertical_slab","required":false},
 
     {"id":"quark:rusty_iron_plate","required":false},
     {"id":"quark:rusty_iron_plate_stairs","required":false},
     {"id":"quark:rusty_iron_plate_slab","required":false},
+    {"id":"quark:rusty_iron_plate_vertical_slab","required":false},
 
     {"id":"quark:raw_iron_bricks","required":false},
     {"id":"quark:raw_iron_bricks_stairs","required":false},
     {"id":"quark:raw_iron_bricks_slab","required":false},
+    {"id":"quark:raw_iron_bricks_vertical_slab","required":false},
 
     {"id":"quark:iron_pillar","required":false},
 
