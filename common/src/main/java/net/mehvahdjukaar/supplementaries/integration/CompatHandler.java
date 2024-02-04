@@ -91,6 +91,6 @@ public class CompatHandler {
 
 
     public static boolean isVerticalSlabEnabled() {
-        return QUARK && QuarkCompat.isVerticalSlabEnabled();
+        return false;
     }
 }

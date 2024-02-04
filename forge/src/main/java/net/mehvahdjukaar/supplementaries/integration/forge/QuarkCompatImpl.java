@@ -129,7 +129,7 @@ public class QuarkCompatImpl {
     }
 
     public static boolean isVerticalSlabEnabled() {
-        return ModuleLoader.INSTANCE.isModuleEnabled(VerticalSlabsModule.class);
+        return false;
     }
 
     public static boolean shouldHideOverlay(ItemStack stack) {
