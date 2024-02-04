@@ -1,9 +1,0 @@
-{
-    "parent": "supplementaries:block/vertical_slab",
-    "textures": {
-        "bottom": "supplementaries:blocks/ash_bricks",
-        "top": "supplementaries:blocks/ash_bricks",
-        "side": "supplementaries:blocks/ash_bricks",
-        "back": "supplementaries:blocks/ash_bricks"
-    }
-}
